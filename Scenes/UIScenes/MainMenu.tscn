@@ -140,7 +140,6 @@ rect_min_size = Vector2( 450, 0 )
 size_flags_horizontal = 2
 
 [node name="Label" type="Label" parent="M/TitleVBox"]
-margin_top = 50.0
 margin_right = 450.0
 margin_bottom = 74.0
 size_flags_horizontal = 5
