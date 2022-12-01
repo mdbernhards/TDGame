@@ -14,7 +14,8 @@ func _ready():
 func _physics_process(delta):
 	if !enemy_array.empty() and built:
 		select_enemy()
-		turn()
+		if not get_node("AnimationPlayer").is_playing():
+			turn()
 		if ready:
 			fire()
 	else:
