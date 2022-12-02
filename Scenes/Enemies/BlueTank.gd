@@ -1,10 +1,15 @@
 extends PathFollow2D
 
-signal base_damage(damage)
+signal base_damage(base_damage)
+signal money_droped(money_droped)
 
-var speed = 150
-var hp = 300
-var base_damage = 21
+var tank_data = GameData.enemy_data["BlueTank"]
+
+var speed = tank_data.speed
+var hp = tank_data.health
+var base_damage = tank_data.base_damage
+var money_droped = tank_data.money_droped
+
 
 onready var health_bar = get_node("HealthBar")
 onready var impact_area = get_node("Impact")
@@ -44,6 +49,7 @@ func impact():
 	impact_area.add_child(new_impact)
 
 func on_destroy():
+	emit_signal("money_droped", money_droped)
 	get_node("KinematicBody2D").queue_free()
 	yield(get_tree().create_timer(0.2), "timeout")
 	self.queue_free()

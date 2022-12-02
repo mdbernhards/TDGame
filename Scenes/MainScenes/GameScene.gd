@@ -13,7 +13,10 @@ var current_wave = 0
 var enemies_in_wave = 0
 
 var base_health = 100
+var money = 100
+var enemy_count
 
+var waves = GameData.wave_data["Waves"]
 ###
 ### Basic railsnakes
 ###
@@ -26,6 +29,8 @@ func _ready():
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
+	if enemy_count == 0:
+		start_next_wave()
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -39,11 +44,14 @@ func _unhandled_input(event):
 ###
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
-	yield(get_tree().create_timer(0.2), "timeout")
+	if current_wave == 1:
+		yield(get_tree().create_timer(0.2), "timeout")
+	else:
+		yield(get_tree().create_timer(6), "timeout")
 	spawn_enemies(wave_data)
 
 func retrieve_wave_data():
-	var wave_data = [["BlueTank", 0.1], ["BlueTank", 0.1],["BlueTank", 0.1], ["BlueTank", 0.1],["BlueTank", 0.1], ["BlueTank", 0.1],["BlueTank", 0.7], ["BlueTank", 0.1],["BlueTank", 0.7], ["BlueTank", 0.1],["BlueTank", 0.7], ["BlueTank", 0.1]]
+	var wave_data = create_wave()
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
 	return wave_data
@@ -52,6 +60,7 @@ func spawn_enemies(wave_data):
 	for i in wave_data:
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instance()
 		new_enemy.connect("base_damage", self, 'on_base_damage')
+		new_enemy.connect("money_droped", self, 'on_money_droped')
 		map_node.get_node("Path").add_child(new_enemy, true)
 		yield(get_tree().create_timer(i[1]),"timeout")
 
@@ -85,7 +94,7 @@ func cancel_build_mode():
 	get_node("UI/TowerPreview").free()
 
 func verify_and_build():
-	if build_valid:
+	if build_valid and buy_turret():
 		var new_tower = load("res://Scenes/Turrets/" + build_type + ".tscn").instance()
 		new_tower.position = build_location
 		new_tower.built = true
@@ -94,9 +103,36 @@ func verify_and_build():
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 5)
 
+func buy_turret():
+	var price = GameData.tower_data[build_type]["price"]
+	if price <= money:
+		money -= price
+		get_node("UI").update_money_count(money)
+		return true
+	else:
+		return false
+
 func on_base_damage(damage):
 	base_health -= damage
 	if base_health <= 0:
 		emit_signal("game_finished", false)
 	else:
 		get_node("UI").update_health_bar(base_health)
+		
+
+func on_money_droped(money_droped):
+	money += money_droped
+	enemy_count -= 1
+	get_node("UI").update_money_count(money)
+	
+func create_wave():
+	var wave_data = GameData.wave_data
+	var complete_wave = []
+	if (current_wave <= wave_data.Waves):
+		var wave = GameData.wave_data["Wave" + String(current_wave)]
+		enemy_count = wave.BlueTanks
+		for i in wave.BlueTanks:
+			complete_wave.append_array([["BlueTank", 0.7]])
+	else:
+		complete_wave.append_array([["BlueTank", 0.7]])
+	return complete_wave

@@ -14,7 +14,8 @@ func _ready():
 func _physics_process(delta):
 	if !enemy_array.empty() and built:
 		select_enemy()
-		if not get_node("AnimationPlayer").is_playing():
+		var animationPlayer = get_node_or_null("AnimationPlayer")
+		if animationPlayer == null or not get_node_or_null("AnimationPlayer").is_playing():
 			turn()
 		if ready:
 			fire()
@@ -46,7 +47,7 @@ func fire_gun():
 	get_node("AnimationPlayer").play("Fire")
 	
 func fire_missile():
-	pass
+	get_node("AnimationPlayer").play("Fire") # need to add new animation
 
 func _on_Range_body_entered(body):
 	enemy_array.append(body.get_parent())
