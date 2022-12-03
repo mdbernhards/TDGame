@@ -46,10 +46,21 @@ func _on_PausePlay_pressed():
 func _on_SpeedUp_pressed():
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
-	if Engine.get_time_scale() == 2.0:
-		Engine.set_time_scale(1.0)
-	else:
+	if Engine.get_time_scale() == 1.0:
 		Engine.set_time_scale(2.0)
+		get_node("HUD/GameControls/SpeedUp/Speed").text = "x2"
+	elif Engine.get_time_scale() == 2.0:
+		Engine.set_time_scale(4.0)
+		get_node("HUD/GameControls/SpeedUp/Speed").text = "x4"
+	elif Engine.get_time_scale() == 4.0:
+		Engine.set_time_scale(8.0)
+		get_node("HUD/GameControls/SpeedUp/Speed").text = "x8"
+	elif Engine.get_time_scale() == 8.0:
+		Engine.set_time_scale(16.0)
+		get_node("HUD/GameControls/SpeedUp/Speed").text = "x16"
+	elif Engine.get_time_scale() == 16.0:
+		Engine.set_time_scale(1.0)
+		get_node("HUD/GameControls/SpeedUp/Speed").text = "x1"
 
 func update_health_bar(base_health):
 	hp_bar_tween.interpolate_property(hp_bar, 'value', hp_bar.value, base_health, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

@@ -15,7 +15,7 @@ var tower_data = {
 		"price": 50},
 	"MissileT1": {
 		"damage": 45,
-		"rof": 6,
+		"rof": 1,
 		"range": 550,
 		"category": "Missile",
 		"price": 40

@@ -7,6 +7,10 @@ var built = false
 var enemy
 var ready = true
 
+var left_missile = true
+
+var missile = preload("res://Scenes/SupportScenes/Missile.tscn")
+
 func _ready():
 	if built:
 		self.get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.tower_data[type]["range"]
@@ -37,7 +41,7 @@ func fire():
 	ready = false
 	if category == "Projectile":
 		fire_gun()
-	elif category == "missile":
+	elif category == "Missile":
 		fire_missile()
 	enemy.on_hit(GameData.tower_data[type]["damage"])
 	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]), "timeout")
@@ -47,7 +51,9 @@ func fire_gun():
 	get_node("AnimationPlayer").play("Fire")
 	
 func fire_missile():
-	get_node("AnimationPlayer").play("Fire") # need to add new animation
+	var new_missile = missile.instance()
+	add_child(new_missile)
+	new_missile.start(position, enemy.position)
 
 func _on_Range_body_entered(body):
 	enemy_array.append(body.get_parent())

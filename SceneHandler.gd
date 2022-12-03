@@ -4,6 +4,7 @@ func _ready():
 	load_main_menu()
 	
 func on_new_game_pressed():
+	Engine.set_time_scale(1.0)
 	get_node("MainMenu").queue_free()
 	var game_scene = load("res://Scenes/MainScenes/GameScene.tscn").instance()
 	game_scene.connect("game_finished", self, 'unload_game')

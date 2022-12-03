@@ -14,7 +14,7 @@ var enemies_in_wave = 0
 
 var base_health = 100
 var money = 100
-var enemy_count
+var enemies_left = 0
 
 var waves = GameData.wave_data["Waves"]
 ###
@@ -29,7 +29,7 @@ func _ready():
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
-	if enemy_count == 0:
+	if enemies_left <= 0:
 		start_next_wave()
 
 func _unhandled_input(event):
@@ -51,8 +51,8 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 
 func retrieve_wave_data():
-	var wave_data = create_wave()
 	current_wave += 1
+	var wave_data = create_wave()
 	enemies_in_wave = wave_data.size()
 	return wave_data
 	
@@ -114,6 +114,7 @@ func buy_turret():
 
 func on_base_damage(damage):
 	base_health -= damage
+	enemies_left -= 1
 	if base_health <= 0:
 		emit_signal("game_finished", false)
 	else:
@@ -122,7 +123,7 @@ func on_base_damage(damage):
 
 func on_money_droped(money_droped):
 	money += money_droped
-	enemy_count -= 1
+	enemies_left -= 1
 	get_node("UI").update_money_count(money)
 	
 func create_wave():
@@ -130,9 +131,10 @@ func create_wave():
 	var complete_wave = []
 	if (current_wave <= wave_data.Waves):
 		var wave = GameData.wave_data["Wave" + String(current_wave)]
-		enemy_count = wave.BlueTanks
+		enemies_left = wave.BlueTanks
 		for i in wave.BlueTanks:
 			complete_wave.append_array([["BlueTank", 0.7]])
 	else:
+		enemies_left = 1
 		complete_wave.append_array([["BlueTank", 0.7]])
 	return complete_wave
