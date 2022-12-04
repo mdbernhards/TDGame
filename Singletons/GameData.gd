@@ -18,7 +18,8 @@ var tower_data = {
 		"rof": 1,
 		"range": 550,
 		"category": "Missile",
-		"price": 40
+		"price": 40,
+		"missile_speed": 300
 	}
 }
 

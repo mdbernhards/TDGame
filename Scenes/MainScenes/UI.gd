@@ -4,6 +4,13 @@ onready var hp_bar = get_node("HUD/InfoBar/H/HP")
 onready var hp_bar_tween = get_node("HUD/InfoBar/H/HP/Tween")
 onready var money_count = get_node("HUD/InfoBar/H/Money")
 
+func _ready():
+	set_turret_prices()
+
+func set_turret_prices():
+	get_node("HUD/BuildBar/Gun/Label").text = String(GameData.tower_data["GunT1"]["price"])
+	get_node("HUD/BuildBar/Missile/Label").text = String(GameData.tower_data["MissileT1"]["price"])
+
 func set_tower_preview(tower_type, mouse_position):
 	var drag_tower = load("res://Scenes/Turrets/" + tower_type + ".tscn").instance()
 	drag_tower.set_name("DragTower")

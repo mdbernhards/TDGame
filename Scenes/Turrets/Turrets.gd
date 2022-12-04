@@ -41,9 +41,9 @@ func fire():
 	ready = false
 	if category == "Projectile":
 		fire_gun()
+		enemy.on_hit(GameData.tower_data[type]["damage"])
 	elif category == "Missile":
 		fire_missile()
-	enemy.on_hit(GameData.tower_data[type]["damage"])
 	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]), "timeout")
 	ready = true
 	
@@ -53,7 +53,7 @@ func fire_gun():
 func fire_missile():
 	var new_missile = missile.instance()
 	add_child(new_missile)
-	new_missile.start(position, enemy.position)
+	new_missile.start(get_node("Turret").position, Vector2(1,0).rotated(get_node("Turret").global_rotation))
 
 func _on_Range_body_entered(body):
 	enemy_array.append(body.get_parent())
