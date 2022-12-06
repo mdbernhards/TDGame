@@ -63,13 +63,11 @@ func fire_missile():
 		left_missile = false
 		sprite.position.y -= 11
 		collisonShape.position.y -= 11
-		print(position)
 	else:
 		missile_on_turret = get_node("Turret/Missile2")
 		left_missile = true
 		sprite.position.y += 11
 		collisonShape.position.y += 11
-		print(position)
 		
 	sprite.position.x += 3
 	collisonShape.position.x += 3

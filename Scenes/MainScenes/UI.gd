@@ -5,7 +5,12 @@ onready var hp_bar_tween = get_node("HUD/InfoBar/H/HP/Tween")
 onready var money_count = get_node("HUD/InfoBar/H/Money")
 
 func _ready():
+	load_pause_menu()
 	set_turret_prices()
+	
+func _process(delta):
+	if Input.is_action_just_pressed("ui_pause_menu"):
+		_on_PausePlay_pressed()
 
 func set_turret_prices():
 	get_node("HUD/BuildBar/Gun/Label").text = String(GameData.tower_data["GunT1"]["price"])
@@ -38,17 +43,23 @@ func update_tower_preview(new_position, color):
 		get_node("TowerPreview/DragTower").modulate = Color(color)
 		get_node("TowerPreview/Sprite").modulate = Color(color)
 
-
 func _on_PausePlay_pressed():
+	var pause_menu = get_node("PauseMenu")
+	var hud = get_node("HUD")
+	
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
 	if get_tree().is_paused():
 		get_tree().paused = false
+		pause_menu.visible = false
+		hud.visible = true
 	elif get_parent().current_wave == 0:
 		get_parent().current_wave += 1
 		get_parent().start_next_wave()
 	else:
 		get_tree().paused = true
+		pause_menu.visible = true
+		hud.visible = false
 
 func _on_SpeedUp_pressed():
 	if get_parent().build_mode:
@@ -78,6 +89,34 @@ func update_health_bar(base_health):
 		hp_bar.set_tint_progress("e1be32")
 	else:
 		hp_bar.set_tint_progress("e11e1e")
-		
+
 func update_money_count(money):
 	money_count.text = String(money)
+
+func load_pause_menu():
+	get_node("PauseMenu/M/VB/Continue").connect("pressed", self, "on_continue_pressed")
+	get_node("PauseMenu/M/VB/Restart").connect("pressed", self, "on_restart_pressed")
+	get_node("PauseMenu/M/VB/Settings").connect("pressed", self, "on_settings_pressed")
+	get_node("PauseMenu/M/VB/MainMenu").connect("pressed", self, "on_main_menu_pressed")
+	get_node("PauseMenu/M/VB/Quit").connect("pressed", self, "on_quit_pressed")
+
+func on_continue_pressed():
+	get_tree().paused = false
+	get_node("PauseMenu").visible = false
+	get_node("HUD").visible = true
+	
+func on_restart_pressed():
+	get_tree().paused = false
+	get_node("PauseMenu").visible = false
+	get_parent().get_parent().on_new_game_pressed()
+
+func on_settings_pressed():
+	pass
+
+func on_main_menu_pressed():
+	get_tree().paused = false
+	get_node("PauseMenu").visible = false
+	get_parent().emit_signal("game_finished", false)
+
+func on_quit_pressed():
+	get_tree().quit()
