@@ -28,8 +28,26 @@ var enemy_data = {
 		"health": 100,
 		"speed": 150,
 		"money_droped" : 20,
-		"base_damage" : 21
-	}
+		"base_damage" : 21,
+	},
+	"GreenTank": {
+		"health": 100,
+		"speed": 150,
+		"money_droped" : 20,
+		"base_damage" : 21,
+	},
+	"RedTank": {
+		"health": 100,
+		"speed": 150,
+		"money_droped" : 20,
+		"base_damage" : 21,
+	},
+	"BlackTank": {
+		"health": 100,
+		"speed": 150,
+		"money_droped" : 20,
+		"base_damage" : 21,
+	},
 }
 
 var wave_data = {

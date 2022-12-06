@@ -32,4 +32,14 @@ position = Vector2( 32, 32 )
 visible = false
 shape = SubResource( 1 )
 
+[node name="TurretsArea" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TurretsArea"]
+visible = false
+polygon = PoolVector2Array( -26, 17, -17, 26, 17, 26, 26, 17, 26, -17, 17, -26, -16, -26, -26, -17 )
+
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
+[connection signal="mouse_entered" from="TurretsArea" to="." method="_on_TurretsArea_mouse_entered"]
+[connection signal="mouse_exited" from="TurretsArea" to="." method="_on_TurretsArea_mouse_exited"]

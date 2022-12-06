@@ -79,7 +79,26 @@ func fire_missile():
 	
 func _on_Range_body_entered(body):
 	enemy_array.append(body.get_parent())
-	print(enemy_array)
 
 func _on_Range_body_exited(body):
 	enemy_array.erase(body.get_parent())
+	
+func _on_TurretsArea_mouse_entered():
+	if built:
+		show_range()
+	
+func _on_TurretsArea_mouse_exited():
+	if built:
+		self.z_index = 0
+		get_node("Sprite").free()
+	
+func show_range():
+	var range_texture = Sprite.new()
+	range_texture.position = Vector2(32,32)
+	var scaling = GameData.tower_data[type]["range"] / 600.0
+	range_texture.scale = Vector2(scaling, scaling)
+	var texture = load("res://Assets/UI/range_overlay.png")
+	range_texture.texture = texture
+	add_child(range_texture, true)
+	self.z_index = 1000
+	move_child(get_node("Sprite"), 0)
