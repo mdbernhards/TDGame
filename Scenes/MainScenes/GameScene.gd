@@ -70,7 +70,7 @@ func spawn_enemies(wave_data):
 func initiate_build_mode(tower_type):
 	if build_mode:
 		cancel_build_mode()
-	build_type = tower_type + "T1"
+	build_type = tower_type
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 	

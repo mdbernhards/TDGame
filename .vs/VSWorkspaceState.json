@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Scenes",
+    "\\Scenes\\MainScenes",
+    "\\Scenes\\Turrets",
+    "\\Scenes\\UIScenes"
+  ],
+  "SelectedNode": "\\Scenes\\UIScenes\\TurretMenu.tscn",
+  "PreviewInSolutionExplorer": false
+}

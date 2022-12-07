@@ -12,10 +12,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_pause_menu"):
 		_on_PausePlay_pressed()
 
-func set_turret_prices():
-	get_node("HUD/BuildBar/Gun/Label").text = String(GameData.tower_data["GunT1"]["price"])
-	get_node("HUD/BuildBar/Missile/Label").text = String(GameData.tower_data["MissileT1"]["price"])
-
 func set_tower_preview(tower_type, mouse_position):
 	var drag_tower = load("res://Scenes/Turrets/" + tower_type + ".tscn").instance()
 	drag_tower.set_name("DragTower")
@@ -120,3 +116,8 @@ func on_main_menu_pressed():
 
 func on_quit_pressed():
 	get_tree().quit()
+	
+func set_turret_prices():
+	get_node("HUD/BuildBar/GunT1/Label").text = String(GameData.tower_data["GunT1"]["price"])
+	get_node("HUD/BuildBar/MissileT1/Label").text = String(GameData.tower_data["MissileT1"]["price"])
+	get_node("HUD/TurretInfoBar/H/GunT2/Label").text = String(GameData.tower_data["GunT2"]["price"])

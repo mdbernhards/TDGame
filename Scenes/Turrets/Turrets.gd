@@ -6,10 +6,10 @@ var enemy_array = []
 var built = false
 var enemy
 var ready = true
-
 var left_missile = true
-
 var missile = preload("res://Scenes/SupportScenes/Missile.tscn")
+
+signal turret_menu(type)
 
 func _ready():
 	if built:
@@ -48,7 +48,9 @@ func fire():
 	ready = true
 	
 func fire_gun():
-	get_node("AnimationPlayer").play("Fire")
+	var animation_player = get_node("AnimationPlayer")
+	if animation_player != null:
+		animation_player.play("Fire")
 	
 func fire_missile():
 	var new_missile = missile.instance()
@@ -102,3 +104,9 @@ func show_range():
 	add_child(range_texture, true)
 	self.z_index = 1000
 	move_child(get_node("Sprite"), 0)
+	
+func _on_TurretsArea_input_event(viewport, event, shape_idx):
+	if built and event.is_pressed() == true:
+		pass
+		var GameScene = get_parent().get_parent().get_parent()
+		GameScene.get_node("UI/HUD/TurretInfoBar").visible = !GameScene.get_node("UI/HUD/TurretInfoBar").visible

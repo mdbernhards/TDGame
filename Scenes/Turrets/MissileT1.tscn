@@ -44,5 +44,6 @@ polygon = PoolVector2Array( -26, 17, -17, 26, 17, 26, 26, 17, 26, -17, 17, -26, 
 
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
+[connection signal="input_event" from="TurretsArea" to="." method="_on_TurretsArea_input_event"]
 [connection signal="mouse_entered" from="TurretsArea" to="." method="_on_TurretsArea_mouse_entered"]
 [connection signal="mouse_exited" from="TurretsArea" to="." method="_on_TurretsArea_mouse_exited"]
