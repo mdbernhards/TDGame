@@ -7,7 +7,7 @@ onready var money_count = get_node("HUD/InfoBar/H/Money")
 func _ready():
 	load_pause_menu()
 	set_turret_prices()
-	
+
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause_menu"):
 		_on_PausePlay_pressed()
@@ -16,7 +16,7 @@ func set_tower_preview(tower_type, mouse_position):
 	var drag_tower = load("res://Scenes/Turrets/" + tower_type + ".tscn").instance()
 	drag_tower.set_name("DragTower")
 	drag_tower.modulate = Color("ad54ff3c")
-	
+
 	var range_texture = Sprite.new()
 	range_texture.position = Vector2(32,32)
 	var scaling = GameData.tower_data[tower_type]["range"] / 600.0
@@ -24,7 +24,7 @@ func set_tower_preview(tower_type, mouse_position):
 	var texture = load("res://Assets/UI/range_overlay.png")
 	range_texture.texture = texture
 	range_texture.modulate = Color("ad54ff3c")
-	
+
 	var control = Control.new()
 	control.add_child(drag_tower, true)
 	control.add_child(range_texture, true)
@@ -42,7 +42,7 @@ func update_tower_preview(new_position, color):
 func _on_PausePlay_pressed():
 	var pause_menu = get_node("PauseMenu")
 	var hud = get_node("HUD")
-	
+
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
 	if get_tree().is_paused():
@@ -116,7 +116,7 @@ func on_main_menu_pressed():
 
 func on_quit_pressed():
 	get_tree().quit()
-	
+
 func set_turret_prices():
 	get_node("HUD/BuildBar/GunT1/Label").text = String(GameData.tower_data["GunT1"]["price"])
 	get_node("HUD/BuildBar/MissileT1/Label").text = String(GameData.tower_data["MissileT1"]["price"])

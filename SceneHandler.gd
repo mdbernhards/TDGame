@@ -2,7 +2,7 @@ extends Node
 
 func _ready():
 	load_main_menu()
-	
+
 func on_new_game_pressed():
 	Engine.set_time_scale(1)
 	if get_node("MainMenu") != null:
@@ -10,7 +10,7 @@ func on_new_game_pressed():
 	var game_scene = load("res://Scenes/MainScenes/GameScene.tscn").instance()
 	game_scene.connect("game_finished", self, 'unload_game')
 	add_child(game_scene)
-	
+
 func on_quit_pressed():
 	get_tree().quit()
 

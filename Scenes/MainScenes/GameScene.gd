@@ -11,21 +11,20 @@ var build_tile
 
 var current_wave = 0
 var enemies_in_wave = 0
-
 var base_health = 100
 var money = 100
 var enemies_left = 0
 
 var waves = GameData.wave_data["Waves"]
+
 ###
 ### Basic railsnakes
 ###
-
 func _ready():
 	map_node = get_node("Map1")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
-	
+
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
@@ -73,7 +72,7 @@ func initiate_build_mode(tower_type):
 	build_type = tower_type
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
-	
+
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
 	var current_title = map_node.get_node("TowerExclusion").world_to_map(mouse_position)
