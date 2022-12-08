@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 0.01
 
-[node name="GunT2" type="Node2D"]
+[node name="GunT2" type="Node2D" groups=["turrets"]]
 script = ExtResource( 3 )
 
 [node name="Base" type="Sprite" parent="."]

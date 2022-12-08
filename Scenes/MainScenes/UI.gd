@@ -49,6 +49,7 @@ func _on_PausePlay_pressed():
 		get_tree().paused = false
 		pause_menu.visible = false
 		hud.visible = true
+		get_node("HUD/GameControls/PausePlay").pressed = false
 	elif get_parent().current_wave == 0:
 		get_parent().current_wave += 1
 		get_parent().start_next_wave()
@@ -100,6 +101,7 @@ func on_continue_pressed():
 	get_tree().paused = false
 	get_node("PauseMenu").visible = false
 	get_node("HUD").visible = true
+	get_node("HUD/GameControls/PausePlay").pressed = false
 	
 func on_restart_pressed():
 	get_tree().paused = false

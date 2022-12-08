@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[node name="GunT1" type="Node2D"]
+[node name="GunT1" type="Node2D" groups=["turrets"]]
 script = ExtResource( 3 )
 
 [node name="Base" type="Sprite" parent="."]

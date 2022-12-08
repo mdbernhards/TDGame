@@ -106,6 +106,12 @@ func show_range():
 	move_child(get_node("Sprite"), 0)
 
 func _on_TurretsArea_input_event(viewport, event, shape_idx):
-	if built and event.is_pressed() == true:
+	if built and event.is_pressed():
 		var GameScene = get_parent().get_parent().get_parent()
-		GameScene.get_node("UI/HUD/TurretInfoBar").visible = !GameScene.get_node("UI/HUD/TurretInfoBar").visible
+		var turretInfoBar = GameScene.get_node("UI/HUD/TurretInfoBar")
+		
+		if GameScene.build_location == position:
+			turretInfoBar.visible = !turretInfoBar.visible
+		else:
+			turretInfoBar.visible = true
+		GameScene.build_location = position

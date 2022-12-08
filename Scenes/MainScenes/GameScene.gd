@@ -24,6 +24,8 @@ func _ready():
 	map_node = get_node("Map1")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
+	for i in get_tree().get_nodes_in_group("upgrade_buttons"):
+		i.connect("pressed", self, "initiate_upgrade", [i.get_name()])
 
 func _process(delta):
 	if build_mode:
@@ -73,18 +75,28 @@ func initiate_build_mode(tower_type):
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 
+func initiate_upgrade(tower_type):
+	build_type = tower_type
+	build_valid = true
+	build_tile = map_node.get_node("TowerExclusion").world_to_map(build_location)
+	if can_buy_turret():
+		for i in get_tree().get_nodes_in_group("turrets"):
+			if i.position == build_location:
+				i.free()
+		verify_and_build()
+
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
-	var current_title = map_node.get_node("TowerExclusion").world_to_map(mouse_position)
-	var title_position = map_node.get_node("TowerExclusion").map_to_world(current_title)
+	var current_tile = map_node.get_node("TowerExclusion").world_to_map(mouse_position)
+	var tile_position = map_node.get_node("TowerExclusion").map_to_world(current_tile)
 
-	if map_node.get_node("TowerExclusion").get_cellv(current_title) == -1:
-		get_node("UI").update_tower_preview(title_position, "ad54ff3c")
+	if map_node.get_node("TowerExclusion").get_cellv(current_tile) == -1:
+		get_node("UI").update_tower_preview(tile_position, "ad54ff3c")
 		build_valid = true
-		build_location = title_position
-		build_tile = current_title
+		build_location = tile_position
+		build_tile = current_tile
 	else:
-		get_node("UI").update_tower_preview(title_position, "adff4545")
+		get_node("UI").update_tower_preview(tile_position, "adff4545")
 		build_valid = false
 
 func cancel_build_mode():
@@ -102,6 +114,13 @@ func verify_and_build():
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 5)
 
+func can_buy_turret():
+	var price = GameData.tower_data[build_type]["price"]
+	if price <= money:
+		return true
+	else:
+		return false
+
 func buy_turret():
 	var price = GameData.tower_data[build_type]["price"]
 	if price <= money:
@@ -118,7 +137,6 @@ func on_base_damage(damage):
 		emit_signal("game_finished", false)
 	else:
 		get_node("UI").update_health_bar(base_health)
-		
 
 func on_money_droped(money_droped):
 	money += money_droped
