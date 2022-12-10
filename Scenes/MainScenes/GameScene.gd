@@ -71,6 +71,7 @@ func spawn_enemies(wave_data):
 func initiate_build_mode(tower_type):
 	if build_mode:
 		cancel_build_mode()
+	get_node("UI/HUD/TurretInfoBar").visible = false
 	build_type = tower_type
 	build_mode = true
 	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
@@ -148,10 +149,21 @@ func create_wave():
 	var complete_wave = []
 	if (current_wave <= wave_data.Waves):
 		var wave = GameData.wave_data["Wave" + String(current_wave)]
-		enemies_left = wave.BlueTanks
-		for i in wave.BlueTanks:
-			complete_wave.append_array([["BlueTank", 0.7]])
+		enemies_left = wave.EnemyCount
+		for i in wave.Orders:
+			var order = wave["Order"][String(i + 1)]
+			complete_wave.append_array(get_order(order))
 	else:
 		enemies_left = 1
 		complete_wave.append_array([["BlueTank", 0.7]])
 	return complete_wave
+	
+func get_order(order):
+	var wave = []
+	var enemies = GameData.enemies["Enemies"]
+	
+	for enemy in enemies:
+		if order[enemy] != null:
+			for i in order[enemy]:
+				wave.append_array([[enemy, order.Offset]])
+	return wave
