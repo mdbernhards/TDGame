@@ -62,7 +62,7 @@ func spawn_enemies(wave_data):
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instance()
 		new_enemy.connect("base_damage", self, 'on_base_damage')
 		new_enemy.connect("money_droped", self, 'on_money_droped')
-		map_node.get_node("Path").add_child(new_enemy, true)
+		map_node.get_node(i[2]).add_child(new_enemy, true)
 		yield(get_tree().create_timer(i[1]),"timeout")
 
 ###
@@ -155,15 +155,14 @@ func create_wave():
 			complete_wave.append_array(get_order(order))
 	else:
 		enemies_left = 1
-		complete_wave.append_array([["BlueTank", 0.7]])
+		complete_wave.append_array([["BlueTank", 0.7, "Path1"]])
 	return complete_wave
 	
 func get_order(order):
 	var wave = []
 	var enemies = GameData.enemies["Enemies"]
-	
 	for enemy in enemies:
 		if order[enemy] != null:
 			for i in order[enemy]:
-				wave.append_array([[enemy, order.Offset]])
+				wave.append_array([[enemy, order.Offset, order.Path]])
 	return wave

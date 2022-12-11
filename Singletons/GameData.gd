@@ -73,6 +73,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.4,
+				"Path": "Path1",
 			},}},
 	"Wave2": { 
 		"EnemyCount": 5, 
@@ -88,6 +89,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.4,
+				"Path": "Path2",
 			},
 			"2": {
 				"BlueTank": 3,
@@ -95,6 +97,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.3,
+				"Path": "Path2",
 			},}},
 	"Wave3": { 
 		"EnemyCount": 10, 
@@ -110,6 +113,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.38,
+				"Path": "Path1",
 			},
 			"2": {
 				"BlueTank": 6,
@@ -117,6 +121,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.28,
+				"Path": "Path2",
 			},}},
 	"Wave4": { 
 		"EnemyCount": 18, 
@@ -132,6 +137,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.45,
+				"Path": "Path1",
 			},
 			"2": {
 				"BlueTank": 4,
@@ -139,6 +145,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.4,
+				"Path": "Path2",
 			},
 			"3": {
 				"BlueTank": 4,
@@ -146,6 +153,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.32,
+				"Path": "Path2",
 			},}},
 	"Wave5": { 
 		"EnemyCount": 29, 
@@ -161,6 +169,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.45,
+				"Path": "Path1",
 			},
 			"2": {
 				"BlueTank": 7,
@@ -168,6 +177,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.2,
+				"Path": "Path1",
 			},
 			"3": {
 				"BlueTank": 2,
@@ -175,6 +185,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.17,
+				"Path": "Path2",
 			},
 			"4": {
 				"BlueTank": 4,
@@ -182,6 +193,7 @@ var wave_data = {
 				"RedTank": 3,
 				"BlackTank": 0,
 				"Offset": 0.15,
+				"Path": "Path2",
 			},}},
 	"Wave6": { 
 		"EnemyCount": 54, 
@@ -197,6 +209,7 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 0,
 				"Offset": 0.32,
+				"Path": "Path1",
 			},
 			"2": {
 				"BlueTank": 0,
@@ -204,6 +217,7 @@ var wave_data = {
 				"RedTank": 4,
 				"BlackTank": 0,
 				"Offset": 0.32,
+				"Path": "Path1",
 			},
 			"3": {
 				"BlueTank": 0,
@@ -211,6 +225,7 @@ var wave_data = {
 				"RedTank": 6,
 				"BlackTank": 0,
 				"Offset": 0.2,
+				"Path": "Path1",
 			},
 			"4": {
 				"BlueTank": 0,
@@ -218,4 +233,5 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 10,
 				"Offset": 0.5,
+				"Path": "Path1",
 			},}},}
