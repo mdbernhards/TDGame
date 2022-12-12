@@ -93,8 +93,10 @@ func update_money_count(money):
 func load_pause_menu():
 	get_node("PauseMenu/M/VB/Continue").connect("pressed", self, "on_continue_pressed")
 	get_node("PauseMenu/M/VB/Restart").connect("pressed", self, "on_restart_pressed")
+	get_node("EndScreen/VB/Restart").connect("pressed", self, "on_restart_pressed")
 	get_node("PauseMenu/M/VB/Settings").connect("pressed", self, "on_settings_pressed")
 	get_node("PauseMenu/M/VB/MainMenu").connect("pressed", self, "on_main_menu_pressed")
+	get_node("EndScreen/VB/MainMenu").connect("pressed", self, "on_main_menu_pressed")
 	get_node("PauseMenu/M/VB/Quit").connect("pressed", self, "on_quit_pressed")
 
 func on_continue_pressed():
@@ -106,7 +108,9 @@ func on_continue_pressed():
 func on_restart_pressed():
 	get_tree().paused = false
 	get_node("PauseMenu").visible = false
+	get_node("EndScreen").visible = false
 	get_parent().get_parent().on_new_game_pressed()
+	get_parent().queue_free()
 
 func on_settings_pressed():
 	pass

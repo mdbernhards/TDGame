@@ -14,6 +14,7 @@ var enemies_in_wave = 0
 var base_health = 100
 var money = 100
 var enemies_left = 0
+var game_finished = false
 
 var waves = GameData.wave_data["Waves"]
 
@@ -30,7 +31,7 @@ func _ready():
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
-	if enemies_left <= 0:
+	if enemies_left <= 0 and !game_finished:
 		start_next_wave()
 
 func _unhandled_input(event):
@@ -135,7 +136,8 @@ func on_base_damage(damage):
 	base_health -= damage
 	enemies_left -= 1
 	if base_health <= 0:
-		emit_signal("game_finished", false)
+		#emit_signal("game_finished", false)
+		game_end(false)
 	else:
 		get_node("UI").update_health_bar(base_health)
 
@@ -154,8 +156,7 @@ func create_wave():
 			var order = wave["Order"][String(i + 1)]
 			complete_wave.append_array(get_order(order))
 	else:
-		enemies_left = 1
-		complete_wave.append_array([["BlueTank", 0.7, "Path1"]])
+		game_end(true)
 	return complete_wave
 	
 func get_order(order):
@@ -166,3 +167,14 @@ func get_order(order):
 			for i in order[enemy]:
 				wave.append_array([[enemy, order.Offset, order.Path]])
 	return wave
+
+func game_end(win):
+	game_finished = true
+	get_node("UI/HUD").visible = false
+	get_node("UI/EndScreen").visible = true
+	if build_mode:
+		cancel_build_mode()
+	if win:
+		get_node("UI/EndScreen/VB/Label").text = "Stage completed"
+	else:
+		get_node("UI/EndScreen/VB/Label").text = "Stage failed"

@@ -29,6 +29,7 @@ window/stretch/aspect="keep"
 [global]
 
 cursor=false
+version=false
 
 [gui]
 
