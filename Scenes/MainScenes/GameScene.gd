@@ -32,14 +32,22 @@ func _process(delta):
 	if build_mode:
 		update_tower_preview()
 	if enemies_left <= 0 and !game_finished:
+		get_node("UI").pause_on_wave_end()
 		start_next_wave()
-
+		
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
 		cancel_build_mode()
 	if event.is_action_released("ui_accept") and build_mode == true:
 		verify_and_build()
 		cancel_build_mode()
+
+func set_enemy_count():
+	var enemy_count = 0
+	for i in get_tree().get_nodes_in_group("enemies"):
+		enemy_count += 1
+	enemies_left = enemy_count
+	get_node("UI/HUD/InfoBar/H/EnemyCount").text = String(enemies_left)
 
 ###
 ### Wave Functions

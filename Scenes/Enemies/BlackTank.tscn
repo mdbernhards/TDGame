@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 19, 21 )
 
-[node name="BlackTank" type="PathFollow2D"]
+[node name="BlackTank" type="PathFollow2D" groups=["enemies"]]
 script = ExtResource( 3 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]

@@ -110,6 +110,13 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 		var GameScene = get_parent().get_parent().get_parent()
 		var turretInfoBar = GameScene.get_node("UI/HUD/TurretInfoBar")
 		
+		# for now, need to make it with node groups when more upgrades
+		var gun_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/GunT2")
+		if type == "GunT1":
+			gun_t1_upgrades.visible = true
+		else:
+			gun_t1_upgrades.visible = false
+			
 		if GameScene.build_location == position:
 			turretInfoBar.visible = !turretInfoBar.visible
 		else:

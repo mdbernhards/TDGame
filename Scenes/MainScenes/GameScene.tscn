@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Maps/Map1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/UI/Buttons/blue_button12.png" type="Texture" id=2]
@@ -45,6 +45,13 @@ font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.235294 )
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
 outline_size = 2
 outline_color = Color( 0, 0, 0, 0.235294 )
 use_filter = true
@@ -228,12 +235,12 @@ margin_bottom = 110.0
 rect_min_size = Vector2( 70, 0 )
 
 [node name="GunT2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
+visible = false
 margin_left = 292.0
 margin_top = 15.0
 margin_right = 372.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 80, 80 )
-rect_scale = Vector2( 0.9, 0.9 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 2 )
@@ -331,6 +338,26 @@ rect_min_size = Vector2( 105, 60 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.701961 )
 custom_fonts/font = SubResource( 2 )
 text = "100"
+valign = 1
+
+[node name="EnemiesLeft" type="Label" parent="UI/HUD/InfoBar/H"]
+margin_left = 233.0
+margin_right = 425.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 105, 60 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.701961 )
+custom_fonts/font = SubResource( 6 )
+text = "Enemies Left:"
+valign = 1
+
+[node name="EnemyCount" type="Label" parent="UI/HUD/InfoBar/H"]
+margin_left = 429.0
+margin_right = 534.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 105, 60 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.701961 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
 valign = 1
 
 [node name="Icon" type="TextureRect" parent="UI/HUD/InfoBar/H"]

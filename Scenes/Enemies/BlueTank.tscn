@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19, 21 )
 
-[node name="BlueTank" type="PathFollow2D"]
+[node name="BlueTank" type="PathFollow2D" groups=["enemies"]]
 loop = false
 script = ExtResource( 2 )
 

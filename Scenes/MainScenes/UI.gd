@@ -39,6 +39,10 @@ func update_tower_preview(new_position, color):
 		get_node("TowerPreview/DragTower").modulate = Color(color)
 		get_node("TowerPreview/Sprite").modulate = Color(color)
 
+func pause_on_wave_end():
+	get_tree().paused = true
+	get_node("HUD/GameControls/PausePlay").pressed = true
+
 func _on_PausePlay_pressed():
 	var pause_menu = get_node("PauseMenu")
 	var hud = get_node("HUD")
