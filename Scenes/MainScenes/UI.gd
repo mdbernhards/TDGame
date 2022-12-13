@@ -4,13 +4,26 @@ onready var hp_bar = get_node("HUD/InfoBar/H/HP")
 onready var hp_bar_tween = get_node("HUD/InfoBar/H/HP/Tween")
 onready var money_count = get_node("HUD/InfoBar/H/Money")
 
+
 func _ready():
 	load_pause_menu()
 	set_turret_prices()
+	start_count_down()
+	
+func start_count_down():
+	get_node("HUD/CountDown/Timer").start(6)
+
+func set_count_down_time():
+	get_node("HUD/CountDown").text = String(round(get_node("HUD/CountDown/Timer").time_left))
+	if get_node("HUD/CountDown/Timer").is_stopped():
+		get_node("HUD/CountDown").visible = false
+	else:
+		get_node("HUD/CountDown").visible = true
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause_menu"):
 		_on_PausePlay_pressed()
+	set_count_down_time()
 
 func set_tower_preview(tower_type, mouse_position):
 	var drag_tower = load("res://Scenes/Turrets/" + tower_type + ".tscn").instance()
@@ -38,10 +51,6 @@ func update_tower_preview(new_position, color):
 	if get_node("TowerPreview/DragTower").modulate != Color(color):
 		get_node("TowerPreview/DragTower").modulate = Color(color)
 		get_node("TowerPreview/Sprite").modulate = Color(color)
-
-func pause_on_wave_end():
-	get_tree().paused = true
-	get_node("HUD/GameControls/PausePlay").pressed = true
 
 func _on_PausePlay_pressed():
 	var pause_menu = get_node("PauseMenu")

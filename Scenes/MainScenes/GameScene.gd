@@ -15,6 +15,7 @@ var base_health = 100
 var money = 100
 var enemies_left = 0
 var game_finished = false
+var timer_stoped = false
 
 var waves = GameData.wave_data["Waves"]
 
@@ -32,8 +33,14 @@ func _process(delta):
 	if build_mode:
 		update_tower_preview()
 	if enemies_left <= 0 and !game_finished:
-		get_node("UI").pause_on_wave_end()
-		start_next_wave()
+		if get_node("UI/HUD/CountDown/Timer").is_stopped() and !timer_stoped:
+			start_next_wave()
+			timer_stoped = true
+		if set_enemy_count() == 0 and get_node("UI/HUD/CountDown/Timer").is_stopped() and timer_stoped:
+			get_node("UI").start_count_down()
+			timer_stoped = false
+			
+	set_enemy_count()
 		
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -46,18 +53,14 @@ func set_enemy_count():
 	var enemy_count = 0
 	for i in get_tree().get_nodes_in_group("enemies"):
 		enemy_count += 1
-	enemies_left = enemy_count
-	get_node("UI/HUD/InfoBar/H/EnemyCount").text = String(enemies_left)
+	get_node("UI/HUD/InfoBar/H/EnemyCount").text = String(enemy_count)
+	return enemy_count
 
 ###
 ### Wave Functions
 ###
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
-	if current_wave == 1:
-		yield(get_tree().create_timer(0.2), "timeout")
-	else:
-		yield(get_tree().create_timer(6), "timeout")
 	spawn_enemies(wave_data)
 
 func retrieve_wave_data():
