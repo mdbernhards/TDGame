@@ -35,7 +35,6 @@ func _process(delta):
 	if enemies_left <= 0 and !game_finished:
 		if get_node("UI/HUD/CountDown/Timer").is_stopped() and !timer_stoped:
 			start_next_wave()
-			timer_stoped = true
 		if set_enemy_count() == 0 and get_node("UI/HUD/CountDown/Timer").is_stopped() and timer_stoped:
 			get_node("UI").start_count_down()
 			timer_stoped = false
@@ -60,6 +59,7 @@ func set_enemy_count():
 ### Wave Functions
 ###
 func start_next_wave():
+	timer_stoped = true
 	var wave_data = retrieve_wave_data()
 	spawn_enemies(wave_data)
 

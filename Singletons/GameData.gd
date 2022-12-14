@@ -14,17 +14,17 @@ var tower_data = {
 		"category": "Projectile",
 		"price": 65},
 	"MissileT1": {
-		"damage": 45,
-		"rof": 1.5,
+		"damage": 50,
+		"rof": 2,
 		"range": 550,
 		"category": "Missile",
 		"price": 40,
 		"missile_speed": 300,
 		"smart": false},
-	"MissileT2": {
-		"damage": 65,
-		"rof": 1.1,
-		"range": 660,
+	"MissileT2_1": {
+		"damage": 55,
+		"rof": 1,
+		"range": 700,
 		"category": "Missile",
 		"price": 200,
 		"missile_speed": 400,

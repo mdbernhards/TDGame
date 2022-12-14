@@ -3,7 +3,7 @@ extends CanvasLayer
 onready var hp_bar = get_node("HUD/InfoBar/H/HP")
 onready var hp_bar_tween = get_node("HUD/InfoBar/H/HP/Tween")
 onready var money_count = get_node("HUD/InfoBar/H/Money")
-
+onready var timer = get_node("HUD/CountDown/Timer")
 
 func _ready():
 	load_pause_menu()
@@ -11,11 +11,11 @@ func _ready():
 	start_count_down()
 	
 func start_count_down():
-	get_node("HUD/CountDown/Timer").start(6)
+	timer.start(6)
 
 func set_count_down_time():
-	get_node("HUD/CountDown").text = String(round(get_node("HUD/CountDown/Timer").time_left))
-	if get_node("HUD/CountDown/Timer").is_stopped():
+	get_node("HUD/CountDown").text = String(round(timer.time_left))
+	if timer.is_stopped():
 		get_node("HUD/CountDown").visible = false
 	else:
 		get_node("HUD/CountDown").visible = true
@@ -90,6 +90,12 @@ func _on_SpeedUp_pressed():
 		Engine.set_time_scale(1.0)
 		get_node("HUD/GameControls/SpeedUp/Speed").text = "x1"
 
+func _on_Skip_pressed():
+	if timer.is_stopped():
+		get_parent().start_next_wave()
+	timer.stop()
+	
+	
 func update_health_bar(base_health):
 	hp_bar_tween.interpolate_property(hp_bar, 'value', hp_bar.value, base_health, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	hp_bar_tween.start()

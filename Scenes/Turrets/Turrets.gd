@@ -53,13 +53,35 @@ func fire_gun():
 		animation_player.play("Fire")
 
 func fire_missile():
+	if type == "MissileT1":
+		shoot_missileT1()
+	elif type == "MissileT2_1":
+		shoot_missileT2_1()
+		
+func shoot_missileT1():
 	var new_missile = missile.instance()
 	add_child(new_missile)
+	
+	var sprite = get_node("Missile/Sprite")
+	var collisonShape = get_node("Missile/CollisionShape2D")
+	var missile_on_turret = get_node("Turret/Missile")
+	
+	sprite.position.x += 3
+	collisonShape.position.x += 3
 
+	missile_on_turret.hide()
+	new_missile.start(get_node("Turret").position, Vector2(1,0).rotated(get_node("Turret").global_rotation))
+	yield(get_tree().create_timer(GameData.tower_data["MissileT1"]["rof"]/ 1.5), "timeout")
+	missile_on_turret.show()
+		
+func shoot_missileT2_1():
+	var new_missile = missile.instance()
+	add_child(new_missile)
+	
 	var sprite = get_node("Missile/Sprite")
 	var collisonShape = get_node("Missile/CollisionShape2D")
 	var missile_on_turret
-
+	
 	if left_missile:
 		missile_on_turret = get_node("Turret/Missile1")
 		left_missile = false
