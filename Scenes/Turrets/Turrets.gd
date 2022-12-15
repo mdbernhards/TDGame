@@ -8,6 +8,7 @@ var enemy
 var ready = true
 var left_missile = true
 var missile = preload("res://Scenes/SupportScenes/Missile.tscn")
+#var big_missile = preload("res://Scenes/SupportScenes/BigMissile.tscn")
 
 signal turret_menu(type)
 
@@ -57,6 +58,8 @@ func fire_missile():
 		shoot_missileT1()
 	elif type == "MissileT2_1":
 		shoot_missileT2_1()
+	elif type == "MissileT2_2":
+		shoot_missileT2_2()
 		
 func shoot_missileT1():
 	var new_missile = missile.instance()
@@ -65,14 +68,7 @@ func shoot_missileT1():
 	var sprite = get_node("Missile/Sprite")
 	var collisonShape = get_node("Missile/CollisionShape2D")
 	var missile_on_turret = get_node("Turret/Missile")
-	
-	sprite.position.x += 3
-	collisonShape.position.x += 3
-
-	missile_on_turret.hide()
-	new_missile.start(get_node("Turret").position, Vector2(1,0).rotated(get_node("Turret").global_rotation))
-	yield(get_tree().create_timer(GameData.tower_data["MissileT1"]["rof"]/ 1.5), "timeout")
-	missile_on_turret.show()
+	shoot_missile(sprite, collisonShape, missile_on_turret, new_missile)
 		
 func shoot_missileT2_1():
 	var new_missile = missile.instance()
@@ -92,15 +88,32 @@ func shoot_missileT2_1():
 		left_missile = true
 		sprite.position.y += 11
 		collisonShape.position.y += 11
-
+	shoot_missile(sprite, collisonShape, missile_on_turret, new_missile)
+	
+func shoot_missileT2_2():
+	var new_missile = missile.instance()
+	new_missile.scale = Vector2(1.2, 1.6)
+	
+	add_child(new_missile)
+	
+	var sprite = get_node("Missile/Sprite")
+	var collisonShape = get_node("Missile/CollisionShape2D")
+	var missile_on_turret = get_node("Turret/Missile")
+	shoot_missile(sprite, collisonShape, missile_on_turret, new_missile)
+	
+func shoot_missile(sprite, collisonShape, missile_on_turret, new_missile):
 	sprite.position.x += 3
 	collisonShape.position.x += 3
+	
+	new_missile.speed = GameData.tower_data[type]["missile_speed"]
+	new_missile.damage = GameData.tower_data[type]["damage"]
 
 	missile_on_turret.hide()
 	new_missile.start(get_node("Turret").position, Vector2(1,0).rotated(get_node("Turret").global_rotation))
-	yield(get_tree().create_timer(GameData.tower_data["MissileT1"]["rof"]/ 1.5), "timeout")
+	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]/ 1.5), "timeout")
 	missile_on_turret.show()
-
+		
+	
 func _on_Range_body_entered(body):
 	enemy_array.append(body.get_parent())
 
@@ -134,13 +147,23 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 		
 		# for now, need to make it with node groups when more upgrades
 		var gun_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/GunT2")
+		var missile_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_1")
+		var missile_t11_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_2")
+		
+		hide_all_upgrades()
+		
 		if type == "GunT1":
 			gun_t1_upgrades.visible = true
-		else:
-			gun_t1_upgrades.visible = false
+		elif type == "MissileT1":
+			missile_t1_upgrades.visible = true
+			missile_t11_upgrades.visible = true
 			
 		if GameScene.build_location == position:
 			turretInfoBar.visible = !turretInfoBar.visible
 		else:
 			turretInfoBar.visible = true
 		GameScene.build_location = position
+		
+func hide_all_upgrades():
+	for i in get_tree().get_nodes_in_group("upgrade_buttons"):
+		i.visible = false

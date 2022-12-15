@@ -145,4 +145,6 @@ func on_quit_pressed():
 func set_turret_prices():
 	get_node("HUD/BuildBar/GunT1/Label").text = String(GameData.tower_data["GunT1"]["price"])
 	get_node("HUD/BuildBar/MissileT1/Label").text = String(GameData.tower_data["MissileT1"]["price"])
+	get_node("HUD/TurretInfoBar/H/MissileT2_1/Label").text = String(GameData.tower_data["MissileT2_1"]["price"])
+	get_node("HUD/TurretInfoBar/H/MissileT2_2/Label").text = String(GameData.tower_data["MissileT2_2"]["price"])
 	get_node("HUD/TurretInfoBar/H/GunT2/Label").text = String(GameData.tower_data["GunT2"]["price"])
