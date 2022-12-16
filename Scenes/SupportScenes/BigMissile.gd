@@ -1,1 +1,1 @@
-extends "res://Scenes/SupportScenes/DumbMissileLogic.gd"
+extends "res://Scenes/SupportScenes/SmartMissileLogic.gd"

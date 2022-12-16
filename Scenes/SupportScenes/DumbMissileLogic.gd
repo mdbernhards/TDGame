@@ -4,7 +4,6 @@ var speed
 var damage
 var velocity = Vector2.ZERO
 
-
 func start(_position, _direction):
 	position = _position
 	rotation = _direction.angle()

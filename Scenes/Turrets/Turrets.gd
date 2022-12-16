@@ -109,7 +109,8 @@ func shoot_missile(sprite, collisonShape, missile_on_turret, new_missile):
 	new_missile.damage = GameData.tower_data[type]["damage"]
 
 	missile_on_turret.hide()
-	new_missile.start(get_node("Turret").position, Vector2(1,0).rotated(get_node("Turret").global_rotation))
+	#new_missile.start(get_node("Turret").position, Vector2(1,0).rotated(get_node("Turret").global_rotation))
+	new_missile.start(Transform2D(get_node("Turret").global_rotation, to_global(get_node("Turret").position)), enemy)
 	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]/ 1.5), "timeout")
 	missile_on_turret.show()
 		
