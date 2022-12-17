@@ -7,8 +7,7 @@
 [ext_resource path="res://Scenes/MainScenes/GameScene.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/MainScenes/UI.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Icons/fastForward.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Icons/right.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Icons/pause.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Icons/gear.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Fonts/Kenney Future Narrow.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Assets/UI/HPbar.jpg" type="Texture" id=11]
 [ext_resource path="res://Assets/Icons/home.png" type="Texture" id=12]
@@ -17,6 +16,7 @@
 [ext_resource path="res://Assets/Towers/towerDefense_tile250.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Icons/next.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Towers/doubleMissile.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Towers/cockpitGreen_1.png" type="Texture" id=18]
 
 [sub_resource type="DynamicFont" id=4]
 size = 18
@@ -90,8 +90,9 @@ mouse_filter = 2
 [node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -400.0
+margin_top = -520.0
 margin_right = 100.0
+margin_bottom = -120.0
 rect_min_size = Vector2( 100, 400 )
 size_flags_horizontal = 0
 custom_constants/separation = 25
@@ -152,6 +153,38 @@ margin_bottom = 32.0
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="UI/HUD/BuildBar/MissileT1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -17.0
+margin_top = -27.0
+margin_right = 17.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 4 )
+align = 1
+
+[node name="LaserT1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+margin_left = 10.0
+margin_top = 210.0
+margin_right = 90.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/LaserT1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 8.0
+margin_right = 20.0
+margin_bottom = 40.0
+texture = ExtResource( 18 )
+
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/LaserT1"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -349,31 +382,18 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -294.0
+margin_left = -197.0
 margin_top = -90.0
 margin_right = -20.0
 margin_bottom = -20.0
 custom_constants/separation = 32
 
-[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
-pause_mode = 2
+[node name="SpeedUp" type="TextureButton" parent="UI/HUD/GameControls"]
 margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-toggle_mode = true
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-expand = true
-
-[node name="SpeedUp" type="TextureButton" parent="UI/HUD/GameControls"]
-margin_left = 102.0
-margin_right = 172.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-size_flags_horizontal = 5
-size_flags_vertical = 5
+size_flags_horizontal = 0
+size_flags_vertical = 0
 texture_normal = ExtResource( 7 )
 expand = true
 
@@ -387,12 +407,12 @@ custom_fonts/font = SubResource( 3 )
 text = "x1"
 
 [node name="Skip" type="TextureButton" parent="UI/HUD/GameControls"]
-margin_left = 204.0
-margin_right = 274.0
+margin_left = 102.0
+margin_right = 172.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 8
+size_flags_vertical = 8
 texture_normal = ExtResource( 16 )
 expand = true
 
@@ -471,11 +491,14 @@ nine_patch_stretch = true
 
 [node name="Tween" type="Tween" parent="UI/HUD/InfoBar/H/HP"]
 
-[node name="Control" type="Control" parent="UI/HUD/InfoBar/H"]
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/InfoBar/H"]
+pause_mode = 2
 margin_left = 1010.0
 margin_right = 1080.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 70, 0 )
+texture_normal = ExtResource( 8 )
+expand = true
 
 [node name="CountDown" type="Label" parent="UI/HUD"]
 anchor_left = 0.5
@@ -492,6 +515,6 @@ align = 1
 [node name="Timer" type="Timer" parent="UI/HUD/CountDown"]
 one_shot = true
 
-[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/Skip" to="UI" method="_on_Skip_pressed"]
+[connection signal="pressed" from="UI/HUD/InfoBar/H/PausePlay" to="UI" method="_on_PausePlay_pressed"]

@@ -16,10 +16,11 @@ var tower_data = {
 	"MissileT1": {
 		"damage": 50,
 		"rof": 2,
-		"range": 550,
+		"range": 450,
 		"category": "Missile",
 		"price": 40,
 		"missile_speed": 300,
+		"steer_force": 0.0,
 		"smart": false},
 	"MissileT2_1": {
 		"damage": 55,
@@ -28,6 +29,7 @@ var tower_data = {
 		"category": "Missile",
 		"price": 100,
 		"missile_speed": 400,
+		"steer_force": 3.0,
 		"smart": true},
 	"MissileT2_2": {
 		"damage": 150,
@@ -36,7 +38,14 @@ var tower_data = {
 		"category": "Missile",
 		"price": 120,
 		"missile_speed": 350,
+		"steer_force": 5.0,
 		"smart": true},
+	"LaserT1": {
+		"damage": 0.5,
+		"rof": 0,
+		"range": 700,
+		"category": "Laser",
+		"price": 200},
 }
 
 var enemy_data = {

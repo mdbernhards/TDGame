@@ -55,6 +55,7 @@ func impact():
 
 func on_destroy():
 	emit_signal("money_droped", money_droped)
-	get_node("KinematicBody2D").queue_free()
-	yield(get_tree().create_timer(0.2), "timeout")
-	self.queue_free()
+	if get_node("KinematicBody2D"):
+		get_node("KinematicBody2D").queue_free()
+		yield(get_tree().create_timer(0.2), "timeout")
+		self.queue_free()

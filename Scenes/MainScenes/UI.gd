@@ -62,10 +62,6 @@ func _on_PausePlay_pressed():
 		get_tree().paused = false
 		pause_menu.visible = false
 		hud.visible = true
-		get_node("HUD/GameControls/PausePlay").pressed = false
-	elif get_parent().current_wave == 0:
-		get_parent().current_wave += 1
-		get_parent().start_next_wave()
 	else:
 		get_tree().paused = true
 		pause_menu.visible = true
@@ -94,8 +90,7 @@ func _on_Skip_pressed():
 	if timer.is_stopped():
 		get_parent().start_next_wave()
 	timer.stop()
-	
-	
+
 func update_health_bar(base_health):
 	hp_bar_tween.interpolate_property(hp_bar, 'value', hp_bar.value, base_health, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	hp_bar_tween.start()
@@ -122,7 +117,6 @@ func on_continue_pressed():
 	get_tree().paused = false
 	get_node("PauseMenu").visible = false
 	get_node("HUD").visible = true
-	get_node("HUD/GameControls/PausePlay").pressed = false
 	
 func on_restart_pressed():
 	get_tree().paused = false
@@ -145,6 +139,7 @@ func on_quit_pressed():
 func set_turret_prices():
 	get_node("HUD/BuildBar/GunT1/Label").text = String(GameData.tower_data["GunT1"]["price"])
 	get_node("HUD/BuildBar/MissileT1/Label").text = String(GameData.tower_data["MissileT1"]["price"])
+	get_node("HUD/BuildBar/LaserT1/Label").text = String(GameData.tower_data["LaserT1"]["price"])
 	get_node("HUD/TurretInfoBar/H/MissileT2_1/Label").text = String(GameData.tower_data["MissileT2_1"]["price"])
 	get_node("HUD/TurretInfoBar/H/MissileT2_2/Label").text = String(GameData.tower_data["MissileT2_2"]["price"])
 	get_node("HUD/TurretInfoBar/H/GunT2/Label").text = String(GameData.tower_data["GunT2"]["price"])

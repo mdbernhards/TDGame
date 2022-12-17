@@ -2,13 +2,14 @@ extends Node2D
 
 var category
 var type
+var enemy
+var new_missile
+
 var enemy_array = []
 var built = false
-var enemy
 var ready = true
-var left_missile = true
+
 var missile = preload("res://Scenes/SupportScenes/Missile.tscn")
-#var big_missile = preload("res://Scenes/SupportScenes/BigMissile.tscn")
 
 signal turret_menu(type)
 
@@ -45,8 +46,13 @@ func fire():
 		enemy.on_hit(GameData.tower_data[type]["damage"])
 	elif category == "Missile":
 		fire_missile()
+	elif category == "Laser":
+		fire_laser()
 	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]), "timeout")
 	ready = true
+
+func fire_laser():
+	pass
 
 func fire_gun():
 	var animation_player = get_node("AnimationPlayer")
@@ -54,6 +60,9 @@ func fire_gun():
 		animation_player.play("Fire")
 
 func fire_missile():
+	new_missile = missile.instance()
+	add_child(new_missile)
+	
 	if type == "MissileT1":
 		shoot_missileT1()
 	elif type == "MissileT2_1":
@@ -62,44 +71,13 @@ func fire_missile():
 		shoot_missileT2_2()
 		
 func shoot_missileT1():
-	var new_missile = missile.instance()
-	add_child(new_missile)
-	
-	var sprite = get_node("Missile/Sprite")
-	var collisonShape = get_node("Missile/CollisionShape2D")
-	var missile_on_turret = get_node("Turret/Missile")
-	shoot_missile(sprite, collisonShape, missile_on_turret, new_missile)
+	pass
 		
 func shoot_missileT2_1():
-	var new_missile = missile.instance()
-	add_child(new_missile)
-	
-	var sprite = get_node("Missile/Sprite")
-	var collisonShape = get_node("Missile/CollisionShape2D")
-	var missile_on_turret
-	
-	if left_missile:
-		missile_on_turret = get_node("Turret/Missile1")
-		left_missile = false
-		sprite.position.y -= 11
-		collisonShape.position.y -= 11
-	else:
-		missile_on_turret = get_node("Turret/Missile2")
-		left_missile = true
-		sprite.position.y += 11
-		collisonShape.position.y += 11
-	shoot_missile(sprite, collisonShape, missile_on_turret, new_missile)
+	pass
 	
 func shoot_missileT2_2():
-	var new_missile = missile.instance()
-	new_missile.scale = Vector2(1.2, 1.6)
-	
-	add_child(new_missile)
-	
-	var sprite = get_node("Missile/Sprite")
-	var collisonShape = get_node("Missile/CollisionShape2D")
-	var missile_on_turret = get_node("Turret/Missile")
-	shoot_missile(sprite, collisonShape, missile_on_turret, new_missile)
+	pass
 	
 func shoot_missile(sprite, collisonShape, missile_on_turret, new_missile):
 	sprite.position.x += 3
@@ -107,9 +85,10 @@ func shoot_missile(sprite, collisonShape, missile_on_turret, new_missile):
 	
 	new_missile.speed = GameData.tower_data[type]["missile_speed"]
 	new_missile.damage = GameData.tower_data[type]["damage"]
+	new_missile.steer_force = GameData.tower_data[type]["steer_force"]
 
 	missile_on_turret.hide()
-	#new_missile.start(get_node("Turret").position, Vector2(1,0).rotated(get_node("Turret").global_rotation))
+	
 	new_missile.start(Transform2D(get_node("Turret").global_rotation, to_global(get_node("Turret").position)), enemy)
 	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]/ 1.5), "timeout")
 	missile_on_turret.show()
@@ -126,7 +105,7 @@ func _on_TurretsArea_mouse_entered():
 		show_range()
 
 func _on_TurretsArea_mouse_exited():
-	if built:
+	if built and get_node("Sprite"):
 		self.z_index = 0
 		get_node("Sprite").free()
 

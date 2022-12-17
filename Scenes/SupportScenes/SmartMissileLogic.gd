@@ -2,12 +2,11 @@ extends Area2D
 
 var speed
 var damage
-export var steer_force = 20.0
+var steer_force
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
 var target = null
-var hit = false
 
 func start(_transform, _target):
 	global_transform = _transform
@@ -31,7 +30,6 @@ func _physics_process(delta):
 	position += velocity * delta
 
 func _on_Missile_body_entered(body):
-	hit = true
 	body.get_parent().on_hit(damage)
 	queue_free()
 	
