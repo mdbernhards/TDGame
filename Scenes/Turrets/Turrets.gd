@@ -8,6 +8,7 @@ var new_missile
 var enemy_array = []
 var built = false
 var ready = true
+var upgrade_menu_open = false
 
 var missile = preload("res://Scenes/SupportScenes/Missile.tscn")
 
@@ -101,11 +102,11 @@ func _on_Range_body_exited(body):
 	enemy_array.erase(body.get_parent())
 
 func _on_TurretsArea_mouse_entered():
-	if built:
+	if built and !get_node("Sprite"):
 		show_range()
 
 func _on_TurretsArea_mouse_exited():
-	if built and get_node("Sprite"):
+	if built and get_node("Sprite") and !upgrade_menu_open:
 		self.z_index = 0
 		get_node("Sprite").free()
 
@@ -124,11 +125,15 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 	if built and event.is_pressed():
 		var GameScene = get_parent().get_parent().get_parent()
 		var turretInfoBar = GameScene.get_node("UI/HUD/TurretInfoBar")
+		upgrade_menu_open =! upgrade_menu_open
 		
 		# for now, need to make it with node groups when more upgrades
 		var gun_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/GunT2")
 		var missile_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_1")
 		var missile_t11_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_2")
+		
+		hide_all_ranges()
+		show_range()
 		
 		hide_all_upgrades()
 		
@@ -147,3 +152,9 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 func hide_all_upgrades():
 	for i in get_tree().get_nodes_in_group("upgrade_buttons"):
 		i.visible = false
+
+func hide_all_ranges():
+	for i in get_tree().get_nodes_in_group("turrets"):
+		var sprite = i.get_node_or_null("Sprite")
+		if sprite:
+			sprite.free()

@@ -30,17 +30,20 @@ func _ready():
 		i.connect("pressed", self, "initiate_upgrade", [i.get_name()])
 
 func _process(delta):
+	var enemy_count = set_enemy_count()
+	
 	if build_mode:
 		update_tower_preview()
-	if enemies_left <= 0 and !game_finished:
+	if enemies_left <= 0 and enemy_count <= 0 and !game_finished:
+		if current_wave >= waves:
+			game_end(true)
 		if get_node("UI/HUD/CountDown/Timer").is_stopped() and !timer_stoped:
 			start_next_wave()
-		if set_enemy_count() == 0 and get_node("UI/HUD/CountDown/Timer").is_stopped() and timer_stoped:
+		if get_node("UI/HUD/CountDown/Timer").is_stopped() and timer_stoped:
 			get_node("UI").start_count_down()
 			timer_stoped = false
-			
-	set_enemy_count()
 		
+
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
 		cancel_build_mode()
@@ -147,7 +150,6 @@ func on_base_damage(damage):
 	base_health -= damage
 	enemies_left -= 1
 	if base_health <= 0:
-		#emit_signal("game_finished", false)
 		game_end(false)
 	else:
 		get_node("UI").update_health_bar(base_health)
@@ -160,14 +162,12 @@ func on_money_droped(money_droped):
 func create_wave():
 	var wave_data = GameData.wave_data
 	var complete_wave = []
-	if (current_wave <= wave_data.Waves):
+	if (current_wave <= waves):
 		var wave = GameData.wave_data["Wave" + String(current_wave)]
 		enemies_left = wave.EnemyCount
 		for i in wave.Orders:
 			var order = wave["Order"][String(i + 1)]
 			complete_wave.append_array(get_order(order))
-	else:
-		game_end(true)
 	return complete_wave
 	
 func get_order(order):

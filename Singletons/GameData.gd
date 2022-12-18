@@ -45,7 +45,7 @@ var tower_data = {
 		"rof": 0,
 		"range": 700,
 		"category": "Laser",
-		"price": 200},
+		"price": 00},
 }
 
 var enemy_data = {

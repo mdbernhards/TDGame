@@ -27,7 +27,8 @@ func _ready():
 	health_bar.set_as_toplevel(true)
 
 func _physics_process(delta):
-	if unit_offset == 1.0:
+	print(unit_offset)
+	if unit_offset >= 1.0:
 		emit_signal("base_damage", base_damage)
 		queue_free()
 	move(delta)

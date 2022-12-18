@@ -23,7 +23,6 @@ func cast_beam():
 		if x < 100:
 			x = 100
 		$Turret/Missile/Line2D.add_point(Vector2(x, 25))
-		print("x:" + String(x))
 	return result
 
 func _physics_process(delta):
