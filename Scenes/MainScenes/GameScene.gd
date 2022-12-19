@@ -37,9 +37,9 @@ func _process(delta):
 	if enemies_left <= 0 and enemy_count <= 0 and !game_finished:
 		if current_wave >= waves:
 			game_end(true)
-		if get_node("UI/HUD/CountDown/Timer").is_stopped() and !timer_stoped:
+		elif get_node("UI/HUD/CountDown/Timer").is_stopped() and !timer_stoped:
 			start_next_wave()
-		if get_node("UI/HUD/CountDown/Timer").is_stopped() and timer_stoped:
+		elif get_node("UI/HUD/CountDown/Timer").is_stopped() and timer_stoped:
 			get_node("UI").start_count_down()
 			timer_stoped = false
 		

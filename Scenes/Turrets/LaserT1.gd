@@ -6,23 +6,22 @@ var can_shoot = true
 var hit = null
 
 func _ready():
-	$Turret/Missile/Line2D.remove_point(1)
+	$Turret/Line2D.remove_point(1)
 
 func fire_laser():
 	can_shoot = false
 	hit = cast_beam()
 	yield(get_tree().create_timer(beam_duration), "timeout")
-	$Turret/Missile/Line2D.remove_point(1)
+	$Turret/Line2D.remove_point(1)
 	
 func cast_beam():
 	var space_state = get_world_2d().direct_space_state
-	var turret_transform = Transform2D(get_node("Turret").global_rotation, to_global($Turret/Missile/Muzzle.position))
-	var result = space_state.intersect_ray($Turret/Missile/Muzzle.global_position, $Turret/Missile/Muzzle.global_position + turret_transform.x * 5000)
+	var result = space_state.intersect_ray($Turret/Muzzle.global_position, $Turret/Muzzle.global_position + $Turret.global_transform.x * 5000)
 	if result:
-		var x = turret_transform.xform_inv(enemy.position).x
-		if x < 100:
-			x = 100
-		$Turret/Missile/Line2D.add_point(Vector2(x, 25))
+		var x = $Turret.global_transform.xform_inv(result.position).x + 60
+		if x < 86:
+			x = 86
+		$Turret/Line2D.add_point(Vector2(x,32))
 	return result
 
 func _physics_process(delta):

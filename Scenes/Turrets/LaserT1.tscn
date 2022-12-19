@@ -20,20 +20,21 @@ position = Vector2( 32, 32 )
 texture = ExtResource( 2 )
 offset = Vector2( 2, 0 )
 
-[node name="Missile" type="Sprite" parent="Turret"]
-scale = Vector2( 0.9, 0.75 )
-texture = ExtResource( 3 )
-offset = Vector2( 38, 0 )
-
-[node name="Line2D" type="Line2D" parent="Turret/Missile"]
-position = Vector2( -35.5556, -42.6667 )
-scale = Vector2( 1.11111, 1.33333 )
+[node name="Line2D" type="Line2D" parent="Turret"]
+position = Vector2( -32, -32 )
+scale = Vector2( 0.999999, 0.999997 )
 points = PoolVector2Array( 86, 32, 239, 32 )
 default_color = Color( 0.827451, 0.0196078, 0.0196078, 1 )
 end_cap_mode = 2
 
-[node name="Muzzle" type="Position2D" parent="Turret/Missile"]
-position = Vector2( 60, 0 )
+[node name="Muzzle" type="Position2D" parent="Turret"]
+position = Vector2( 54, 0 )
+scale = Vector2( 0.9, 0.75 )
+
+[node name="Missile" type="Sprite" parent="Turret"]
+scale = Vector2( 0.9, 0.75 )
+texture = ExtResource( 3 )
+offset = Vector2( 38, 0 )
 
 [node name="TurretsArea" type="Area2D" parent="Turret"]
 visible = false

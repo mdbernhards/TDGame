@@ -41,9 +41,9 @@ var tower_data = {
 		"steer_force": 5.0,
 		"smart": true},
 	"LaserT1": {
-		"damage": 0.5,
+		"damage": 0.3,
 		"rof": 0,
-		"range": 700,
+		"range": 7000,
 		"category": "Laser",
 		"price": 00},
 }

@@ -8,7 +8,7 @@ var new_missile
 var enemy_array = []
 var built = false
 var ready = true
-var upgrade_menu_open = false
+var turretInfoBar
 
 var missile = preload("res://Scenes/SupportScenes/Missile.tscn")
 
@@ -102,13 +102,14 @@ func _on_Range_body_exited(body):
 	enemy_array.erase(body.get_parent())
 
 func _on_TurretsArea_mouse_entered():
-	if built and !get_node("Sprite"):
+	if built:
+		hide_all_ranges()
 		show_range()
 
 func _on_TurretsArea_mouse_exited():
-	if built and get_node("Sprite") and !upgrade_menu_open:
+	if built and (!turretInfoBar or !turretInfoBar.visible):
 		self.z_index = 0
-		get_node("Sprite").free()
+		hide_all_ranges()
 
 func show_range():
 	var range_texture = Sprite.new()
@@ -117,6 +118,7 @@ func show_range():
 	range_texture.scale = Vector2(scaling, scaling)
 	var texture = load("res://Assets/UI/range_overlay.png")
 	range_texture.texture = texture
+	range_texture.add_to_group("range_sprites")
 	add_child(range_texture, true)
 	self.z_index = 1000
 	move_child(get_node("Sprite"), 0)
@@ -124,8 +126,7 @@ func show_range():
 func _on_TurretsArea_input_event(viewport, event, shape_idx):
 	if built and event.is_pressed():
 		var GameScene = get_parent().get_parent().get_parent()
-		var turretInfoBar = GameScene.get_node("UI/HUD/TurretInfoBar")
-		upgrade_menu_open =! upgrade_menu_open
+		turretInfoBar = GameScene.get_node("UI/HUD/TurretInfoBar")
 		
 		# for now, need to make it with node groups when more upgrades
 		var gun_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/GunT2")
@@ -154,7 +155,6 @@ func hide_all_upgrades():
 		i.visible = false
 
 func hide_all_ranges():
-	for i in get_tree().get_nodes_in_group("turrets"):
-		var sprite = i.get_node_or_null("Sprite")
-		if sprite:
-			sprite.free()
+	for i in get_tree().get_nodes_in_group("range_sprites"):
+		if i:
+			i.free()
