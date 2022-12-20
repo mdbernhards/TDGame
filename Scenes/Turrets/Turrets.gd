@@ -49,10 +49,15 @@ func fire():
 		fire_missile()
 	elif category == "Laser":
 		fire_laser()
+	elif category == "Flamethrower":
+		fire_flamethrower()
 	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]), "timeout")
 	ready = true
 
 func fire_laser():
+	pass
+	
+func fire_flamethrower():
 	pass
 
 func fire_gun():

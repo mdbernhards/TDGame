@@ -43,9 +43,15 @@ var tower_data = {
 	"LaserT1": {
 		"damage": 0.3,
 		"rof": 0,
-		"range": 7000,
+		"range": 700,
 		"category": "Laser",
-		"price": 00},
+		"price": 200},
+	"FlamethrowerT1": {
+		"damage": 10,
+		"rof": 0.2,
+		"range": 250,
+		"category": "Flamethrower",
+		"price": 0},
 }
 
 var enemy_data = {

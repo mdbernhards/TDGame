@@ -46,6 +46,13 @@ rotation = 1.5708
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 4 )
 
+[node name="TurretsArea" type="Area2D" parent="Turret"]
+position = Vector2( 32, 32 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Turret/TurretsArea"]
+visible = false
+polygon = PoolVector2Array( -21, -17, -15, -17, -15, -25, 7, -25, 7, -39, -15, -39, -15, -47, -21, -47 )
+
 [node name="Range" type="Area2D" parent="."]
 position = Vector2( 32, 32 )
 
@@ -63,6 +70,9 @@ position = Vector2( 32, 32 )
 visible = false
 polygon = PoolVector2Array( -26, 17, -17, 26, 17, 26, 26, 17, 26, -17, 17, -26, -16, -26, -26, -17 )
 
+[connection signal="input_event" from="Turret/TurretsArea" to="." method="_on_TurretsArea_input_event"]
+[connection signal="mouse_entered" from="Turret/TurretsArea" to="." method="_on_TurretsArea_mouse_entered"]
+[connection signal="mouse_exited" from="Turret/TurretsArea" to="." method="_on_TurretsArea_mouse_exited"]
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
 [connection signal="input_event" from="TurretsArea" to="." method="_on_TurretsArea_input_event"]
