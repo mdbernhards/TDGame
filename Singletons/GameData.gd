@@ -48,10 +48,11 @@ var tower_data = {
 		"price": 200},
 	"FlamethrowerT1": {
 		"damage": 10,
-		"rof": 0.2,
-		"range": 250,
+		"rof": 0.23,
+		"range": 850,
 		"category": "Flamethrower",
-		"price": 0},
+		"price": 250,
+		"flame_speed": 400},
 }
 
 var enemy_data = {
@@ -80,6 +81,9 @@ var enemy_data = {
 		"base_damage": 34,
 	},
 }
+
+var turretsT1 = {"Turrets": ["GunT1", "MissileT1", "LaserT1", "FlamethrowerT1"]}
+var turretUpgrades = {"Turrets": ["GunT2", "MissileT2_1", "MissileT2_2"]}
 
 var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank"]}
 

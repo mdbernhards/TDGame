@@ -137,9 +137,10 @@ func on_quit_pressed():
 	get_tree().quit()
 
 func set_turret_prices():
-	get_node("HUD/BuildBar/GunT1/Label").text = String(GameData.tower_data["GunT1"]["price"])
-	get_node("HUD/BuildBar/MissileT1/Label").text = String(GameData.tower_data["MissileT1"]["price"])
-	get_node("HUD/BuildBar/LaserT1/Label").text = String(GameData.tower_data["LaserT1"]["price"])
-	get_node("HUD/TurretInfoBar/H/MissileT2_1/Label").text = String(GameData.tower_data["MissileT2_1"]["price"])
-	get_node("HUD/TurretInfoBar/H/MissileT2_2/Label").text = String(GameData.tower_data["MissileT2_2"]["price"])
-	get_node("HUD/TurretInfoBar/H/GunT2/Label").text = String(GameData.tower_data["GunT2"]["price"])
+	var turretsT1 = GameData.turretsT1["Turrets"]
+	for turret in turretsT1:
+		get_node("HUD/BuildBar/" + turret + "/Label").text = String(GameData.tower_data[turret]["price"])
+		
+	var turretUpgrades = GameData.turretUpgrades["Turrets"]
+	for turret in turretUpgrades:
+		get_node("HUD/TurretInfoBar/H/" + turret + "/Label").text = String(GameData.tower_data[turret]["price"])
