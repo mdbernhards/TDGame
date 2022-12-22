@@ -12,7 +12,6 @@ var current_velocity = Vector2.ZERO
 
 func start(_transform, _target):
 	global_transform = _transform
-	rotation += rand_range(-0.2, 0.2)
 	velocity = transform.x * speed
 	current_velocity = velocity
 	target = _target

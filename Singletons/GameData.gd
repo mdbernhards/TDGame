@@ -51,7 +51,7 @@ var tower_data = {
 		"rof": 0.23,
 		"range": 850,
 		"category": "Flamethrower",
-		"price": 250,
+		"price": 0,
 		"flame_speed": 400},
 }
 
@@ -262,3 +262,10 @@ var wave_data = {
 				"Offset": 0.5,
 				"Path": "Path1",
 			},}},}
+
+var Maps = {
+	"Stages": ["1", "2", "3", "4"],
+	"1": ["1", "2"],
+	"2": [],
+	"3": [],
+	"4": []}

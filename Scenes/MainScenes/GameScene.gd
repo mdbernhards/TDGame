@@ -23,11 +23,19 @@ var waves = GameData.wave_data["Waves"]
 ### Basic railsnakes
 ###
 func _ready():
-	map_node = get_node("Map1")
+	get_map()
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
 	for i in get_tree().get_nodes_in_group("upgrade_buttons"):
 		i.connect("pressed", self, "initiate_upgrade", [i.get_name()])
+
+func get_map():
+	var map_data = get_parent().get_node("MapMenu")
+	var stage = map_data.stage
+	var map = map_data.map
+	var map_scene = load("res://Scenes/Maps/Map" + map_data.stage + "_" + map_data.map + ".tscn").instance()
+	add_child(map_scene)
+	map_node = map_scene
 
 func _process(delta):
 	var enemy_count = set_enemy_count()
@@ -77,7 +85,11 @@ func spawn_enemies(wave_data):
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instance()
 		new_enemy.connect("base_damage", self, 'on_base_damage')
 		new_enemy.connect("money_droped", self, 'on_money_droped')
-		map_node.get_node(i[2]).add_child(new_enemy, true)
+		var path = map_node.get_node_or_null(i[2])
+		if path:
+			path.add_child(new_enemy, true)
+		else:
+			map_node.get_node_or_null("Path1").add_child(new_enemy, true)
 		yield(get_tree().create_timer(i[1]),"timeout")
 
 ###
