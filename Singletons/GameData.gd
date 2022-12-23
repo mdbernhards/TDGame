@@ -88,7 +88,7 @@ var turretUpgrades = {"Turrets": ["GunT2", "MissileT2_1", "MissileT2_2"]}
 var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank"]}
 
 var wave_data = {
-	"Waves": 6,
+	"Waves": 7,
 	"Wave1": {
 		"EnemyCount": 2,
 		"BlueTank": 2,
@@ -260,6 +260,46 @@ var wave_data = {
 				"RedTank": 0,
 				"BlackTank": 10,
 				"Offset": 0.5,
+				"Path": "Path1",
+			},}},
+	"Wave7": { 
+		"EnemyCount": 80, 
+		"BlueTank": 10, 
+		"GreenTank": 24, 
+		"RedTank": 10, 
+		"BlackTank": 10,
+		"Orders": 4,
+		"Order": {
+			"1": {
+				"BlueTank": 0,
+				"GreenTank": 20,
+				"RedTank": 0,
+				"BlackTank": 0,
+				"Offset": 0.32,
+				"Path": "Path1",
+			},
+			"2": {
+				"BlueTank": 0,
+				"GreenTank": 0,
+				"RedTank": 20,
+				"BlackTank": 1,
+				"Offset": 0.32,
+				"Path": "Path1",
+			},
+			"3": {
+				"BlueTank": 0,
+				"GreenTank": 10,
+				"RedTank": 6,
+				"BlackTank": 3,
+				"Offset": 0.2,
+				"Path": "Path1",
+			},
+			"4": {
+				"BlueTank": 0,
+				"GreenTank": 0,
+				"RedTank": 0,
+				"BlackTank": 20,
+				"Offset": 0.4,
 				"Path": "Path1",
 			},}},}
 
