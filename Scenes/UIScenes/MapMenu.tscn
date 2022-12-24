@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/UI/Art/BackGround.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/Kenney Future Narrow.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/UI/Buttons/blue_button05.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Fonts/kfn_40_o1.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/UIScenes/MapMenu.gd" type="Script" id=7]
+[ext_resource path="res://Assets/UI/Buttons/blue_button10.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 75
@@ -95,7 +96,9 @@ margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages/1"]
@@ -120,7 +123,9 @@ margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages/2"]
@@ -145,7 +150,9 @@ margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages/3"]
@@ -170,7 +177,9 @@ margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages/4"]
@@ -259,7 +268,9 @@ margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps/1"]
@@ -284,7 +295,9 @@ margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps/2"]
@@ -309,7 +322,9 @@ margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps/3"]
@@ -334,7 +349,9 @@ margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps/4"]

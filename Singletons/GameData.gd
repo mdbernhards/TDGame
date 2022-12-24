@@ -91,7 +91,6 @@ var wave_data = {
 	"Waves": 7,
 	"Wave1": {
 		"EnemyCount": 2,
-		"BlueTank": 2,
 		"Orders": 1,
 		"Order": {
 			"1": {
@@ -103,11 +102,7 @@ var wave_data = {
 				"Path": "Path1",
 			},}},
 	"Wave2": { 
-		"EnemyCount": 5, 
-		"BlueTank": 5,
-		"GreenTank": 0, 
-		"RedTank": 0, 
-		"BlackTank": 0,
+		"EnemyCount": 5,
 		"Orders": 2,
 		"Order": {
 			"1": {
@@ -127,11 +122,7 @@ var wave_data = {
 				"Path": "Path2",
 			},}},
 	"Wave3": { 
-		"EnemyCount": 10, 
-		"BlueTank": 10, 
-		"GreenTank": 0, 
-		"RedTank": 0, 
-		"BlackTank": 0,
+		"EnemyCount": 10,
 		"Orders": 2,
 		"Order": {
 			"1": {
@@ -151,11 +142,7 @@ var wave_data = {
 				"Path": "Path2",
 			},}},
 	"Wave4": { 
-		"EnemyCount": 18, 
-		"BlueTank": 12, 
-		"GreenTank": 6, 
-		"RedTank": 0, 
-		"BlackTank": 0,
+		"EnemyCount": 18,
 		"Orders": 3,
 		"Order": {
 			"1": {
@@ -183,11 +170,7 @@ var wave_data = {
 				"Path": "Path2",
 			},}},
 	"Wave5": { 
-		"EnemyCount": 29, 
-		"BlueTank": 16, 
-		"GreenTank": 10, 
-		"RedTank": 3, 
-		"BlackTank": 0,
+		"EnemyCount": 29,
 		"Orders": 4,
 		"Order": {
 			"1": {
@@ -223,11 +206,7 @@ var wave_data = {
 				"Path": "Path2",
 			},}},
 	"Wave6": { 
-		"EnemyCount": 54, 
-		"BlueTank": 10, 
-		"GreenTank": 24, 
-		"RedTank": 10, 
-		"BlackTank": 10,
+		"EnemyCount": 54,
 		"Orders": 4,
 		"Order": {
 			"1": {
@@ -263,11 +242,7 @@ var wave_data = {
 				"Path": "Path1",
 			},}},
 	"Wave7": { 
-		"EnemyCount": 80, 
-		"BlueTank": 10, 
-		"GreenTank": 24, 
-		"RedTank": 10, 
-		"BlackTank": 10,
+		"EnemyCount": 80,
 		"Orders": 4,
 		"Order": {
 			"1": {
