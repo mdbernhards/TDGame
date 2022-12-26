@@ -33,7 +33,7 @@ func get_map():
 	var map_data = get_parent().get_node("MapMenu")
 	var stage = map_data.stage
 	var map = map_data.map
-	var map_scene = load("res://Scenes/Maps/Map" + map_data.stage + "_" + map_data.map + ".tscn").instance()
+	var map_scene = load("res://Scenes/Maps/Stage" + map_data.stage + "/Map" + map_data.stage + "_" + map_data.map + ".tscn").instance()
 	add_child(map_scene)
 	map_node = map_scene
 
@@ -172,16 +172,15 @@ func on_money_droped(money_droped):
 	get_node("UI").update_money_count(money)
 	
 func create_wave():
-	var wave_data = GameData.wave_data
 	var complete_wave = []
+	enemies_left = 0
 	if (current_wave <= waves):
-		var wave = GameData.wave_data["Wave" + String(current_wave)]
-		enemies_left = wave.EnemyCount
-		for i in wave.Orders:
-			var order = wave["Order"][String(i + 1)]
+		var wave_data = GameData.wave_data["Wave" + String(current_wave)]
+		for i in wave_data.Orders:
+			var order = wave_data["Order"][String(i + 1)]
 			complete_wave.append_array(get_order(order))
 	return complete_wave
-	
+
 func get_order(order):
 	var wave = []
 	var enemies = GameData.enemies["Enemies"]
@@ -189,6 +188,7 @@ func get_order(order):
 		if order[enemy] != null:
 			for i in order[enemy]:
 				wave.append_array([[enemy, order.Offset, order.Path]])
+				enemies_left += 1
 	return wave
 
 func game_end(win):

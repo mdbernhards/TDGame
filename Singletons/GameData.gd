@@ -7,7 +7,7 @@ var tower_data = {
 		"range": 250,
 		"category": "Projectile",
 		"price": 25},
-	"GunT2": {
+	"GunT2_1": {
 		"damage": 35,
 		"rof": 0.5,
 		"range": 350,
@@ -51,8 +51,20 @@ var tower_data = {
 		"rof": 0.23,
 		"range": 850,
 		"category": "Flamethrower",
-		"price": 0,
+		"price": 260,
 		"flame_speed": 400},
+	"DeadZoneT1": {
+		"damage": 10,
+		"rof": 2,
+		"range": 200,
+		"category": "AOE",
+		"price": 300},
+	"MultiShotT1": {
+		"damage": 50,
+		"rof": 1.5,
+		"range": 300,
+		"category": "MultiShot",
+		"price": 320},
 }
 
 var enemy_data = {
@@ -83,7 +95,7 @@ var enemy_data = {
 }
 
 var turretsT1 = {"Turrets": ["GunT1", "MissileT1", "LaserT1", "FlamethrowerT1"]}
-var turretUpgrades = {"Turrets": ["GunT2", "MissileT2_1", "MissileT2_2"]}
+var turretUpgrades = {"Turrets": ["GunT2_1", "MissileT2_1", "MissileT2_2"]}
 
 var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank"]}
 
@@ -280,7 +292,7 @@ var wave_data = {
 
 var Maps = {
 	"Stages": ["1", "2", "3", "4"],
-	"1": ["1", "2"],
+	"1": ["1", "2", "3"],
 	"2": ["1"],
 	"3": ["1"],
 	"4": []}

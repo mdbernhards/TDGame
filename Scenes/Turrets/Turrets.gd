@@ -8,7 +8,7 @@ var new_missile
 var enemy_array = []
 var built = false
 var ready = true
-var turretInfoBar
+var turret_info_bar
 
 var missile = preload("res://Scenes/SupportScenes/Missile.tscn")
 
@@ -54,12 +54,6 @@ func fire():
 	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]), "timeout")
 	ready = true
 
-func fire_laser():
-	pass
-	
-func fire_flamethrower():
-	pass
-
 func fire_gun():
 	var animation_player = get_node("AnimationPlayer")
 	if animation_player != null:
@@ -75,16 +69,22 @@ func fire_missile():
 		shoot_missileT2_1()
 	elif type == "MissileT2_2":
 		shoot_missileT2_2()
-		
+
+func fire_laser():
+	pass
+
+func fire_flamethrower():
+	pass
+
 func shoot_missileT1():
 	pass
-		
+
 func shoot_missileT2_1():
 	pass
-	
+
 func shoot_missileT2_2():
 	pass
-	
+
 func shoot_missile(sprite, collisonShape, missile_on_turret, new_missile):
 	sprite.position.x += 3
 	collisonShape.position.x += 3
@@ -98,8 +98,7 @@ func shoot_missile(sprite, collisonShape, missile_on_turret, new_missile):
 	new_missile.start(Transform2D(get_node("Turret").global_rotation, to_global(get_node("Turret").position)), enemy)
 	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]/ 1.5), "timeout")
 	missile_on_turret.show()
-		
-	
+
 func _on_Range_body_entered(body):
 	enemy_array.append(body.get_parent())
 
@@ -112,7 +111,7 @@ func _on_TurretsArea_mouse_entered():
 		show_range()
 
 func _on_TurretsArea_mouse_exited():
-	if built and (!turretInfoBar or !turretInfoBar.visible):
+	if built and (!turret_info_bar or !turret_info_bar.visible):
 		self.z_index = 0
 		hide_all_ranges()
 
@@ -131,10 +130,10 @@ func show_range():
 func _on_TurretsArea_input_event(viewport, event, shape_idx):
 	if built and event.is_pressed():
 		var GameScene = get_parent().get_parent().get_parent()
-		turretInfoBar = GameScene.get_node("UI/HUD/TurretInfoBar")
+		turret_info_bar = GameScene.get_node("UI/HUD/TurretInfoBar")
 		
 		# for now, need to make it with node groups when more upgrades
-		var gun_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/GunT2")
+		var gun_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/GunT2_1")
 		var missile_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_1")
 		var missile_t11_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_2")
 		
@@ -150,11 +149,11 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 			missile_t11_upgrades.visible = true
 			
 		if GameScene.build_location == position:
-			turretInfoBar.visible = !turretInfoBar.visible
+			turret_info_bar.visible = !turret_info_bar.visible
 		else:
-			turretInfoBar.visible = true
+			turret_info_bar.visible = true
 		GameScene.build_location = position
-		
+
 func hide_all_upgrades():
 	for i in get_tree().get_nodes_in_group("upgrade_buttons"):
 		i.visible = false

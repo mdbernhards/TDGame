@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Towers/towerDefense_tile134.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Towers/towerDefense_tile181.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 0.01
+
+[node name="MultiShotT1" type="Node2D"]
+
+[node name="Base" type="Sprite" parent="."]
+position = Vector2( 32, 32 )
+texture = ExtResource( 2 )
+
+[node name="Turret" type="Sprite" parent="."]
+self_modulate = Color( 1, 0.129412, 0.94902, 1 )
+position = Vector2( 22, 32 )
+texture = ExtResource( 1 )
+offset = Vector2( 10, 0 )
+
+[node name="Muzzle1" type="Position2D" parent="Turret"]
+position = Vector2( 10, -32 )
+
+[node name="Muzzle2" type="Position2D" parent="Turret"]
+position = Vector2( 42, 0 )
+
+[node name="Muzzle3" type="Position2D" parent="Turret"]
+position = Vector2( 10, 32 )
+
+[node name="Muzzle4" type="Position2D" parent="Turret"]
+position = Vector2( -22, 0 )
+
+[node name="TurretsArea" type="Area2D" parent="Turret"]
+position = Vector2( 32, 32 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Turret/TurretsArea"]
+visible = false
+position = Vector2( 1, 0 )
+polygon = PoolVector2Array( -32, -21, -25, -1, -21, -1, -14, -21, 7, -30, 7, -34, -14, -43, -21, -63, -25, -63, -32, -43, -54, -34, -54, -30 )
+
+[node name="Range" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="TurretsArea" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TurretsArea"]
+visible = false
+polygon = PoolVector2Array( -26, 17, -17, 26, 17, 26, 26, 17, 26, -17, 17, -26, -16, -26, -26, -17 )

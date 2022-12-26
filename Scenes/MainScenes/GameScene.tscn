@@ -309,7 +309,7 @@ margin_right = 288.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 70, 0 )
 
-[node name="GunT2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
+[node name="GunT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
 margin_left = 292.0
 margin_top = 15.0
 margin_right = 372.0
@@ -320,7 +320,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource( 2 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="UI/HUD/TurretInfoBar/H/GunT2"]
+[node name="Icon" type="TextureRect" parent="UI/HUD/TurretInfoBar/H/GunT2_1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -331,7 +331,7 @@ margin_right = 32.0
 margin_bottom = 32.0
 texture = ExtResource( 15 )
 
-[node name="Label" type="Label" parent="UI/HUD/TurretInfoBar/H/GunT2"]
+[node name="Label" type="Label" parent="UI/HUD/TurretInfoBar/H/GunT2_1"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
