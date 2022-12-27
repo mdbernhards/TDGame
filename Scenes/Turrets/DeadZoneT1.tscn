@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Towers/ufoBlue.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Turrets/DeadZoneT1.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 46.0
@@ -8,12 +9,13 @@ radius = 46.0
 [sub_resource type="CircleShape2D" id=1]
 radius = 0.01
 
-[node name="DeadZoneT1" type="Node2D"]
+[node name="DeadZoneT1" type="Node2D" groups=["turrets"]]
+script = ExtResource( 2 )
 
 [node name="Turret" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
+scale = Vector2( 0.704, 0.704 )
 texture = ExtResource( 1 )
-offset = Vector2( 10, 0 )
 
 [node name="TurretsArea" type="Area2D" parent="Turret"]
 position = Vector2( 32, 32 )
@@ -29,3 +31,9 @@ position = Vector2( 32, 32 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 visible = false
 shape = SubResource( 1 )
+
+[connection signal="input_event" from="Turret/TurretsArea" to="." method="_on_TurretsArea_input_event"]
+[connection signal="mouse_entered" from="Turret/TurretsArea" to="." method="_on_TurretsArea_mouse_entered"]
+[connection signal="mouse_exited" from="Turret/TurretsArea" to="." method="_on_TurretsArea_mouse_exited"]
+[connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]

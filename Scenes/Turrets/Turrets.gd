@@ -51,6 +51,10 @@ func fire():
 		fire_laser()
 	elif category == "Flamethrower":
 		fire_flamethrower()
+	elif category == "AoE":
+		fire_aoe()
+	elif category == "MultiShot":
+		fire_multishot()
 	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]), "timeout")
 	ready = true
 
@@ -74,6 +78,12 @@ func fire_laser():
 	pass
 
 func fire_flamethrower():
+	pass
+	
+func fire_aoe():
+	pass
+
+func fire_multishot():
 	pass
 
 func shoot_missileT1():

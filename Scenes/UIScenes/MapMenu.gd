@@ -20,7 +20,8 @@ func select_stage(_stage):
 	var stage_list = GameData.Maps[stage]
 	if stage_list:
 		for i in stage_list:
-			get_node("M/VB2/Maps/" + String(i)).visible = true 
+			var hbox_num = get_hbox_number(int(i))
+			get_node("M/VB2/Maps" + String(hbox_num) + "/" + String(i)).visible = true 
 
 func _physics_process(delta):
 	if stage and map:
@@ -34,17 +35,30 @@ func select_map(_map):
 
 func hide_all_maps():
 	for i in get_tree().get_nodes_in_group("MapButton"):
-		get_node("M/VB2/Maps/" + String(i.get_node("Label").text)).visible = false
+		var hbox_num = get_hbox_number(int(i.get_node("Label").text))
+		get_node("M/VB2/Maps" + String(hbox_num) + "/" + String(i.get_node("Label").text)).visible = false
 		
 func set_stage_pressed_button():
 	for i in get_tree().get_nodes_in_group("stageButton"):
-		get_node("M/VB/Stages/" + String(i.get_node("Label").text)).pressed = false
+		var hbox_num = get_hbox_number(int(i.get_node("Label").text))
+		get_node("M/VB/Stages" + String(hbox_num) + "/" + String(i.get_node("Label").text)).pressed = false
 	if stage:
-		get_node("M/VB/Stages/" + String(stage)).pressed = true
+		var hbox_num = get_hbox_number(int(stage))
+		get_node("M/VB/Stages" + String(hbox_num) + "/" + String(stage)).pressed = true
 	set_map_pressed_button()
 
 func set_map_pressed_button():
 	for i in get_tree().get_nodes_in_group("MapButton"):
-		get_node("M/VB2/Maps/" + String(i.get_node("Label").text)).pressed = false
+		var hbox_num = get_hbox_number(int(i.get_node("Label").text))
+		get_node("M/VB2/Maps" + String(hbox_num) + "/" + String(i.get_node("Label").text)).pressed = false
 	if map:
-		get_node("M/VB2/Maps/" + String(map)).pressed = true
+		var hbox_num = get_hbox_number(int(map))
+		get_node("M/VB2/Maps" + String(hbox_num) + "/" + String(map)).pressed = true
+		
+func get_hbox_number(number):
+	if number < 5:
+		return 1
+	elif number >= 5 and number < 9:
+		return 2
+	elif number >= 9:
+		return 3

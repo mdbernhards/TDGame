@@ -76,22 +76,18 @@ custom_fonts/font = SubResource( 2 )
 text = "Stage"
 align = 1
 
-[node name="Stages" type="HBoxContainer" parent="M/VB"]
+[node name="Stages1" type="HBoxContainer" parent="M/VB"]
 margin_top = 163.0
 margin_right = 534.0
 margin_bottom = 283.0
 rect_min_size = Vector2( 0, 120 )
 custom_constants/separation = 20
+alignment = 1
 
-[node name="Control" type="Control" parent="M/VB/Stages"]
-margin_right = 10.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 10, 0 )
-
-[node name="1" type="TextureButton" parent="M/VB/Stages" groups=["stageButton"]]
-margin_left = 30.0
+[node name="1" type="TextureButton" parent="M/VB/Stages1" groups=["stageButton"]]
+margin_left = 37.0
 margin_top = 10.0
-margin_right = 130.0
+margin_right = 137.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
@@ -101,7 +97,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Stages/1"]
+[node name="Label" type="Label" parent="M/VB/Stages1/1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -115,10 +111,10 @@ text = "1"
 align = 1
 valign = 1
 
-[node name="2" type="TextureButton" parent="M/VB/Stages" groups=["stageButton"]]
-margin_left = 150.0
+[node name="2" type="TextureButton" parent="M/VB/Stages1" groups=["stageButton"]]
+margin_left = 157.0
 margin_top = 10.0
-margin_right = 250.0
+margin_right = 257.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
@@ -128,7 +124,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Stages/2"]
+[node name="Label" type="Label" parent="M/VB/Stages1/2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -142,10 +138,10 @@ text = "2"
 align = 1
 valign = 1
 
-[node name="3" type="TextureButton" parent="M/VB/Stages" groups=["stageButton"]]
-margin_left = 270.0
+[node name="3" type="TextureButton" parent="M/VB/Stages1" groups=["stageButton"]]
+margin_left = 277.0
 margin_top = 10.0
-margin_right = 370.0
+margin_right = 377.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
@@ -155,7 +151,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Stages/3"]
+[node name="Label" type="Label" parent="M/VB/Stages1/3"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -169,10 +165,10 @@ text = "3"
 align = 1
 valign = 1
 
-[node name="4" type="TextureButton" parent="M/VB/Stages" groups=["stageButton"]]
-margin_left = 390.0
+[node name="4" type="TextureButton" parent="M/VB/Stages1" groups=["stageButton"]]
+margin_left = 397.0
 margin_top = 10.0
-margin_right = 490.0
+margin_right = 497.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 4
@@ -182,7 +178,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Stages/4"]
+[node name="Label" type="Label" parent="M/VB/Stages1/4"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -193,6 +189,238 @@ margin_right = 20.0
 margin_bottom = 34.0
 custom_fonts/font = SubResource( 3 )
 text = "4"
+align = 1
+valign = 1
+
+[node name="Stages2" type="HBoxContainer" parent="M/VB"]
+margin_top = 287.0
+margin_right = 534.0
+margin_bottom = 407.0
+rect_min_size = Vector2( 0, 120 )
+custom_constants/separation = 20
+alignment = 1
+
+[node name="5" type="TextureButton" parent="M/VB/Stages2" groups=["stageButton"]]
+margin_left = 37.0
+margin_top = 10.0
+margin_right = 137.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Stages2/5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="6" type="TextureButton" parent="M/VB/Stages2" groups=["stageButton"]]
+margin_left = 157.0
+margin_top = 10.0
+margin_right = 257.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Stages2/6"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "6"
+align = 1
+valign = 1
+
+[node name="7" type="TextureButton" parent="M/VB/Stages2" groups=["stageButton"]]
+margin_left = 277.0
+margin_top = 10.0
+margin_right = 377.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Stages2/7"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "7"
+align = 1
+valign = 1
+
+[node name="8" type="TextureButton" parent="M/VB/Stages2" groups=["stageButton"]]
+margin_left = 397.0
+margin_top = 10.0
+margin_right = 497.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Stages2/8"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -34.0
+margin_right = 21.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "8"
+align = 1
+valign = 1
+
+[node name="Stages3" type="HBoxContainer" parent="M/VB"]
+margin_top = 411.0
+margin_right = 534.0
+margin_bottom = 531.0
+rect_min_size = Vector2( 0, 120 )
+custom_constants/separation = 20
+alignment = 1
+
+[node name="9" type="TextureButton" parent="M/VB/Stages3" groups=["stageButton"]]
+margin_left = 37.0
+margin_top = 10.0
+margin_right = 137.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Stages3/9"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "9"
+align = 1
+valign = 1
+
+[node name="10" type="TextureButton" parent="M/VB/Stages3" groups=["stageButton"]]
+margin_left = 157.0
+margin_top = 10.0
+margin_right = 257.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Stages3/10"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="11" type="TextureButton" parent="M/VB/Stages3" groups=["stageButton"]]
+margin_left = 277.0
+margin_top = 10.0
+margin_right = 377.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Stages3/11"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "11"
+align = 1
+valign = 1
+
+[node name="12" type="TextureButton" parent="M/VB/Stages3" groups=["stageButton"]]
+margin_left = 397.0
+margin_top = 10.0
+margin_right = 497.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Stages3/12"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "12"
 align = 1
 valign = 1
 
@@ -248,19 +476,15 @@ custom_fonts/font = SubResource( 2 )
 text = "Map"
 align = 1
 
-[node name="Maps" type="HBoxContainer" parent="M/VB2"]
+[node name="Maps1" type="HBoxContainer" parent="M/VB2"]
 margin_top = 164.0
 margin_right = 520.0
 margin_bottom = 284.0
 rect_min_size = Vector2( 0, 120 )
 custom_constants/separation = 20
+alignment = 1
 
-[node name="Control" type="Control" parent="M/VB2/Maps"]
-margin_right = 10.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 10, 0 )
-
-[node name="1" type="TextureButton" parent="M/VB2/Maps" groups=["MapButton"]]
+[node name="1" type="TextureButton" parent="M/VB2/Maps1" groups=["MapButton"]]
 margin_left = 30.0
 margin_top = 10.0
 margin_right = 130.0
@@ -273,7 +497,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB2/Maps/1"]
+[node name="Label" type="Label" parent="M/VB2/Maps1/1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -287,7 +511,7 @@ text = "1"
 align = 1
 valign = 1
 
-[node name="2" type="TextureButton" parent="M/VB2/Maps" groups=["MapButton"]]
+[node name="2" type="TextureButton" parent="M/VB2/Maps1" groups=["MapButton"]]
 margin_left = 150.0
 margin_top = 10.0
 margin_right = 250.0
@@ -300,7 +524,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB2/Maps/2"]
+[node name="Label" type="Label" parent="M/VB2/Maps1/2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -314,7 +538,7 @@ text = "2"
 align = 1
 valign = 1
 
-[node name="3" type="TextureButton" parent="M/VB2/Maps" groups=["MapButton"]]
+[node name="3" type="TextureButton" parent="M/VB2/Maps1" groups=["MapButton"]]
 margin_left = 270.0
 margin_top = 10.0
 margin_right = 370.0
@@ -327,7 +551,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB2/Maps/3"]
+[node name="Label" type="Label" parent="M/VB2/Maps1/3"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -341,7 +565,7 @@ text = "3"
 align = 1
 valign = 1
 
-[node name="4" type="TextureButton" parent="M/VB2/Maps" groups=["MapButton"]]
+[node name="4" type="TextureButton" parent="M/VB2/Maps1" groups=["MapButton"]]
 margin_left = 390.0
 margin_top = 10.0
 margin_right = 490.0
@@ -354,7 +578,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB2/Maps/4"]
+[node name="Label" type="Label" parent="M/VB2/Maps1/4"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -365,6 +589,238 @@ margin_right = 20.0
 margin_bottom = 34.0
 custom_fonts/font = SubResource( 3 )
 text = "4"
+align = 1
+valign = 1
+
+[node name="Maps2" type="HBoxContainer" parent="M/VB2"]
+margin_top = 293.0
+margin_right = 520.0
+margin_bottom = 413.0
+rect_min_size = Vector2( 0, 120 )
+custom_constants/separation = 20
+alignment = 1
+
+[node name="5" type="TextureButton" parent="M/VB2/Maps2" groups=["MapButton"]]
+margin_left = 30.0
+margin_top = 10.0
+margin_right = 130.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB2/Maps2/5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="6" type="TextureButton" parent="M/VB2/Maps2" groups=["MapButton"]]
+margin_left = 150.0
+margin_top = 10.0
+margin_right = 250.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB2/Maps2/6"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "6"
+align = 1
+valign = 1
+
+[node name="7" type="TextureButton" parent="M/VB2/Maps2" groups=["MapButton"]]
+margin_left = 270.0
+margin_top = 10.0
+margin_right = 370.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB2/Maps2/7"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "7"
+align = 1
+valign = 1
+
+[node name="8" type="TextureButton" parent="M/VB2/Maps2" groups=["MapButton"]]
+margin_left = 390.0
+margin_top = 10.0
+margin_right = 490.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB2/Maps2/8"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "8"
+align = 1
+valign = 1
+
+[node name="Maps3" type="HBoxContainer" parent="M/VB2"]
+margin_top = 422.0
+margin_right = 520.0
+margin_bottom = 542.0
+rect_min_size = Vector2( 0, 120 )
+custom_constants/separation = 20
+alignment = 1
+
+[node name="9" type="TextureButton" parent="M/VB2/Maps3" groups=["MapButton"]]
+margin_left = 30.0
+margin_top = 10.0
+margin_right = 130.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB2/Maps3/9"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "9"
+align = 1
+valign = 1
+
+[node name="10" type="TextureButton" parent="M/VB2/Maps3" groups=["MapButton"]]
+margin_left = 150.0
+margin_top = 10.0
+margin_right = 250.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB2/Maps3/10"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="11" type="TextureButton" parent="M/VB2/Maps3" groups=["MapButton"]]
+margin_left = 270.0
+margin_top = 10.0
+margin_right = 370.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB2/Maps3/11"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "11"
+align = 1
+valign = 1
+
+[node name="12" type="TextureButton" parent="M/VB2/Maps3" groups=["MapButton"]]
+margin_left = 390.0
+margin_top = 10.0
+margin_right = 490.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB2/Maps3/12"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "12"
 align = 1
 valign = 1
 

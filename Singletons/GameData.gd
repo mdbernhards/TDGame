@@ -56,9 +56,9 @@ var tower_data = {
 	"DeadZoneT1": {
 		"damage": 10,
 		"rof": 2,
-		"range": 200,
-		"category": "AOE",
-		"price": 300},
+		"range": 250,
+		"category": "AoE",
+		"price": 00},
 	"MultiShotT1": {
 		"damage": 50,
 		"rof": 1.5,
@@ -92,17 +92,22 @@ var enemy_data = {
 		"money_droped": 50,
 		"base_damage": 34,
 	},
+	"SandTank": {
+		"health": 130,
+		"speed": 160,
+		"money_droped": 25,
+		"base_damage": 24,
+	},
 }
 
-var turretsT1 = {"Turrets": ["GunT1", "MissileT1", "LaserT1", "FlamethrowerT1"]}
+var turretsT1 = {"Turrets": ["GunT1", "MissileT1", "LaserT1", "FlamethrowerT1", "DeadZoneT1", "MultiShotT1"]}
 var turretUpgrades = {"Turrets": ["GunT2_1", "MissileT2_1", "MissileT2_2"]}
 
-var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank"]}
+var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank", "SandTank"]}
 
 var wave_data = {
 	"Waves": 7,
 	"Wave1": {
-		"EnemyCount": 2,
 		"Orders": 1,
 		"Order": {
 			"1": {
@@ -110,11 +115,11 @@ var wave_data = {
 				"GreenTank": 0,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 1,
 				"Offset": 0.4,
 				"Path": "Path1",
 			},}},
-	"Wave2": { 
-		"EnemyCount": 5,
+	"Wave2": {
 		"Orders": 2,
 		"Order": {
 			"1": {
@@ -122,6 +127,7 @@ var wave_data = {
 				"GreenTank": 0,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.4,
 				"Path": "Path2",
 			},
@@ -130,11 +136,11 @@ var wave_data = {
 				"GreenTank": 0,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.3,
 				"Path": "Path2",
 			},}},
-	"Wave3": { 
-		"EnemyCount": 10,
+	"Wave3": {
 		"Orders": 2,
 		"Order": {
 			"1": {
@@ -142,6 +148,7 @@ var wave_data = {
 				"GreenTank": 0,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.38,
 				"Path": "Path1",
 			},
@@ -150,11 +157,11 @@ var wave_data = {
 				"GreenTank": 0,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.28,
 				"Path": "Path2",
 			},}},
-	"Wave4": { 
-		"EnemyCount": 18,
+	"Wave4": {
 		"Orders": 3,
 		"Order": {
 			"1": {
@@ -162,6 +169,7 @@ var wave_data = {
 				"GreenTank": 2,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.45,
 				"Path": "Path1",
 			},
@@ -170,6 +178,7 @@ var wave_data = {
 				"GreenTank": 2,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.4,
 				"Path": "Path2",
 			},
@@ -178,11 +187,11 @@ var wave_data = {
 				"GreenTank": 2,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path2",
 			},}},
-	"Wave5": { 
-		"EnemyCount": 29,
+	"Wave5": {
 		"Orders": 4,
 		"Order": {
 			"1": {
@@ -190,6 +199,7 @@ var wave_data = {
 				"GreenTank": 5,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.45,
 				"Path": "Path1",
 			},
@@ -198,6 +208,7 @@ var wave_data = {
 				"GreenTank": 0,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.2,
 				"Path": "Path1",
 			},
@@ -206,6 +217,7 @@ var wave_data = {
 				"GreenTank": 2,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.17,
 				"Path": "Path2",
 			},
@@ -214,11 +226,11 @@ var wave_data = {
 				"GreenTank": 3,
 				"RedTank": 3,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.15,
 				"Path": "Path2",
 			},}},
-	"Wave6": { 
-		"EnemyCount": 54,
+	"Wave6": {
 		"Orders": 4,
 		"Order": {
 			"1": {
@@ -226,6 +238,7 @@ var wave_data = {
 				"GreenTank": 6,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path1",
 			},
@@ -234,6 +247,7 @@ var wave_data = {
 				"GreenTank": 8,
 				"RedTank": 4,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path1",
 			},
@@ -242,6 +256,7 @@ var wave_data = {
 				"GreenTank": 10,
 				"RedTank": 6,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.2,
 				"Path": "Path1",
 			},
@@ -250,11 +265,11 @@ var wave_data = {
 				"GreenTank": 0,
 				"RedTank": 0,
 				"BlackTank": 10,
+				"SandTank": 0,
 				"Offset": 0.5,
 				"Path": "Path1",
 			},}},
-	"Wave7": { 
-		"EnemyCount": 80,
+	"Wave7": {
 		"Orders": 4,
 		"Order": {
 			"1": {
@@ -262,6 +277,7 @@ var wave_data = {
 				"GreenTank": 20,
 				"RedTank": 0,
 				"BlackTank": 0,
+				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path1",
 			},
@@ -270,6 +286,7 @@ var wave_data = {
 				"GreenTank": 0,
 				"RedTank": 20,
 				"BlackTank": 1,
+				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path1",
 			},
@@ -278,6 +295,7 @@ var wave_data = {
 				"GreenTank": 10,
 				"RedTank": 6,
 				"BlackTank": 3,
+				"SandTank": 0,
 				"Offset": 0.2,
 				"Path": "Path1",
 			},
@@ -286,13 +304,22 @@ var wave_data = {
 				"GreenTank": 0,
 				"RedTank": 0,
 				"BlackTank": 20,
+				"SandTank": 0,
 				"Offset": 0.4,
 				"Path": "Path1",
 			},}},}
 
 var Maps = {
-	"Stages": ["1", "2", "3", "4"],
-	"1": ["1", "2", "3"],
+	"Stages": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+	"1": ["1", "2", "3", "4"],
 	"2": ["1"],
 	"3": ["1"],
-	"4": []}
+	"4": [],
+	"5": [],
+	"6": [],
+	"7": [],
+	"8": [],
+	"9": [],
+	"10": [],
+	"11": [],
+	"12": []}
