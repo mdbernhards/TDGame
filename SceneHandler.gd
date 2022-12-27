@@ -16,6 +16,14 @@ func on_play_pressed():
 	add_child(game_scene)
 	$MapMenu.visible = false
 
+func on_load_game_pressed():
+	$MapMenu.visible = false
+	$LoadGameMenu.visible = true
+
+func on_settings_pressed():
+	$MapMenu.visible = false
+	$SettingsMenu.visible = true
+
 func on_quit_pressed():
 	get_tree().quit()
 
@@ -28,6 +36,8 @@ func unload_game(result):
 func load_main_menu():
 	get_node("MainMenu/M/VB/NewGame").connect("pressed", self, "on_new_game_pressed")
 	get_node("MainMenu/M/VB/Quit").connect("pressed", self, "on_quit_pressed")
+	get_node("MainMenu/M/VB/LoadGame").connect("pressed", self, "on_load_game_pressed")
+	get_node("MainMenu/M/VB/Settings").connect("pressed", self, "on_settings_pressed")
 
 func load_map_menu():
 	get_node("MapMenu/M/VB3/Play").connect("pressed", self, "on_play_pressed")

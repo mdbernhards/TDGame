@@ -861,3 +861,5 @@ margin_top = 120.0
 margin_right = 520.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 10, 30 )
+
+[connection signal="pressed" from="M/VB2/Upgrades" to="." method="_on_Upgrades_pressed"]

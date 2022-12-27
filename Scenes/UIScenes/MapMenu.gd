@@ -10,7 +10,7 @@ func _ready():
 		i.connect("pressed", self, "select_map", [i.get_name()])
 	select_stage("1")
 	$M/VB3/Play.visible = false
-	
+
 func select_stage(_stage):
 	map = null
 	stage = _stage
@@ -28,7 +28,7 @@ func _physics_process(delta):
 		$M/VB3/Play.visible = true
 	else:
 		$M/VB3/Play.visible = false
-		
+
 func select_map(_map):
 	map = _map
 	set_map_pressed_button()
@@ -37,7 +37,7 @@ func hide_all_maps():
 	for i in get_tree().get_nodes_in_group("MapButton"):
 		var hbox_num = get_hbox_number(int(i.get_node("Label").text))
 		get_node("M/VB2/Maps" + String(hbox_num) + "/" + String(i.get_node("Label").text)).visible = false
-		
+
 func set_stage_pressed_button():
 	for i in get_tree().get_nodes_in_group("stageButton"):
 		var hbox_num = get_hbox_number(int(i.get_node("Label").text))
@@ -62,3 +62,6 @@ func get_hbox_number(number):
 		return 2
 	elif number >= 9:
 		return 3
+
+func _on_Upgrades_pressed():
+	$UpgradeMenu.visible = true
