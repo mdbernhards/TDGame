@@ -24,16 +24,16 @@ texture = SubResource( 2 )
 offset = Vector2( 10, 0 )
 
 [node name="Muzzle1" type="Position2D" parent="Turret"]
-position = Vector2( 10, -32 )
+position = Vector2( 10, -34 )
 
 [node name="Muzzle2" type="Position2D" parent="Turret"]
-position = Vector2( 42, 0 )
+position = Vector2( 44, 0 )
 
 [node name="Muzzle3" type="Position2D" parent="Turret"]
-position = Vector2( 10, 32 )
+position = Vector2( 10, 34 )
 
 [node name="Muzzle4" type="Position2D" parent="Turret"]
-position = Vector2( -22, 0 )
+position = Vector2( -24, 0 )
 
 [node name="TurretsArea" type="Area2D" parent="Turret"]
 position = Vector2( 32, 32 )

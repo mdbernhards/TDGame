@@ -30,7 +30,8 @@ func _physics_process(delta):
 		enemy = null
 
 func turn():
-	get_node("Turret").look_at(enemy.position)
+	if category != "AoE" and category != "MultiShot":
+		get_node("Turret").look_at(enemy.position)
 
 func select_enemy():
 	var enemy_progress_array = []

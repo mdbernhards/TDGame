@@ -20,8 +20,7 @@ var tower_data = {
 		"category": "Missile",
 		"price": 40,
 		"missile_speed": 300,
-		"steer_force": 0.0,
-		"smart": false},
+		"steer_force": 0.0},
 	"MissileT2_1": {
 		"damage": 55,
 		"rof": 1,
@@ -29,8 +28,7 @@ var tower_data = {
 		"category": "Missile",
 		"price": 100,
 		"missile_speed": 400,
-		"steer_force": 3.0,
-		"smart": true},
+		"steer_force": 3.0},
 	"MissileT2_2": {
 		"damage": 150,
 		"rof": 2,
@@ -38,8 +36,7 @@ var tower_data = {
 		"category": "Missile",
 		"price": 120,
 		"missile_speed": 350,
-		"steer_force": 5.0,
-		"smart": true},
+		"steer_force": 5.0},
 	"LaserT1": {
 		"damage": 0.3,
 		"rof": 0,
@@ -56,15 +53,16 @@ var tower_data = {
 	"DeadZoneT1": {
 		"damage": 10,
 		"rof": 2,
-		"range": 250,
+		"range": 400,
 		"category": "AoE",
-		"price": 00},
+		"price": 450},
 	"MultiShotT1": {
 		"damage": 50,
 		"rof": 1.5,
-		"range": 300,
+		"range": 350,
 		"category": "MultiShot",
-		"price": 320},
+		"shot_speed": 1,
+		"price": 150},
 }
 
 var enemy_data = {
@@ -311,7 +309,7 @@ var wave_data = {
 
 var Maps = {
 	"Stages": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-	"1": ["1", "2", "3", "4"],
+	"1": ["1", "2", "3", "4", "5", "6"],
 	"2": ["1"],
 	"3": ["1"],
 	"4": [],
