@@ -24,6 +24,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_pause_menu"):
 		_on_PausePlay_pressed()
 	set_count_down_time()
+	set_if_can_afford_turret()
 
 func set_tower_preview(tower_type, mouse_position):
 	var drag_tower = load("res://Scenes/Turrets/" + tower_type + ".tscn").instance()
@@ -136,11 +137,20 @@ func on_main_menu_pressed():
 func on_quit_pressed():
 	get_tree().quit()
 
+func set_if_can_afford_turret():
+	for turret in GameData.turretsT1["Turrets"]:
+		if int(money_count.text) < GameData.tower_data[turret]["price"]:
+			get_node("HUD/BuildBar/" + turret).disabled = true
+		else:
+			get_node("HUD/BuildBar/" + turret).disabled = false
+	for turret in GameData.turretUpgrades["Turrets"]:
+		if int(money_count.text) < GameData.tower_data[turret]["price"]:
+			get_node("HUD/TurretInfoBar/H/" + turret).disabled = true
+		else:
+			get_node("HUD/TurretInfoBar/H/" + turret).disabled = false
+
 func set_turret_prices():
-	var turretsT1 = GameData.turretsT1["Turrets"]
-	for turret in turretsT1:
+	for turret in GameData.turretsT1["Turrets"]:
 		get_node("HUD/BuildBar/" + turret + "/Label").text = String(GameData.tower_data[turret]["price"])
-		
-	var turretUpgrades = GameData.turretUpgrades["Turrets"]
-	for turret in turretUpgrades:
+	for turret in GameData.turretUpgrades["Turrets"]:
 		get_node("HUD/TurretInfoBar/H/" + turret + "/Label").text = String(GameData.tower_data[turret]["price"])
