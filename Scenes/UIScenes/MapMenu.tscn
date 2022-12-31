@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/UI/Buttons/blue_button05.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Fonts/kfn_40_o1.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/UIScenes/MapMenu.gd" type="Script" id=7]
-[ext_resource path="res://Assets/UI/Buttons/blue_button10.png" type="Texture" id=8]
+[ext_resource path="res://Assets/UI/Buttons/pressedButton.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 75
@@ -94,7 +94,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages1/1"]
@@ -121,7 +121,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages1/2"]
@@ -148,7 +148,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages1/3"]
@@ -175,7 +175,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages1/4"]
@@ -210,7 +210,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages2/5"]
@@ -237,7 +237,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages2/6"]
@@ -264,7 +264,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages2/7"]
@@ -291,7 +291,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages2/8"]
@@ -326,7 +326,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages3/9"]
@@ -353,7 +353,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages3/10"]
@@ -380,7 +380,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages3/11"]
@@ -407,7 +407,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB/Stages3/12"]
@@ -494,7 +494,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps1/1"]
@@ -521,7 +521,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps1/2"]
@@ -548,7 +548,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps1/3"]
@@ -575,7 +575,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps1/4"]
@@ -610,7 +610,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps2/5"]
@@ -637,7 +637,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps2/6"]
@@ -664,7 +664,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps2/7"]
@@ -691,7 +691,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps2/8"]
@@ -726,7 +726,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps3/9"]
@@ -753,7 +753,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps3/10"]
@@ -780,7 +780,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps3/11"]
@@ -807,7 +807,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="M/VB2/Maps3/12"]

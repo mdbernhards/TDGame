@@ -141,13 +141,17 @@ func set_if_can_afford_turret():
 	for turret in GameData.turretsT1["Turrets"]:
 		if int(money_count.text) < GameData.tower_data[turret]["price"]:
 			get_node("HUD/BuildBar/" + turret).disabled = true
+			get_node("HUD/BuildBar/" + turret + "/DisabledSprite").visible = true
 		else:
 			get_node("HUD/BuildBar/" + turret).disabled = false
+			get_node("HUD/BuildBar/" + turret + "/DisabledSprite").visible = false
 	for turret in GameData.turretUpgrades["Turrets"]:
 		if int(money_count.text) < GameData.tower_data[turret]["price"]:
 			get_node("HUD/TurretInfoBar/H/" + turret).disabled = true
+			get_node("HUD/TurretInfoBar/H/" + turret + "/DisabledSprite").visible = true
 		else:
 			get_node("HUD/TurretInfoBar/H/" + turret).disabled = false
+			get_node("HUD/TurretInfoBar/H/" + turret + "/DisabledSprite").visible = false
 
 func set_turret_prices():
 	for turret in GameData.turretsT1["Turrets"]:

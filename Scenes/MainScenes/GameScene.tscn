@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Assets/Towers/ufoBlue.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/Buttons/blue_button12.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Assets/Towers/doubleMissile.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Towers/cockpitGreen_1.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Towers/towerDefense_tile134.png" type="Texture" id=19]
+[ext_resource path="res://Assets/UI/Buttons/red_transparent_12.png" type="Texture" id=20]
 
 [sub_resource type="DynamicFont" id=4]
 size = 18
@@ -130,6 +131,12 @@ size_flags_horizontal = 4
 custom_fonts/font = SubResource( 4 )
 align = 1
 
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/BuildBar/GunT1"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
+
 [node name="MissileT1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 margin_left = 10.0
 margin_top = 105.0
@@ -164,6 +171,12 @@ size_flags_horizontal = 4
 custom_fonts/font = SubResource( 4 )
 align = 1
 
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/BuildBar/MissileT1"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
+
 [node name="LaserT1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 margin_left = 10.0
 margin_top = 210.0
@@ -195,6 +208,12 @@ margin_right = 17.0
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 4 )
 align = 1
+
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/BuildBar/LaserT1"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
 
 [node name="FlamethrowerT1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 margin_left = 10.0
@@ -231,6 +250,12 @@ size_flags_horizontal = 4
 custom_fonts/font = SubResource( 4 )
 align = 1
 
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/BuildBar/FlamethrowerT1"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
+
 [node name="DeadZoneT1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 margin_left = 10.0
 margin_top = 420.0
@@ -263,6 +288,12 @@ margin_right = 17.0
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 4 )
 align = 1
+
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/BuildBar/DeadZoneT1"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
 
 [node name="MultiShotT1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 margin_left = 10.0
@@ -298,6 +329,12 @@ margin_right = 17.0
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 4 )
 align = 1
+
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/BuildBar/MultiShotT1"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
 
 [node name="TurretInfoBar" type="ColorRect" parent="UI/HUD"]
 visible = false
@@ -413,6 +450,12 @@ size_flags_horizontal = 4
 custom_fonts/font = SubResource( 5 )
 align = 1
 
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/TurretInfoBar/H/GunT2_1"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
+
 [node name="MissileT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
 margin_left = 376.0
 margin_top = 15.0
@@ -447,6 +490,12 @@ size_flags_horizontal = 4
 custom_fonts/font = SubResource( 5 )
 align = 1
 
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/TurretInfoBar/H/MissileT2_1"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
+
 [node name="MissileT2_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
 margin_left = 460.0
 margin_top = 15.0
@@ -479,6 +528,12 @@ margin_right = 17.0
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 5 )
 align = 1
+
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/TurretInfoBar/H/MissileT2_2"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
 
 [node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
 anchor_left = 1.0
