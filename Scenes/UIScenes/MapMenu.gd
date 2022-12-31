@@ -3,11 +3,17 @@ extends Control
 var stage
 var map
 
+var stage_button_list
+var map_button_list
+
 func _ready():
-	for i in get_tree().get_nodes_in_group("stageButton"):
+	stage_button_list = get_tree().get_nodes_in_group("stageButton")
+	map_button_list = get_tree().get_nodes_in_group("MapButton")
+	for i in stage_button_list:
 		i.connect("pressed", self, "select_stage", [i.get_name()])
-	for i in get_tree().get_nodes_in_group("MapButton"):
+	for i in map_button_list:
 		i.connect("pressed", self, "select_map", [i.get_name()])
+	show_available_stages()
 	select_stage("1")
 	$M/VB3/Play.visible = false
 
@@ -17,11 +23,12 @@ func select_stage(_stage):
 	hide_all_maps()
 	set_stage_pressed_button()
 	
-	var stage_list = GameData.Maps[stage]
-	if stage_list:
-		for i in stage_list:
-			var hbox_num = get_hbox_number(int(i))
-			get_node("M/VB2/Maps" + String(hbox_num) + "/" + String(i)).visible = true 
+	var map_list = GameData.Maps[stage]
+	if map_list:
+		for i in map_list:
+			for j in map_button_list:
+				if i == j.get_node("Label").text:
+					j.visible = true 
 
 func _physics_process(delta):
 	if stage and map:
@@ -34,34 +41,32 @@ func select_map(_map):
 	set_map_pressed_button()
 
 func hide_all_maps():
-	for i in get_tree().get_nodes_in_group("MapButton"):
-		var hbox_num = get_hbox_number(int(i.get_node("Label").text))
-		get_node("M/VB2/Maps" + String(hbox_num) + "/" + String(i.get_node("Label").text)).visible = false
+	for i in map_button_list:
+		i.visible = false
 
 func set_stage_pressed_button():
-	for i in get_tree().get_nodes_in_group("stageButton"):
-		var hbox_num = get_hbox_number(int(i.get_node("Label").text))
-		get_node("M/VB/Stages" + String(hbox_num) + "/" + String(i.get_node("Label").text)).pressed = false
+	for i in stage_button_list:
+		i.pressed = false
 	if stage:
-		var hbox_num = get_hbox_number(int(stage))
-		get_node("M/VB/Stages" + String(hbox_num) + "/" + String(stage)).pressed = true
+		for i in stage_button_list:
+			if i.get_node("Label").text == stage:
+				i.pressed = true
 	set_map_pressed_button()
 
 func set_map_pressed_button():
-	for i in get_tree().get_nodes_in_group("MapButton"):
-		var hbox_num = get_hbox_number(int(i.get_node("Label").text))
-		get_node("M/VB2/Maps" + String(hbox_num) + "/" + String(i.get_node("Label").text)).pressed = false
+	for i in map_button_list:
+		i.pressed = false
 	if map:
-		var hbox_num = get_hbox_number(int(map))
-		get_node("M/VB2/Maps" + String(hbox_num) + "/" + String(map)).pressed = true
-		
-func get_hbox_number(number):
-	if number < 5:
-		return 1
-	elif number >= 5 and number < 9:
-		return 2
-	elif number >= 9:
-		return 3
+		for i in map_button_list:
+			if i.get_node("Label").text == map:
+				i.pressed = true
+
+func show_available_stages():
+	for i in stage_button_list:
+		if GameData.Maps[i.get_node("Label").text]:
+			i.visible = true
+		else:
+			i.visible = false
 
 func _on_Upgrades_pressed():
 	$UpgradeMenu.visible = true
