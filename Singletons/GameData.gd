@@ -62,7 +62,7 @@ var tower_data = {
 		"range": 350,
 		"category": "MultiShot",
 		"shot_speed": 1,
-		"price": 150},
+		"price": 00},
 }
 
 var enemy_data = {

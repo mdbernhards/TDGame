@@ -30,7 +30,7 @@ position = Vector2( 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Turret/TurretsArea"]
 visible = false
-position = Vector2( -23, -32 )
+position = Vector2( -32.2841, -32.2841 )
 shape = SubResource( 2 )
 
 [node name="Range" type="Area2D" parent="."]

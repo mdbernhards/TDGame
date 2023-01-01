@@ -4,12 +4,15 @@ var speed
 var damage
 var velocity = Vector2.ZERO
 var direction
+var turret_range
 
 func start():
 	velocity = get_direction() * speed
+	turret_range = GameData.tower_data[get_parent().type].range / 2
 	
 func _physics_process(delta):
 	position += velocity * delta
+	check_bullet_range()
 
 func _on_Missile_body_entered(body):
 	body.get_parent().on_hit(damage)
@@ -27,3 +30,13 @@ func get_direction():
 		return Vector2(0, 100)
 	elif direction == 4:
 		return Vector2(-100, 0)
+
+func check_bullet_range():
+	var check_against
+	if direction == 1 or direction == 3:
+		check_against = position.y
+	elif direction == 2 or direction == 4:
+		check_against = position.x
+
+	if (check_against > 0 and check_against > turret_range + 32) or (check_against < 0 and check_against < -turret_range + 32):
+		queue_free()

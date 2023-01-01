@@ -37,10 +37,10 @@ texture = ExtResource( 3 )
 offset = Vector2( 38, 0 )
 
 [node name="TurretsArea" type="Area2D" parent="Turret"]
+visible = false
 position = Vector2( 32, 32 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Turret/TurretsArea"]
-visible = false
 polygon = PoolVector2Array( -50, -22, -42, -12, -25, -12, -10, -20, -7, -28, -1, -28, 1, -25, 22, -25, 22, -39, 1, -39, -1, -36, -7, -36, -10, -44, -25, -52, -42, -52, -50, -42 )
 
 [node name="Range" type="Area2D" parent="."]
