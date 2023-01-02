@@ -62,7 +62,7 @@ var tower_data = {
 		"range": 350,
 		"category": "MultiShot",
 		"shot_speed": 1,
-		"price": 00},
+		"price": 150},
 }
 
 var enemy_data = {
@@ -71,6 +71,12 @@ var enemy_data = {
 		"speed": 150,
 		"money_droped": 20,
 		"base_damage": 21,
+	},
+	"SandTank": {
+		"health": 130,
+		"speed": 160,
+		"money_droped": 25,
+		"base_damage": 24,
 	},
 	"GreenTank": {
 		"health": 60,
@@ -90,18 +96,24 @@ var enemy_data = {
 		"money_droped": 50,
 		"base_damage": 34,
 	},
-	"SandTank": {
-		"health": 130,
-		"speed": 160,
-		"money_droped": 25,
-		"base_damage": 24,
+	"BigRedTank": {
+		"health": 1200,
+		"speed": 65,
+		"money_droped": 55,
+		"base_damage": 34,
+	},
+	"HugeRedTank": {
+		"health": 2400,
+		"speed": 60,
+		"money_droped": 60,
+		"base_damage": 34,
 	},
 }
 
 var turretsT1 = {"Turrets": ["GunT1", "MissileT1", "LaserT1", "FlamethrowerT1", "DeadZoneT1", "MultiShotT1"]}
 var turretUpgrades = {"Turrets": ["GunT2_1", "MissileT2_1", "MissileT2_2"]}
 
-var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank", "SandTank"]}
+var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank", "SandTank", "BigRedTank", "HugeRedTank"]}
 
 var wave_data = {
 	"Waves": 7,
@@ -110,10 +122,6 @@ var wave_data = {
 		"Order": {
 			"1": {
 				"BlueTank": 2,
-				"GreenTank": 0,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 1,
 				"Offset": 0.4,
 				"Path": "Path1",
 			},}},
@@ -122,19 +130,12 @@ var wave_data = {
 		"Order": {
 			"1": {
 				"BlueTank": 2,
-				"GreenTank": 0,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.4,
 				"Path": "Path2",
 			},
 			"2": {
 				"BlueTank": 3,
-				"GreenTank": 0,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
+				"SandTank": 2,
 				"Offset": 0.3,
 				"Path": "Path2",
 			},}},
@@ -143,19 +144,11 @@ var wave_data = {
 		"Order": {
 			"1": {
 				"BlueTank": 4,
-				"GreenTank": 0,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.38,
 				"Path": "Path1",
 			},
 			"2": {
 				"BlueTank": 6,
-				"GreenTank": 0,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.28,
 				"Path": "Path2",
 			},}},
@@ -165,27 +158,18 @@ var wave_data = {
 			"1": {
 				"BlueTank": 4,
 				"GreenTank": 2,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.45,
 				"Path": "Path1",
 			},
 			"2": {
 				"BlueTank": 4,
 				"GreenTank": 2,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.4,
 				"Path": "Path2",
 			},
 			"3": {
 				"BlueTank": 4,
 				"GreenTank": 2,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path2",
 			},}},
@@ -195,27 +179,17 @@ var wave_data = {
 			"1": {
 				"BlueTank": 3,
 				"GreenTank": 5,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.45,
 				"Path": "Path1",
 			},
 			"2": {
 				"BlueTank": 7,
-				"GreenTank": 0,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.2,
 				"Path": "Path1",
 			},
 			"3": {
 				"BlueTank": 2,
 				"GreenTank": 2,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.17,
 				"Path": "Path2",
 			},
@@ -223,8 +197,6 @@ var wave_data = {
 				"BlueTank": 4,
 				"GreenTank": 3,
 				"RedTank": 3,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.15,
 				"Path": "Path2",
 			},}},
@@ -234,9 +206,6 @@ var wave_data = {
 			"1": {
 				"BlueTank": 10,
 				"GreenTank": 6,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path1",
 			},
@@ -244,8 +213,6 @@ var wave_data = {
 				"BlueTank": 0,
 				"GreenTank": 8,
 				"RedTank": 4,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path1",
 			},
@@ -253,17 +220,11 @@ var wave_data = {
 				"BlueTank": 0,
 				"GreenTank": 10,
 				"RedTank": 6,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.2,
 				"Path": "Path1",
 			},
 			"4": {
-				"BlueTank": 0,
-				"GreenTank": 0,
-				"RedTank": 0,
 				"BlackTank": 10,
-				"SandTank": 0,
 				"Offset": 0.5,
 				"Path": "Path1",
 			},}},
@@ -271,38 +232,27 @@ var wave_data = {
 		"Orders": 4,
 		"Order": {
 			"1": {
-				"BlueTank": 0,
 				"GreenTank": 20,
-				"RedTank": 0,
-				"BlackTank": 0,
-				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path1",
 			},
 			"2": {
-				"BlueTank": 0,
-				"GreenTank": 0,
 				"RedTank": 20,
 				"BlackTank": 1,
-				"SandTank": 0,
 				"Offset": 0.32,
 				"Path": "Path1",
 			},
 			"3": {
-				"BlueTank": 0,
 				"GreenTank": 10,
 				"RedTank": 6,
 				"BlackTank": 3,
-				"SandTank": 0,
 				"Offset": 0.2,
 				"Path": "Path1",
 			},
 			"4": {
-				"BlueTank": 0,
-				"GreenTank": 0,
-				"RedTank": 0,
 				"BlackTank": 20,
-				"SandTank": 0,
+				"BigRedTank": 5,
+				"HugeRedTank": 5,
 				"Offset": 0.4,
 				"Path": "Path1",
 			},}},}

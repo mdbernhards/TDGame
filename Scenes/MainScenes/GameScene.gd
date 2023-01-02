@@ -185,7 +185,7 @@ func get_order(order):
 	var wave = []
 	var enemies = GameData.enemies["Enemies"]
 	for enemy in enemies:
-		if order[enemy] != null:
+		if enemy in order:
 			for i in order[enemy]:
 				wave.append_array([[enemy, order.Offset, order.Path]])
 				enemies_left += 1
