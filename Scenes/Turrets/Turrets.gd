@@ -3,7 +3,6 @@ extends Node2D
 var category
 var type
 var enemy
-var new_missile
 
 var enemy_array = []
 var built = false
@@ -45,7 +44,6 @@ func fire():
 	ready = false
 	if category == "Projectile":
 		fire_gun()
-		enemy.on_hit(GameData.tower_data[type]["damage"])
 	elif category == "Missile":
 		fire_missile()
 	elif category == "Laser":
@@ -60,55 +58,22 @@ func fire():
 	ready = true
 
 func fire_gun():
-	var animation_player = get_node("AnimationPlayer")
-	if animation_player != null:
-		animation_player.play("Fire")
+	pass # check GunTurretLogic.gd
 
 func fire_missile():
-	new_missile = missile.instance()
-	add_child(new_missile)
-	
-	if type == "MissileT1":
-		shoot_missileT1()
-	elif type == "MissileT2_1":
-		shoot_missileT2_1()
-	elif type == "MissileT2_2":
-		shoot_missileT2_2()
+	pass #check MissileTurretLogic.gd
 
 func fire_laser():
-	pass
+	pass #check LaserT1.gd
 
 func fire_flamethrower():
-	pass
+	pass #check FlamethrowerT1.gd
 	
 func fire_aoe():
-	pass
+	pass #check DeadZoneT1.gd
 
 func fire_multishot():
-	pass
-
-func shoot_missileT1():
-	pass
-
-func shoot_missileT2_1():
-	pass
-
-func shoot_missileT2_2():
-	pass
-
-func shoot_missile(sprite, collisonShape, missile_on_turret, new_missile):
-	sprite.position.x += 3
-	collisonShape.position.x += 3
-	
-	new_missile.speed = GameData.tower_data[type]["missile_speed"]
-	new_missile.damage = GameData.tower_data[type]["damage"]
-	new_missile.steer_force = GameData.tower_data[type]["steer_force"]
-
-	missile_on_turret.hide()
-	
-	new_missile.start(Transform2D(get_node("Turret").global_rotation, to_global(get_node("Turret").position)), enemy)
-	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]/ 1.5), "timeout")
-	missile_on_turret.show()
+	pass #check MultiShotT1.gd
 
 func _on_Range_body_entered(body):
 	enemy_array.append(body.get_parent())
@@ -145,6 +110,7 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 		
 		# for now, need to make it with node groups when more upgrades
 		var gun_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/GunT2_1")
+		var gun_t11_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/GunT2_2")
 		var missile_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_1")
 		var missile_t11_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_2")
 		
@@ -155,6 +121,7 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 		
 		if type == "GunT1":
 			gun_t1_upgrades.visible = true
+			gun_t11_upgrades.visible = true
 		elif type == "MissileT1":
 			missile_t1_upgrades.visible = true
 			missile_t11_upgrades.visible = true

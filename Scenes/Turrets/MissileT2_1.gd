@@ -1,4 +1,4 @@
-extends "res://Scenes/Turrets/Turrets.gd"
+extends "res://Scenes/Turrets/MissileTurretLogic.gd"
 
 var left_missile = true
 

@@ -1,4 +1,4 @@
-extends "res://Scenes/Turrets/Turrets.gd"
+extends "res://Scenes/Turrets/MissileTurretLogic.gd"
 		
 func shoot_missileT1():
 	var sprite = get_node("Missile/Sprite")

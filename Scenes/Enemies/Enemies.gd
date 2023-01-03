@@ -8,6 +8,8 @@ var speed
 var hp
 var base_damage
 var money_droped
+var freeze_power
+var freeze_time
 
 onready var health_bar = get_node("HealthBar")
 onready var impact_area = get_node("Impact")
@@ -59,3 +61,7 @@ func on_destroy():
 		get_node("KinematicBody2D").queue_free()
 		yield(get_tree().create_timer(0.2), "timeout")
 		self.queue_free()
+
+func apply_freeze(_freeze_power, _freeze_time):
+	freeze_power = _freeze_power
+	freeze_time = _freeze_time

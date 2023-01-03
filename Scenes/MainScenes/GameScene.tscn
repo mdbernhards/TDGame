@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Assets/Towers/ufoBlue.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/Buttons/blue_button12.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Assets/Towers/cockpitGreen_1.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Towers/towerDefense_tile134.png" type="Texture" id=19]
 [ext_resource path="res://Assets/UI/Buttons/red_transparent_12.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Towers/icegun.png" type="Texture" id=21]
 
 [sub_resource type="DynamicFont" id=4]
 size = 18
@@ -456,10 +457,50 @@ scale = Vector2( 1.63265, 1.77778 )
 texture = ExtResource( 20 )
 centered = false
 
-[node name="MissileT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
+[node name="GunT2_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
 margin_left = 376.0
 margin_top = 15.0
 margin_right = 456.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/TurretInfoBar/H/GunT2_2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -42.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="UI/HUD/TurretInfoBar/H/GunT2_2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -17.0
+margin_top = -27.0
+margin_right = 17.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 5 )
+align = 1
+
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/TurretInfoBar/H/GunT2_2"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
+
+[node name="MissileT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
+margin_left = 460.0
+margin_top = 15.0
+margin_right = 540.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
@@ -497,9 +538,9 @@ texture = ExtResource( 20 )
 centered = false
 
 [node name="MissileT2_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
-margin_left = 460.0
+margin_left = 544.0
 margin_top = 15.0
-margin_right = 540.0
+margin_right = 624.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
