@@ -8,6 +8,7 @@
 extents = Vector2( 19, 19 )
 
 [node name="RedTank" type="PathFollow2D" groups=["enemies"]]
+self_modulate = Color( 0, 1, 1, 1 )
 loop = false
 script = ExtResource( 3 )
 

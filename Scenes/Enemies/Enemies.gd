@@ -8,8 +8,10 @@ var speed
 var hp
 var base_damage
 var money_droped
-var freeze_power
-var freeze_time
+
+var freeze_power = 1
+var freeze_timer = Timer.new()
+var is_frozen = false
 
 onready var health_bar = get_node("HealthBar")
 onready var impact_area = get_node("Impact")
@@ -35,7 +37,7 @@ func _physics_process(delta):
 	move(delta)
 		
 func move(delta):
-	set_offset(get_offset() + speed * delta)
+	set_offset(get_offset() + speed * delta * freeze_power)
 	health_bar.set_position(get_position() - Vector2(30, 30))
 	
 func on_hit(damage):
@@ -64,4 +66,13 @@ func on_destroy():
 
 func apply_freeze(_freeze_power, _freeze_time):
 	freeze_power = _freeze_power
-	freeze_time = _freeze_time
+	freeze_timer.connect("timeout", self, "stop_freeze")
+	freeze_timer.wait_time = _freeze_time
+	freeze_timer.one_shot = true
+	add_child(freeze_timer)
+	freeze_timer.start()
+	modulate = Color("00ffff")
+
+func stop_freeze():
+	freeze_power = 1
+	modulate = Color("ffffff")
