@@ -3,6 +3,8 @@ extends Area2D
 
 var speed
 var damage
+var burning_damage
+var burning_time
 var steer_force = 0
 
 var velocity = Vector2.ZERO
@@ -39,4 +41,5 @@ func _on_LifeTime_timeout():
 
 func _on_Flame_body_entered(body):
 	body.get_parent().on_hit(damage)
+	body.get_parent().apply_fire(burning_time, burning_damage)
 	queue_free()
