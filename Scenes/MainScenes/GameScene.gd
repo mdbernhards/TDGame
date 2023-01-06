@@ -141,6 +141,9 @@ func verify_and_build():
 		new_tower.category = GameData.tower_data[build_type]["category"]
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 5)
+		var ev = InputEventAction.new()
+		ev.pressed = true
+		new_tower._on_TurretsArea_input_event(null, ev, null)
 
 func can_buy_turret():
 	var price = GameData.tower_data[build_type]["price"]

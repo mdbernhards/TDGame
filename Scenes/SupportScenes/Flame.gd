@@ -5,11 +5,12 @@ var speed
 var damage
 var burning_damage
 var burning_time
-var steer_force = 0
+var burn_cooldown
+
+var target = null
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
-var target = null
 var current_velocity = Vector2.ZERO
 
 func start(_transform, _target):
@@ -17,6 +18,9 @@ func start(_transform, _target):
 	velocity = transform.x * speed
 	current_velocity = velocity
 	target = _target
+	burning_damage = GameData.tower_data[get_parent().type]["burning_damage"]
+	burning_time = GameData.tower_data[get_parent().type]["burning_time"]
+	burn_cooldown = GameData.tower_data[get_parent().type]["burn_cooldown"]
 
 func seek():
 	var steer = Vector2.ZERO
@@ -41,5 +45,5 @@ func _on_LifeTime_timeout():
 
 func _on_Flame_body_entered(body):
 	body.get_parent().on_hit(damage)
-	body.get_parent().apply_fire(burning_time, burning_damage)
+	body.get_parent().apply_fire(burning_damage, burning_time, burn_cooldown)
 	queue_free()

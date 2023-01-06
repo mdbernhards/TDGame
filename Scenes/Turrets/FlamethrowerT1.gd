@@ -1,4 +1,4 @@
-extends "res://Scenes/Turrets/Turrets.gd"
+extends "res://Scenes/Turrets/FlamethrowerTurretLogic.gd"
 
 func _physics_process(delta):
 	if enemy:

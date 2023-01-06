@@ -18,7 +18,7 @@ var tower_data = {
 		"rof": 1,
 		"range": 500,
 		"category": "Projectile",
-		"price": 00,
+		"price": 120,
 		"freeze_power": 0.7,
 		"freeze_time": 5},
 	"MissileT1": {
@@ -57,7 +57,10 @@ var tower_data = {
 		"range": 850,
 		"category": "Flamethrower",
 		"price": 560,
-		"flame_speed": 400},
+		"flame_speed": 400,
+		"burning_damage": 5,
+		"burning_time": 10,
+		"burn_cooldown": 1},
 	"DeadZoneT1": {
 		"damage": 20,
 		"rof": 1.3,

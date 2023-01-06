@@ -9,9 +9,11 @@ var hp
 var base_damage
 var money_droped
 
+var burning_timer = Timer.new()
+var burn_cooldown_timer = Timer.new()
+
 var freeze_power = 1
 var freeze_timer = Timer.new()
-var is_frozen = false
 
 onready var health_bar = get_node("HealthBar")
 onready var impact_area = get_node("Impact")
@@ -35,7 +37,7 @@ func _physics_process(delta):
 		emit_signal("base_damage", base_damage)
 		queue_free()
 	move(delta)
-		
+
 func move(delta):
 	set_offset(get_offset() + speed * delta * freeze_power)
 	health_bar.set_position(get_position() - Vector2(30, 30))
@@ -75,4 +77,21 @@ func apply_freeze(_freeze_power, _freeze_time):
 
 func stop_freeze():
 	freeze_power = 1
+	modulate = Color("ffffff")
+	
+func apply_fire(_burning_damage, _burning_time, _cooldown_time):
+	burn_cooldown_timer.connect("timeout", self, "on_hit",[_burning_damage])
+	burn_cooldown_timer.wait_time = _cooldown_time
+	add_child(burn_cooldown_timer)
+	burn_cooldown_timer.start()
+	
+	burning_timer.connect("timeout", self, "stop_fire")
+	burning_timer.wait_time = _burning_time
+	burning_timer.one_shot = true
+	add_child(burning_timer)
+	burning_timer.start()
+	modulate = Color("ff8300")
+
+func stop_fire():
+	burn_cooldown_timer.stop()
 	modulate = Color("ffffff")
