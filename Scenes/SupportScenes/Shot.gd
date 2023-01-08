@@ -24,12 +24,20 @@ func _on_LifeTime_timeout():
 func get_direction():
 	if direction == 1:
 		return Vector2(0, -100)
+	elif direction == 5:
+		return Vector2(50, -50)
 	elif direction == 2:
 		return Vector2(100, 0)
+	elif direction == 6:
+		return Vector2(50, 50)
 	elif direction == 3:
 		return Vector2(0, 100)
+	elif direction == 7:
+		return Vector2(-50, 50)
 	elif direction == 4:
 		return Vector2(-100, 0)
+	elif direction == 8:
+		return Vector2(-50, -50)
 
 func check_bullet_range():
 	var check_against
@@ -37,6 +45,10 @@ func check_bullet_range():
 		check_against = position.y
 	elif direction == 2 or direction == 4:
 		check_against = position.x
-
+	elif direction == 6 or direction == 7:
+		check_against = position.x * -2 + 24
+	elif direction == 5 or direction == 8:
+		check_against = position.y * 2 + 24
+		
 	if (check_against > 0 and check_against > turret_range + 32) or (check_against < 0 and check_against < -turret_range + 32):
 		queue_free()

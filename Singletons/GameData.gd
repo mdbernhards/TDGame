@@ -73,7 +73,14 @@ var tower_data = {
 		"range": 350,
 		"category": "MultiShot",
 		"shot_speed": 3,
-		"price": 100},
+		"price": 0},
+	"MultiShotT2_1": {
+		"damage": 65,
+		"rof": 0.35,
+		"range": 350,
+		"category": "MultiShot",
+		"shot_speed": 3,
+		"price": 0},
 }
 
 var enemy_data = {
@@ -122,7 +129,7 @@ var enemy_data = {
 }
 
 var turretsT1 = {"Turrets": ["GunT1", "MissileT1", "LaserT1", "FlamethrowerT1", "DeadZoneT1", "MultiShotT1"]}
-var turretUpgrades = {"Turrets": ["GunT2_1", "GunT2_2", "MissileT2_1", "MissileT2_2"]}
+var turretUpgrades = {"Turrets": ["GunT2_1", "GunT2_2", "MissileT2_1", "MissileT2_2", "MultiShotT2_1"]}
 
 var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank", "SandTank", "BigRedTank", "HugeRedTank"]}
 

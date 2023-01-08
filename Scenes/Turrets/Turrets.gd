@@ -113,6 +113,7 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 		var gun_t11_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/GunT2_2")
 		var missile_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_1")
 		var missile_t11_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MissileT2_2")
+		var multishot_t1_upgrades = GameScene.get_node("UI/HUD/TurretInfoBar/H/MultiShotT2_1")
 		
 		hide_all_ranges()
 		show_range()
@@ -125,7 +126,9 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 		elif type == "MissileT1":
 			missile_t1_upgrades.visible = true
 			missile_t11_upgrades.visible = true
-			
+		elif type == "MultiShotT1":
+			multishot_t1_upgrades.visible = true
+
 		if GameScene.build_location == position:
 			turret_info_bar.visible = !turret_info_bar.visible
 		else:
