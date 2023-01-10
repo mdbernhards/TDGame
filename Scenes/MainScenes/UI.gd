@@ -78,12 +78,6 @@ func _on_SpeedUp_pressed():
 		Engine.set_time_scale(4.0)
 		get_node("HUD/GameControls/SpeedUp/Speed").text = "x4"
 	elif Engine.get_time_scale() == 4.0:
-		Engine.set_time_scale(8.0)
-		get_node("HUD/GameControls/SpeedUp/Speed").text = "x8"
-	elif Engine.get_time_scale() == 8.0:
-		Engine.set_time_scale(16.0)
-		get_node("HUD/GameControls/SpeedUp/Speed").text = "x16"
-	elif Engine.get_time_scale() == 16.0:
 		Engine.set_time_scale(1.0)
 		get_node("HUD/GameControls/SpeedUp/Speed").text = "x1"
 

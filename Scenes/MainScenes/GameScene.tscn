@@ -403,7 +403,7 @@ margin_right = 70.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 70, 0 )
 
-[node name="Label" type="Label" parent="UI/HUD/TurretInfoBar/H"]
+[node name="StatsLabel" type="Label" parent="UI/HUD/TurretInfoBar/H"]
 margin_left = 74.0
 margin_top = 44.0
 margin_right = 214.0
@@ -419,7 +419,7 @@ margin_right = 288.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 70, 0 )
 
-[node name="GunT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
+[node name="GunT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["GunT1_upgrade", "upgrade_buttons"]]
 margin_left = 292.0
 margin_top = 15.0
 margin_right = 372.0
@@ -459,7 +459,7 @@ scale = Vector2( 1.63265, 1.77778 )
 texture = ExtResource( 20 )
 centered = false
 
-[node name="GunT2_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
+[node name="GunT2_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["GunT1_upgrade", "upgrade_buttons"]]
 margin_left = 376.0
 margin_top = 15.0
 margin_right = 456.0
@@ -499,7 +499,7 @@ scale = Vector2( 1.63265, 1.77778 )
 texture = ExtResource( 20 )
 centered = false
 
-[node name="MissileT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
+[node name="MissileT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["MissileT1_upgrade", "upgrade_buttons"]]
 margin_left = 460.0
 margin_top = 15.0
 margin_right = 540.0
@@ -539,7 +539,7 @@ scale = Vector2( 1.63265, 1.77778 )
 texture = ExtResource( 20 )
 centered = false
 
-[node name="MissileT2_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
+[node name="MissileT2_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["MissileT1_upgrade", "upgrade_buttons"]]
 margin_left = 544.0
 margin_top = 15.0
 margin_right = 624.0
@@ -578,7 +578,7 @@ scale = Vector2( 1.63265, 1.77778 )
 texture = ExtResource( 20 )
 centered = false
 
-[node name="MultiShotT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["upgrade_buttons"]]
+[node name="MultiShotT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["MultiShotT1_upgrade", "upgrade_buttons"]]
 margin_left = 628.0
 margin_top = 15.0
 margin_right = 708.0

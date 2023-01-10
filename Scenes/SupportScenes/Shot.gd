@@ -45,7 +45,9 @@ func check_bullet_range():
 		check_against = position.y
 	elif direction == 2 or direction == 4:
 		check_against = position.x
-	elif direction == 6 or direction == 7:
+	elif direction == 6:
+		check_against = position.x + 48
+	elif direction == 7:
 		check_against = position.x * 2 + 24
 	elif direction == 5 or direction == 8:
 		check_against = position.y * 2 + 24
