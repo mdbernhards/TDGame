@@ -5,6 +5,8 @@ var damage
 var velocity = Vector2.ZERO
 var direction
 var turret_range
+var steer_force
+var acceleration = Vector2.ZERO
 
 func start():
 	velocity = get_direction() * speed

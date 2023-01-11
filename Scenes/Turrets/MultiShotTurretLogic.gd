@@ -21,5 +21,5 @@ func setup_shot(new_shot):
 func get_shot_count():
 	if type == "MultiShotT1":
 		return 4
-	elif type == "MultiShotT2_1":
+	elif type == "MultiShotT2_1" or type == "MultiShotT3_1":
 		return 8
