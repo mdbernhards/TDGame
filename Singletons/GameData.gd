@@ -312,6 +312,104 @@ var wave_data = {
 				"HugeRedTank": 15,
 				"Offset": 0.2,
 				"Path": "Path1",
+			},}},
+	"Wave11": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"BlackTank": 33,
+				"BigRedTank": 9,
+				"HugeRedTank": 17,
+				"Offset": 0.19,
+				"Path": "Path1",
+			},}},
+	"Wave12": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"BlackTank": 30,
+				"BigRedTank": 8,
+				"HugeRedTank": 20,
+				"Offset": 0.175,
+				"Path": "Path1",
+			},}},
+	"Wave13": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"BlackTank": 29,
+				"BigRedTank": 12,
+				"HugeRedTank": 22,
+				"Offset": 0.17,
+				"Path": "Path1",
+			},}},
+	"Wave14": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"BlackTank": 20,
+				"BigRedTank": 5,
+				"HugeRedTank": 30,
+				"Offset": 0.16,
+				"Path": "Path1",
+			},}},
+	"Wave15": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"BlackTank": 10,
+				"BigRedTank": 10,
+				"HugeRedTank": 35,
+				"Offset": 0.15,
+				"Path": "Path1",
+			},}},
+	"Wave16": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"BigRedTank": 15,
+				"HugeRedTank": 45,
+				"Offset": 0.14,
+				"Path": "Path1",
+			},}},
+	"Wave17": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"BigRedTank": 20,
+				"HugeRedTank": 50,
+				"Offset": 0.13,
+				"Path": "Path1",
+			},}},
+	"Wave18": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"HugeRedTank": 70,
+				"Offset": 0.12,
+				"Path": "Path1",
+			},}},
+	"Wave19": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"HugeRedTank": 100,
+				"Offset": 0.11,
+				"Path": "Path1",
+			},}},
+	"Wave20": {
+		"Orders": 1,
+		"Order": {
+			"1": {
+				"BlueTank": 40,
+				"GreenTank": 50,
+				"RedTank": 40,
+				"BlackTank": 30,
+				"SandTank": 50,
+				"BigRedTank": 30,
+				"HugeRedTank": 30,
+				"Offset": 0.25,
+				"Path": "Path2",
 			},}},}
 
 var Maps = {

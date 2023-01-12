@@ -11,11 +11,14 @@ func _ready():
 	start_count_down()
 	
 func start_count_down():
-	timer.start(6)
+	if get_parent().current_wave == 0:
+		timer.start(150)
+	else:
+		timer.start(20)
 
 func set_count_down_time():
 	get_node("HUD/CountDown").text = String(round(timer.time_left))
-	if timer.is_stopped():
+	if timer.is_stopped() or timer.time_left > 120:
 		get_node("HUD/CountDown").visible = false
 	else:
 		get_node("HUD/CountDown").visible = true
