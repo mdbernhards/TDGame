@@ -36,3 +36,10 @@ func _on_Missile_body_entered(body):
 
 func _on_LifeTime_timeout():
 	queue_free()
+
+func expload():
+	$Particles2D.emitting = false
+	set_physics_process(false)
+	$AnimationPlayer.play("explode")
+	yield($AnimationPlayer, "animation_finished")
+	queue_free()

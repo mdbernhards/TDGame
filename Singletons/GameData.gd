@@ -24,11 +24,11 @@ var tower_data = {
 	"MissileT1": {
 		"damage": 75,
 		"rof": 2,
-		"range": 450,
+		"range": 4500,
 		"category": "Missile",
-		"price": 60,
+		"price": 10,
 		"missile_speed": 300,
-		"steer_force": 0.0},
+		"steer_force": 10.0},
 	"MissileT2_1": {
 		"damage": 95,
 		"rof": 1,
@@ -401,21 +401,21 @@ var wave_data = {
 		"Orders": 1,
 		"Order": {
 			"1": {
-				"BlueTank": 40,
+				"BlueTank": 50,
 				"GreenTank": 50,
-				"RedTank": 40,
-				"BlackTank": 30,
+				"RedTank": 50,
+				"BlackTank": 50,
 				"SandTank": 50,
-				"BigRedTank": 30,
-				"HugeRedTank": 30,
-				"Offset": 0.25,
+				"BigRedTank": 50,
+				"HugeRedTank": 50,
+				"Offset": 0.1,
 				"Path": "Path2",
 			},}},}
 
 var Maps = {
 	"Stages": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
 	"1": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-	"2": ["1", "2"],
+	"2": ["1", "2", "3", "4", "5"],
 	"3": ["1"],
 	"4": [],
 	"5": [],

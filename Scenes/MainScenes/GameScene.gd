@@ -50,7 +50,6 @@ func _process(delta):
 		elif get_node("UI/HUD/CountDown/Timer").is_stopped() and timer_stoped:
 			get_node("UI").start_count_down()
 			timer_stoped = false
-		
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
