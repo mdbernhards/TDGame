@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Towers/8multishot.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Towers/towerDefense_tile181.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Turrets/MultiShotT3_2.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 0.01
+
+[node name="MultiShotT3_2" type="Node2D" groups=["turrets"]]
+script = ExtResource( 3 )
+
+[node name="Base" type="Sprite" parent="."]
+position = Vector2( 32, 32 )
+texture = ExtResource( 2 )
+
+[node name="Turret" type="Sprite" parent="."]
+self_modulate = Color( 1, 0.129412, 0.94902, 1 )
+position = Vector2( 22, 32 )
+texture = ExtResource( 1 )
+offset = Vector2( 10, 0 )
+
+[node name="Muzzle1" type="Position2D" parent="Turret"]
+position = Vector2( 10, -33 )
+
+[node name="Muzzle5" type="Position2D" parent="Turret"]
+position = Vector2( 34, -24 )
+
+[node name="Muzzle2" type="Position2D" parent="Turret"]
+position = Vector2( 44, 0 )
+
+[node name="Muzzle6" type="Position2D" parent="Turret"]
+position = Vector2( 34, 24 )
+
+[node name="Muzzle3" type="Position2D" parent="Turret"]
+position = Vector2( 10, 33 )
+
+[node name="Muzzle7" type="Position2D" parent="Turret"]
+position = Vector2( -14, 24 )
+
+[node name="Muzzle4" type="Position2D" parent="Turret"]
+position = Vector2( -24, 0 )
+
+[node name="Muzzle8" type="Position2D" parent="Turret"]
+position = Vector2( -14, -24 )
+
+[node name="TurretsArea" type="Area2D" parent="Turret"]
+visible = false
+position = Vector2( 32, 32 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Turret/TurretsArea"]
+visible = false
+position = Vector2( 1, 0 )
+polygon = PoolVector2Array( -32, -21, -25, -1, -21, -1, -14, -21, 7, -30, 7, -34, -14, -43, -21, -63, -25, -63, -32, -43, -54, -34, -54, -30 )
+
+[node name="Range" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="TurretsArea" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TurretsArea"]
+visible = false
+polygon = PoolVector2Array( -26, 17, -17, 26, 17, 26, 26, 17, 26, -17, 17, -26, -16, -26, -26, -17 )
+
+[connection signal="input_event" from="Turret/TurretsArea" to="." method="_on_TurretsArea_input_event"]
+[connection signal="mouse_entered" from="Turret/TurretsArea" to="." method="_on_TurretsArea_mouse_entered"]
+[connection signal="mouse_exited" from="Turret/TurretsArea" to="." method="_on_TurretsArea_mouse_exited"]
+[connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
+[connection signal="input_event" from="TurretsArea" to="." method="_on_TurretsArea_input_event"]
+[connection signal="mouse_entered" from="TurretsArea" to="." method="_on_TurretsArea_mouse_entered"]
+[connection signal="mouse_exited" from="TurretsArea" to="." method="_on_TurretsArea_mouse_exited"]

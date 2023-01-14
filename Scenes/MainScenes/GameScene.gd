@@ -19,6 +19,8 @@ var timer_stoped = false
 
 var waves = GameData.wave_data["Waves"]
 
+var turretOpen
+
 ###
 ### Basic railsnakes
 ###
@@ -28,6 +30,8 @@ func _ready():
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
 	for i in get_tree().get_nodes_in_group("upgrade_buttons"):
 		i.connect("pressed", self, "initiate_upgrade", [i.get_name()])
+	for i in get_tree().get_nodes_in_group("sell_button"):
+		i.connect("pressed", self, "sell_turret")
 
 func get_map():
 	var map_data = get_parent().get_node("MapMenu")
@@ -111,6 +115,10 @@ func initiate_upgrade(tower_type):
 			if i.position == build_location:
 				i.free()
 		verify_and_build()
+		
+func sell_turret():
+	money += GameData.tower_data[turretOpen.type].price * 0.7
+	turretOpen.queue_free()
 
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()

@@ -389,6 +389,36 @@ custom_fonts/font = SubResource( 4 )
 text = "Upgrades"
 align = 1
 
+[node name="Control3" type="Control" parent="UI/HUD/TurretInfoBar/HBoxContainer"]
+margin_left = 500.0
+margin_right = 890.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 390, 0 )
+
+[node name="Sell" type="TextureButton" parent="UI/HUD/TurretInfoBar/HBoxContainer" groups=["sell_button"]]
+margin_left = 894.0
+margin_top = 5.0
+margin_right = 974.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 80, 30 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="UI/HUD/TurretInfoBar/HBoxContainer/Sell"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -22.0
+margin_top = -27.0
+margin_right = 30.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 5 )
+text = "Sell"
+align = 1
+
 [node name="H" type="HBoxContainer" parent="UI/HUD/TurretInfoBar"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -406,23 +436,23 @@ rect_min_size = Vector2( 70, 0 )
 [node name="StatsLabel" type="Label" parent="UI/HUD/TurretInfoBar/H"]
 margin_left = 74.0
 margin_top = 44.0
-margin_right = 214.0
+margin_right = 135.0
 margin_bottom = 65.0
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 4 )
-text = "Turret stats"
+text = "Stats"
 align = 1
 
 [node name="Control2" type="Control" parent="UI/HUD/TurretInfoBar/H"]
-margin_left = 218.0
-margin_right = 288.0
+margin_left = 139.0
+margin_right = 209.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 70, 0 )
 
 [node name="GunT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["GunT1_upgrade", "upgrade_buttons"]]
-margin_left = 292.0
+margin_left = 213.0
 margin_top = 15.0
-margin_right = 372.0
+margin_right = 293.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
@@ -460,9 +490,9 @@ texture = ExtResource( 20 )
 centered = false
 
 [node name="GunT2_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["GunT1_upgrade", "upgrade_buttons"]]
-margin_left = 376.0
+margin_left = 297.0
 margin_top = 15.0
-margin_right = 456.0
+margin_right = 377.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
@@ -500,9 +530,9 @@ texture = ExtResource( 20 )
 centered = false
 
 [node name="MissileT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["MissileT1_upgrade", "upgrade_buttons"]]
-margin_left = 460.0
+margin_left = 381.0
 margin_top = 15.0
-margin_right = 540.0
+margin_right = 461.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
@@ -540,9 +570,9 @@ texture = ExtResource( 20 )
 centered = false
 
 [node name="MissileT2_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["MissileT1_upgrade", "upgrade_buttons"]]
-margin_left = 544.0
+margin_left = 465.0
 margin_top = 15.0
-margin_right = 624.0
+margin_right = 545.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
@@ -579,9 +609,9 @@ texture = ExtResource( 20 )
 centered = false
 
 [node name="MultiShotT2_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["MultiShotT1_upgrade", "upgrade_buttons"]]
-margin_left = 628.0
+margin_left = 549.0
 margin_top = 15.0
-margin_right = 708.0
+margin_right = 629.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
@@ -621,9 +651,9 @@ texture = ExtResource( 20 )
 centered = false
 
 [node name="MultiShotT3_1" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["MultiShotT2_1_upgrade", "upgrade_buttons"]]
-margin_left = 628.0
+margin_left = 633.0
 margin_top = 15.0
-margin_right = 708.0
+margin_right = 713.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
@@ -657,6 +687,90 @@ custom_fonts/font = SubResource( 5 )
 align = 1
 
 [node name="DisabledSprite" type="Sprite" parent="UI/HUD/TurretInfoBar/H/MultiShotT3_1"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
+
+[node name="MultiShotT3_2" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["MultiShotT2_1_upgrade", "upgrade_buttons"]]
+margin_left = 717.0
+margin_top = 15.0
+margin_right = 797.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/TurretInfoBar/H/MultiShotT3_2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = -32.0
+margin_right = 17.0
+margin_bottom = -6.0
+rect_scale = Vector2( 1.2, 1.6 )
+texture = ExtResource( 22 )
+expand = true
+
+[node name="Label" type="Label" parent="UI/HUD/TurretInfoBar/H/MultiShotT3_2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -17.0
+margin_top = -27.0
+margin_right = 17.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 5 )
+align = 1
+
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/TurretInfoBar/H/MultiShotT3_2"]
+visible = false
+scale = Vector2( 1.63265, 1.77778 )
+texture = ExtResource( 20 )
+centered = false
+
+[node name="MultiShotT3_3" type="TextureButton" parent="UI/HUD/TurretInfoBar/H" groups=["MultiShotT2_1_upgrade", "upgrade_buttons"]]
+margin_left = 801.0
+margin_top = 15.0
+margin_right = 881.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/TurretInfoBar/H/MultiShotT3_3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = -32.0
+margin_right = 17.0
+margin_bottom = -6.0
+rect_scale = Vector2( 1.2, 1.6 )
+texture = ExtResource( 22 )
+expand = true
+
+[node name="Label" type="Label" parent="UI/HUD/TurretInfoBar/H/MultiShotT3_3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -17.0
+margin_top = -27.0
+margin_right = 17.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 5 )
+align = 1
+
+[node name="DisabledSprite" type="Sprite" parent="UI/HUD/TurretInfoBar/H/MultiShotT3_3"]
 visible = false
 scale = Vector2( 1.63265, 1.77778 )
 texture = ExtResource( 20 )
