@@ -112,7 +112,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 608, -128, 0, 0, 0, 0, 608, 832 )
 }
 
-[node name="Map2_4" type="Node2D"]
+[node name="Map2_4" type="Node2D" groups=["map"]]
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource( 1 )

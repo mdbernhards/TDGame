@@ -8,6 +8,7 @@ var enemy_array = []
 var built = false
 var ready = true
 var turret_info_bar
+var GameScene
 
 var missile = preload("res://Scenes/SupportScenes/Missile.tscn")
 
@@ -105,13 +106,11 @@ func show_range():
 
 func _on_TurretsArea_input_event(viewport, event, shape_idx):
 	if built and event.is_pressed():
+		setup_game_scene()
 		set_turret_upgrades()
 		set_turret_stats()
 
 func set_turret_upgrades():
-	var GameScene = get_parent().get_parent().get_parent()
-	turret_info_bar = GameScene.get_node("UI/HUD/TurretInfoBar")
-	GameScene.turretOpen = self
 
 	hide_all_ranges()
 	show_range()
@@ -128,6 +127,13 @@ func set_turret_upgrades():
 
 func set_turret_stats():
 	turret_info_bar.get_node("H/StatsLabel").text = "Range: " + String(GameData.tower_data[type].range) + "\n Damage: " + String(GameData.tower_data[type].damage) + "\n RoF: " + String(GameData.tower_data[type].rof)
+
+func setup_game_scene():
+	GameScene = get_parent().get_parent().get_parent()
+	turret_info_bar = GameScene.get_node("UI/HUD/TurretInfoBar")
+	GameScene.turretOpen = self
+	for i in get_tree().get_nodes_in_group("map"):
+		GameScene.build_tile = i.get_node("TowerExclusion").world_to_map(get_global_mouse_position())
 
 func hide_all_upgrades():
 	for i in get_tree().get_nodes_in_group("upgrade_buttons"):

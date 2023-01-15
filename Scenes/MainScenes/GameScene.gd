@@ -3,6 +3,7 @@ extends Node2D
 signal game_finished(result)
 
 var map_node
+var ui_node
 var build_mode = false
 var build_valid = false
 var build_location
@@ -21,17 +22,11 @@ var waves = GameData.wave_data["Waves"]
 
 var turretOpen
 
-###
 ### Basic railsnakes
-###
 func _ready():
 	get_map()
-	for i in get_tree().get_nodes_in_group("build_buttons"):
-		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
-	for i in get_tree().get_nodes_in_group("upgrade_buttons"):
-		i.connect("pressed", self, "initiate_upgrade", [i.get_name()])
-	for i in get_tree().get_nodes_in_group("sell_button"):
-		i.connect("pressed", self, "sell_turret")
+	get_ui()
+	set_up_turret_info_menu_buttons() #move to ui?
 
 func get_map():
 	var map_data = get_parent().get_node("MapMenu")
@@ -41,19 +36,11 @@ func get_map():
 	add_child(map_scene)
 	map_node = map_scene
 
+func get_ui():
+	ui_node = get_node("UI")
+
 func _process(delta):
-	var enemy_count = set_enemy_count()
-	
-	if build_mode:
-		update_tower_preview()
-	if enemies_left <= 0 and enemy_count <= 0 and !game_finished:
-		if current_wave >= waves:
-			game_end(true)
-		elif get_node("UI/HUD/CountDown/Timer").is_stopped() and !timer_stoped:
-			start_next_wave()
-		elif get_node("UI/HUD/CountDown/Timer").is_stopped() and timer_stoped:
-			get_node("UI").start_count_down()
-			timer_stoped = false
+	check_if_new_wave_should_start()
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -62,16 +49,28 @@ func _unhandled_input(event):
 		verify_and_build()
 		cancel_build_mode()
 
+func check_if_new_wave_should_start():
+	var enemy_count = set_enemy_count()
+	var is_countdown_timer_stoped = ui_node.get_node("HUD/CountDown/Timer").is_stopped()
+
+	if build_mode:
+		update_tower_preview()
+	if enemies_left <= 0 and enemy_count <= 0 and !game_finished:
+		if current_wave >= waves:
+			game_end(true)
+		elif is_countdown_timer_stoped and !timer_stoped:
+			start_next_wave()
+		elif is_countdown_timer_stoped and timer_stoped:
+			ui_node.start_count_down()
+			timer_stoped = false
+
 func set_enemy_count():
 	var enemy_count = 0
 	for i in get_tree().get_nodes_in_group("enemies"):
 		enemy_count += 1
-	get_node("UI/HUD/InfoBar/H/EnemyCount").text = String(enemy_count)
+	ui_node.get_node("HUD/InfoBar/H/EnemyCount").text = String(enemy_count)
 	return enemy_count
 
-###
-### Wave Functions
-###
 func start_next_wave():
 	timer_stoped = true
 	var wave_data = retrieve_wave_data()
@@ -95,16 +94,13 @@ func spawn_enemies(wave_data):
 			map_node.get_node_or_null("Path1").add_child(new_enemy, true)
 		yield(get_tree().create_timer(i[1]),"timeout")
 
-###
-### Building func
-###
 func initiate_build_mode(tower_type):
 	if build_mode:
 		cancel_build_mode()
-	get_node("UI/HUD/TurretInfoBar").visible = false
+	ui_node.get_node("HUD/TurretInfoBar").visible = false
 	build_type = tower_type
 	build_mode = true
-	get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
+	ui_node.set_tower_preview(build_type, get_global_mouse_position())
 
 func initiate_upgrade(tower_type):
 	build_type = tower_type
@@ -115,32 +111,35 @@ func initiate_upgrade(tower_type):
 			if i.position == build_location:
 				i.free()
 		verify_and_build()
-		
+
 func sell_turret():
 	money += GameData.tower_data[turretOpen.type].price * 0.7
 	turretOpen.queue_free()
+	map_node.get_node("TowerExclusion").set_cellv(build_tile, -1)
+	ui_node.get_node("HUD/TurretInfoBar").visible = false
+	ui_node.update_money_count(money)
 
 func update_tower_preview():
-	var mouse_position = get_global_mouse_position()
-	var current_tile = map_node.get_node("TowerExclusion").world_to_map(mouse_position)
+	var current_tile = map_node.get_node("TowerExclusion").world_to_map(get_global_mouse_position())
 	var tile_position = map_node.get_node("TowerExclusion").map_to_world(current_tile)
 
 	if map_node.get_node("TowerExclusion").get_cellv(current_tile) == -1:
-		get_node("UI").update_tower_preview(tile_position, "ad54ff3c")
+		ui_node.update_tower_preview(tile_position, "ad54ff3c")
 		build_valid = true
 		build_location = tile_position
 		build_tile = current_tile
 	else:
-		get_node("UI").update_tower_preview(tile_position, "adff4545")
+		ui_node.update_tower_preview(tile_position, "adff4545")
 		build_valid = false
 
 func cancel_build_mode():
 	build_mode = false
 	build_valid = false
-	get_node("UI/TowerPreview").free()
+	ui_node.get_node("TowerPreview").free()
 
 func verify_and_build():
-	if build_valid and buy_turret():
+	if build_valid and can_buy_turret():
+		buy_turret()
 		var new_tower = load("res://Scenes/Turrets/" + build_type + ".tscn").instance()
 		new_tower.position = build_location
 		new_tower.built = true
@@ -161,12 +160,9 @@ func can_buy_turret():
 
 func buy_turret():
 	var price = GameData.tower_data[build_type]["price"]
-	if price <= money:
+	if can_buy_turret():
 		money -= price
-		get_node("UI").update_money_count(money)
-		return true
-	else:
-		return false
+		ui_node.update_money_count(money)
 
 func on_base_damage(damage):
 	base_health -= damage
@@ -174,12 +170,12 @@ func on_base_damage(damage):
 	if base_health <= 0:
 		game_end(false)
 	else:
-		get_node("UI").update_health_bar(base_health)
+		ui_node.update_health_bar(base_health)
 
 func on_money_droped(money_droped):
 	money += money_droped
 	enemies_left -= 1
-	get_node("UI").update_money_count(money)
+	ui_node.update_money_count(money)
 	
 func create_wave():
 	var complete_wave = []
@@ -203,11 +199,19 @@ func get_order(order):
 
 func game_end(win):
 	game_finished = true
-	get_node("UI/HUD").visible = false
-	get_node("UI/EndScreen").visible = true
+	ui_node.get_node("HUD").visible = false
+	ui_node.get_node("EndScreen").visible = true
 	if build_mode:
 		cancel_build_mode()
 	if win:
-		get_node("UI/EndScreen/VB/Label").text = "Stage completed"
+		ui_node.get_node("EndScreen/VB/Label").text = "Stage completed"
 	else:
-		get_node("UI/EndScreen/VB/Label").text = "Stage failed"
+		ui_node.get_node("EndScreen/VB/Label").text = "Stage failed"
+
+func set_up_turret_info_menu_buttons():
+	for i in get_tree().get_nodes_in_group("build_buttons"):
+		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
+	for i in get_tree().get_nodes_in_group("upgrade_buttons"):
+		i.connect("pressed", self, "initiate_upgrade", [i.get_name()])
+	for i in get_tree().get_nodes_in_group("sell_button"):
+		i.connect("pressed", self, "sell_turret")
