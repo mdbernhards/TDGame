@@ -51,16 +51,16 @@ func _unhandled_input(event):
 
 func check_if_new_wave_should_start():
 	var enemy_count = set_enemy_count()
-	var is_countdown_timer_stoped = ui_node.get_node("HUD/CountDown/Timer").is_stopped()
+	var is_countdown_timer_stopped = ui_node.get_node("HUD/CountDown/Timer").is_stopped()
 
 	if build_mode:
 		update_tower_preview()
 	if enemies_left <= 0 and enemy_count <= 0 and !game_finished:
 		if current_wave >= waves:
 			game_end(true)
-		elif is_countdown_timer_stoped and !timer_stoped:
+		elif is_countdown_timer_stopped and !timer_stoped:
 			start_next_wave()
-		elif is_countdown_timer_stoped and timer_stoped:
+		elif is_countdown_timer_stopped and timer_stoped:
 			ui_node.start_count_down()
 			timer_stoped = false
 
