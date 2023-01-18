@@ -4,23 +4,23 @@ signal game_finished(result)
 
 var map_node
 var ui_node
-var build_mode = false
-var build_valid = false
 var build_location
 var build_type
 var build_tile
+var turretOpen
 
+var build_mode = false
+var build_valid = false
+var game_finished = false
+var timer_stoped = false
 var current_wave = 0
 var enemies_in_wave = 0
 var base_health = 100
 var money = 100
 var enemies_left = 0
-var game_finished = false
-var timer_stoped = false
+var rogue_currency_collected = 0
 
 var waves = GameData.wave_data["Waves"]
-
-var turretOpen
 
 ### Basic railsnakes
 func _ready():
@@ -199,14 +199,18 @@ func get_order(order):
 
 func game_end(win):
 	game_finished = true
+	var collected_coins = round(rogue_currency_collected)
 	ui_node.get_node("HUD").visible = false
 	ui_node.get_node("EndScreen").visible = true
+	
 	if build_mode:
 		cancel_build_mode()
 	if win:
 		ui_node.get_node("EndScreen/VB/Label").text = "Stage completed"
+		ui_node.get_node("EndScreen/VB/CoinsCollectedLabel").text = "Coins collected: " + String(collected_coins) + " x 1.5 = " + String(collected_coins*1.5)
 	else:
 		ui_node.get_node("EndScreen/VB/Label").text = "Stage failed"
+		ui_node.get_node("EndScreen/VB/CoinsCollectedLabel").text = "Coins collected: " + String(collected_coins)
 
 func set_up_turret_info_menu_buttons():
 	for i in get_tree().get_nodes_in_group("build_buttons"):

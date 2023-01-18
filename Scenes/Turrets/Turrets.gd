@@ -3,20 +3,19 @@ extends Node2D
 var category
 var type
 var enemy
+var turret_info_bar
+var GameScene
 
 var enemy_array = []
 var built = false
 var ready = true
-var turret_info_bar
-var GameScene
 
 var missile = preload("res://Scenes/SupportScenes/Missile.tscn")
 
 signal turret_menu(type)
 
 func _ready():
-	if built:
-		self.get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.tower_data[type]["range"]
+	set_turret_range()
 
 func _physics_process(delta):
 	if !enemy_array.empty() and built:
@@ -143,3 +142,7 @@ func hide_all_ranges():
 	for i in get_tree().get_nodes_in_group("range_sprites"):
 		if i:
 			i.free()
+
+func set_turret_range():
+	if built:
+		self.get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.tower_data[type]["range"]

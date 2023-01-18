@@ -8,6 +8,7 @@ var speed
 var hp
 var base_damage
 var money_droped
+var rogue_currency_dropped
 
 var burning_timer = Timer.new()
 var burn_cooldown_timer = Timer.new()
@@ -26,6 +27,7 @@ func _init(_tank_data):
 	hp = tank_data.health
 	base_damage = tank_data.base_damage
 	money_droped = tank_data.money_droped
+	rogue_currency_dropped = tank_data.rogue_currency_dropped
 	
 func _ready():
 	health_bar.max_value = hp
@@ -63,6 +65,7 @@ func on_destroy():
 	emit_signal("money_droped", money_droped)
 	if get_node("KinematicBody2D"):
 		get_node("KinematicBody2D").queue_free()
+		get_node("/root/SceneHandler/GameScene").rogue_currency_collected += rogue_currency_dropped
 		yield(get_tree().create_timer(0.2), "timeout")
 		self.queue_free()
 

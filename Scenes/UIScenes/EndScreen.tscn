@@ -47,7 +47,7 @@ text = "Stage completed"
 align = 1
 valign = 2
 
-[node name="Label2" type="Label" parent="VB"]
+[node name="CoinsCollectedLabel" type="Label" parent="VB"]
 margin_left = 310.0
 margin_top = 280.0
 margin_right = 769.0
