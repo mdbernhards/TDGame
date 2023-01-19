@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/UI/Art/BackGround.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/Kenney Future Narrow.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,13 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 75
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.235294 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
 outline_size = 2
 outline_color = Color( 0, 0, 0, 0.235294 )
 use_filter = true
@@ -44,6 +51,17 @@ rect_min_size = Vector2( 0, 120 )
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 1 )
 text = " Upgrade Menu"
+align = 2
+
+[node name="RogueCurrency" type="Label" parent="M/VB"]
+margin_left = 166.0
+margin_top = 124.0
+margin_right = 464.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 0, 120 )
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 2 )
+text = "Rouge currency: "
 align = 2
 
 [node name="VB2" type="VBoxContainer" parent="M"]

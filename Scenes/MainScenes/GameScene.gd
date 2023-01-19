@@ -198,18 +198,24 @@ func get_order(order):
 	return wave
 
 func game_end(win):
-	game_finished = true
-	var collected_coins = round(rogue_currency_collected)
-	ui_node.get_node("HUD").visible = false
-	ui_node.get_node("EndScreen").visible = true
-	
-	if build_mode:
-		cancel_build_mode()
-	if win:
-		ui_node.get_node("EndScreen/VB/Label").text = "Stage completed"
-		ui_node.get_node("EndScreen/VB/CoinsCollectedLabel").text = "Coins collected: " + String(collected_coins) + " x 1.5 = " + String(collected_coins*1.5)
-	else:
-		ui_node.get_node("EndScreen/VB/Label").text = "Stage failed"
+	if !game_finished:
+		game_finished = true
+		var collected_coins = round(rogue_currency_collected)
+		ui_node.get_node("HUD").visible = false
+		ui_node.get_node("EndScreen").visible = true
+		
+		if build_mode:
+			cancel_build_mode()
+			
+		if win:
+			collected_coins = collected_coins * 1.5
+			ui_node.get_node("EndScreen/VB/Label").text = "Stage completed"
+		else:
+			ui_node.get_node("EndScreen/VB/Label").text = "Stage failed"
+			
+		var save_nodes = get_tree().get_nodes_in_group("upgrade_data")
+		for node in save_nodes:
+			node.rogue_currency += collected_coins
 		ui_node.get_node("EndScreen/VB/CoinsCollectedLabel").text = "Coins collected: " + String(collected_coins)
 
 func set_up_turret_info_menu_buttons():

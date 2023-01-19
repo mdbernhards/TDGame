@@ -69,4 +69,6 @@ func show_available_stages():
 			i.visible = false
 
 func _on_Upgrades_pressed():
+	$UpgradeMenu.update_currency()
 	$UpgradeMenu.visible = true
+	

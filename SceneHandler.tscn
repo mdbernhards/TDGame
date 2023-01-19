@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/UIScenes/MainMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SceneHandler.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scenes/UIScenes/UpgradeMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/UIScenes/LoadGameMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/UIScenes/SettingsMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/SupportScenes/FileManager.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/SupportScenes/UpgradeDataManager.gd" type="Script" id=8]
 
 [node name="SceneHandler" type="Node"]
 script = ExtResource( 2 )
@@ -23,3 +25,9 @@ visible = false
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 6 )]
 visible = false
+
+[node name="FileManager" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="UpgradeDataManager" type="Node" parent="." groups=["upgrade_data"]]
+script = ExtResource( 8 )
