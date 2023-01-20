@@ -144,6 +144,13 @@ var enemy_data = {
 		"base_damage": 34,
 		"rogue_currency_dropped": 0.5,
 	},
+	"PurpleTank": {
+		"health": 600,
+		"speed": 200,
+		"money_droped": 20,
+		"base_damage": 34,
+		"rogue_currency_dropped": 0.5,
+	},
 	"BigRedTank": {
 		"health": 1500,
 		"speed": 65,
@@ -163,7 +170,7 @@ var enemy_data = {
 var turretsT1 = {"Turrets": ["GunT1", "MissileT1", "LaserT1", "FlamethrowerT1", "DeadZoneT1", "MultiShotT1"]}
 var turretUpgrades = {"Turrets": ["GunT2_1", "GunT2_2", "MissileT2_1", "MissileT2_2", "MultiShotT2_1", "MultiShotT3_1", "MultiShotT3_2", "MultiShotT3_3"]}
 
-var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank", "SandTank", "BigRedTank", "HugeRedTank"]}
+var enemies = {"Enemies": ["BlueTank", "GreenTank", "RedTank", "BlackTank", "PurpleTank", "SandTank", "BigRedTank", "HugeRedTank"]}
 
 var wave_data = {
 	"Waves": 10,
@@ -428,6 +435,7 @@ var wave_data = {
 				"GreenTank": 50,
 				"RedTank": 50,
 				"BlackTank": 50,
+				"PurpleTank": 50,
 				"SandTank": 50,
 				"BigRedTank": 50,
 				"HugeRedTank": 50,

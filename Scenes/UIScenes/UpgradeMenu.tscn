@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/UI/Art/BackGround.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/Kenney Future Narrow.ttf" type="DynamicFontData" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://Assets/UI/Buttons/blue_button05.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Fonts/kfn_40_o1.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/UIScenes/UpgradeMenu.gd" type="Script" id=6]
+[ext_resource path="res://Assets/UI/Buttons/blue_button12.png" type="Texture" id=7]
+[ext_resource path="res://Assets/UI/Buttons/pressedButton.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=1]
-size = 75
+[sub_resource type="DynamicFont" id=3]
+size = 60
 outline_size = 2
 outline_color = Color( 0, 0, 0, 0.235294 )
 use_filter = true
@@ -16,6 +18,13 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.235294 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
 outline_size = 2
 outline_color = Color( 0, 0, 0, 0.235294 )
 use_filter = true
@@ -37,32 +46,197 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VB" type="VBoxContainer" parent="M"]
-margin_top = 20.0
-margin_right = 630.0
+margin_top = 10.0
+margin_right = 1080.0
 margin_bottom = 700.0
 rect_min_size = Vector2( 520, 680 )
-size_flags_horizontal = 0
 size_flags_vertical = 4
 
 [node name="UpgradeMenuLabel" type="Label" parent="M/VB"]
-margin_right = 630.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 120 )
+margin_left = 290.0
+margin_right = 790.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 60 )
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = " Upgrade Menu"
 align = 2
 
 [node name="RogueCurrency" type="Label" parent="M/VB"]
-margin_left = 166.0
-margin_top = 124.0
-margin_right = 464.0
-margin_bottom = 244.0
-rect_min_size = Vector2( 0, 120 )
+margin_left = 391.0
+margin_top = 72.0
+margin_right = 689.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 2 )
 text = "Rouge currency: "
 align = 2
+
+[node name="Tabs" type="HBoxContainer" parent="M/VB"]
+margin_top = 126.0
+margin_right = 1080.0
+margin_bottom = 201.0
+rect_min_size = Vector2( 0, 75 )
+size_flags_horizontal = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="1" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
+margin_left = 265.0
+margin_right = 340.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Tabs/1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 4 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="2" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
+margin_left = 360.0
+margin_right = 435.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Tabs/2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 4 )
+text = "2"
+align = 1
+valign = 1
+
+[node name="3" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
+margin_left = 455.0
+margin_right = 530.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Tabs/3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 4 )
+text = "3"
+align = 1
+valign = 1
+
+[node name="4" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
+margin_left = 550.0
+margin_right = 625.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Tabs/4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 4 )
+text = "4"
+align = 1
+valign = 1
+
+[node name="5" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
+margin_left = 645.0
+margin_right = 720.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Tabs/5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 4 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="6" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
+margin_left = 740.0
+margin_right = 815.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB/Tabs/6"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -34.0
+margin_right = 20.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 4 )
+text = "6"
+align = 1
+valign = 1
 
 [node name="VB2" type="VBoxContainer" parent="M"]
 margin_left = 860.0
@@ -73,17 +247,19 @@ rect_min_size = Vector2( 220, 680 )
 size_flags_horizontal = 8
 size_flags_vertical = 4
 custom_constants/separation = 9
+alignment = 2
 
 [node name="Control2" type="Control" parent="M/VB2"]
+margin_top = 600.0
 margin_right = 220.0
-margin_bottom = 6.5
+margin_bottom = 606.5
 rect_min_size = Vector2( 20, 6.5 )
 
 [node name="Back" type="TextureButton" parent="M/VB2"]
 margin_left = 35.0
-margin_top = 15.0
+margin_top = 615.0
 margin_right = 185.0
-margin_bottom = 80.0
+margin_bottom = 680.0
 rect_min_size = Vector2( 150, 65 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 3 )

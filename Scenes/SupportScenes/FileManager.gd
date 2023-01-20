@@ -5,13 +5,10 @@ func save_game():
 	save_game.open("user://savegame.save", File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("upgrade_data")
 	for node in save_nodes:
-
 		if !node.has_method("save"):
 			print("persistent node '%s' is missing a save() function, skipped" % node.name)
 			continue
-
 		var node_data = node.call("save")
-
 		save_game.store_line(to_json(node_data))
 	save_game.close()
 

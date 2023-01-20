@@ -8,6 +8,7 @@ var build_location
 var build_type
 var build_tile
 var turretOpen
+var fileManager
 
 var build_mode = false
 var build_valid = false
@@ -27,6 +28,7 @@ func _ready():
 	get_map()
 	get_ui()
 	set_up_turret_info_menu_buttons() #move to ui?
+	fileManager = get_parent().get_node("FileManager")
 
 func get_map():
 	var map_data = get_parent().get_node("MapMenu")
@@ -215,8 +217,9 @@ func game_end(win):
 			
 		var save_nodes = get_tree().get_nodes_in_group("upgrade_data")
 		for node in save_nodes:
-			node.rogue_currency += collected_coins
+			node.add_currency(collected_coins)
 		ui_node.get_node("EndScreen/VB/CoinsCollectedLabel").text = "Coins collected: " + String(collected_coins)
+		fileManager.save_game()
 
 func set_up_turret_info_menu_buttons():
 	for i in get_tree().get_nodes_in_group("build_buttons"):
