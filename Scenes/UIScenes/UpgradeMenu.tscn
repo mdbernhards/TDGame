@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/UI/Art/BackGround.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/Kenney Future Narrow.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,13 @@
 [ext_resource path="res://Scenes/UIScenes/UpgradeMenu.gd" type="Script" id=6]
 [ext_resource path="res://Assets/UI/Buttons/blue_button12.png" type="Texture" id=7]
 [ext_resource path="res://Assets/UI/Buttons/pressedButton.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Towers/towerDefense_tile251.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Effects/explosionSmoke2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Towers/towerDefense_tile249.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Towers/ufoBlue.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Towers/towerDefense_tile134.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Towers/cockpitGreen_1.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Icons/star.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=3]
 size = 60
@@ -18,13 +25,6 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
-outline_size = 2
-outline_color = Color( 0, 0, 0, 0.235294 )
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 60
 outline_size = 2
 outline_color = Color( 0, 0, 0, 0.235294 )
 use_filter = true
@@ -46,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VB" type="VBoxContainer" parent="M"]
-margin_top = 10.0
+margin_top = 20.0
 margin_right = 1080.0
 margin_bottom = 700.0
 rect_min_size = Vector2( 520, 680 )
@@ -82,9 +82,9 @@ size_flags_horizontal = 3
 custom_constants/separation = 20
 alignment = 1
 
-[node name="1" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
-margin_left = 265.0
-margin_right = 340.0
+[node name="1" type="TextureButton" parent="M/VB/Tabs" groups=["upgradeButton"]]
+margin_left = 217.0
+margin_right = 292.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 4
@@ -94,23 +94,15 @@ texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Tabs/1"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -34.0
-margin_right = 20.0
-margin_bottom = 34.0
-custom_fonts/font = SubResource( 4 )
-text = "1"
-align = 1
-valign = 1
+[node name="Icon" type="TextureRect" parent="M/VB/Tabs/1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
 
-[node name="2" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
-margin_left = 360.0
-margin_right = 435.0
+[node name="2" type="TextureButton" parent="M/VB/Tabs" groups=["upgradeButton"]]
+margin_left = 312.0
+margin_right = 387.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 4
@@ -120,23 +112,15 @@ texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Tabs/2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -34.0
-margin_right = 20.0
-margin_bottom = 34.0
-custom_fonts/font = SubResource( 4 )
-text = "2"
-align = 1
-valign = 1
+[node name="Icon" type="TextureRect" parent="M/VB/Tabs/2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+expand = true
 
-[node name="3" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
-margin_left = 455.0
-margin_right = 530.0
+[node name="3" type="TextureButton" parent="M/VB/Tabs" groups=["upgradeButton"]]
+margin_left = 407.0
+margin_right = 482.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 4
@@ -146,23 +130,15 @@ texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Tabs/3"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -34.0
-margin_right = 20.0
-margin_bottom = 34.0
-custom_fonts/font = SubResource( 4 )
-text = "3"
-align = 1
-valign = 1
+[node name="Icon" type="TextureRect" parent="M/VB/Tabs/3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
 
-[node name="4" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
-margin_left = 550.0
-margin_right = 625.0
+[node name="4" type="TextureButton" parent="M/VB/Tabs" groups=["upgradeButton"]]
+margin_left = 502.0
+margin_right = 577.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 4
@@ -172,23 +148,24 @@ texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Tabs/4"]
+[node name="Icon" type="TextureRect" parent="M/VB/Tabs/4"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -34.0
-margin_right = 20.0
-margin_bottom = 34.0
-custom_fonts/font = SubResource( 4 )
-text = "4"
-align = 1
-valign = 1
+margin_left = -28.5
+margin_top = -30.5
+margin_right = 31.5
+margin_bottom = 29.5
+rect_min_size = Vector2( 60, 60 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 14 )
+expand = true
 
-[node name="5" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
-margin_left = 645.0
-margin_right = 720.0
+[node name="5" type="TextureButton" parent="M/VB/Tabs" groups=["upgradeButton"]]
+margin_left = 597.0
+margin_right = 672.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 4
@@ -198,23 +175,24 @@ texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Tabs/5"]
+[node name="Icon" type="TextureRect" parent="M/VB/Tabs/5"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -34.0
-margin_right = 20.0
-margin_bottom = 34.0
-custom_fonts/font = SubResource( 4 )
-text = "5"
-align = 1
-valign = 1
+margin_left = -32.5
+margin_top = -33.5
+margin_right = 42.5
+margin_bottom = 41.5
+rect_scale = Vector2( 0.8, 0.8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 10 )
+expand = true
 
-[node name="6" type="TextureButton" parent="M/VB/Tabs" groups=["stageButton"]]
-margin_left = 740.0
-margin_right = 815.0
+[node name="6" type="TextureButton" parent="M/VB/Tabs" groups=["upgradeButton"]]
+margin_left = 692.0
+margin_right = 767.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 4
@@ -224,42 +202,354 @@ texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="M/VB/Tabs/6"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -34.0
-margin_right = 20.0
-margin_bottom = 34.0
-custom_fonts/font = SubResource( 4 )
-text = "6"
-align = 1
-valign = 1
+[node name="Icon" type="TextureRect" parent="M/VB/Tabs/6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 44.0
+margin_bottom = 41.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="7" type="TextureButton" parent="M/VB/Tabs" groups=["upgradeButton"]]
+margin_left = 787.0
+margin_right = 862.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/Tabs/7"]
+self_modulate = Color( 1, 0.129412, 0.94902, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 6.0
+margin_bottom = 6.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 13 )
+expand = true
+
+[node name="Control" type="Control" parent="M/VB"]
+margin_top = 205.0
+margin_right = 1080.0
+margin_bottom = 215.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="HB" type="HBoxContainer" parent="M/VB"]
+margin_top = 219.0
+margin_right = 1080.0
+margin_bottom = 559.0
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="M/VB/HB"]
+margin_left = 62.0
+margin_right = 1017.0
+margin_bottom = 340.0
+rect_pivot_offset = Vector2( 292, 172 )
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 5
+
+[node name="1" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_right = 175.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="2" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 195.0
+margin_right = 370.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="3" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 390.0
+margin_right = 565.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="4" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 585.0
+margin_right = 760.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="5" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 780.0
+margin_right = 955.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="6" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_top = 120.0
+margin_right = 175.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="7" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 195.0
+margin_top = 120.0
+margin_right = 370.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="8" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 390.0
+margin_top = 120.0
+margin_right = 565.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="9" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 585.0
+margin_top = 120.0
+margin_right = 760.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="10" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 780.0
+margin_top = 120.0
+margin_right = 955.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="11" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_top = 240.0
+margin_right = 175.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/11"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="12" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 195.0
+margin_top = 240.0
+margin_right = 370.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/12"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="13" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 390.0
+margin_top = 240.0
+margin_right = 565.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/13"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="14" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 585.0
+margin_top = 240.0
+margin_right = 760.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/14"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="15" type="TextureButton" parent="M/VB/HB/GridContainer" groups=["upgradeButton"]]
+margin_left = 780.0
+margin_top = 240.0
+margin_right = 955.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="M/VB/HB/GridContainer/15"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
 
 [node name="VB2" type="VBoxContainer" parent="M"]
 margin_left = 860.0
-margin_top = 20.0
+margin_top = 620.0
 margin_right = 1080.0
-margin_bottom = 700.0
-rect_min_size = Vector2( 220, 680 )
+margin_bottom = 720.0
+rect_min_size = Vector2( 220, 100 )
 size_flags_horizontal = 8
-size_flags_vertical = 4
-custom_constants/separation = 9
-alignment = 2
-
-[node name="Control2" type="Control" parent="M/VB2"]
-margin_top = 600.0
-margin_right = 220.0
-margin_bottom = 606.5
-rect_min_size = Vector2( 20, 6.5 )
+size_flags_vertical = 8
+alignment = 1
 
 [node name="Back" type="TextureButton" parent="M/VB2"]
 margin_left = 35.0
-margin_top = 615.0
+margin_top = 17.0
 margin_right = 185.0
-margin_bottom = 680.0
+margin_bottom = 82.0
 rect_min_size = Vector2( 150, 65 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 3 )

@@ -30,7 +30,8 @@ func on_quit_pressed():
 	get_tree().quit()
 
 func unload_game(result):
-	get_node("GameScene").queue_free()
+	if get_node("GameScene"):
+		get_node("GameScene").queue_free()
 	var main_menu = load("res://Scenes/UIScenes/MainMenu.tscn").instance()
 	add_child(main_menu)
 	load_main_menu()

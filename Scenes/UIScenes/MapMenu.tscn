@@ -862,4 +862,36 @@ margin_right = 520.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 10, 30 )
 
+[node name="VB4" type="VBoxContainer" parent="M"]
+margin_left = 860.0
+margin_top = 620.0
+margin_right = 1080.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 220, 100 )
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Back" type="TextureButton" parent="M/VB4"]
+margin_left = 35.0
+margin_top = 17.0
+margin_right = 185.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 150, 65 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+expand = true
+
+[node name="Label" type="Label" parent="M/VB4/Back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 0.235294 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.705882 )
+custom_fonts/font = ExtResource( 6 )
+text = "Back"
+align = 1
+valign = 1
+
 [connection signal="pressed" from="M/VB2/Upgrades" to="." method="_on_Upgrades_pressed"]
+[connection signal="pressed" from="M/VB4/Back" to="." method="_on_Back_pressed"]

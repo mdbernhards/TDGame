@@ -71,4 +71,7 @@ func show_available_stages():
 func _on_Upgrades_pressed():
 	$UpgradeMenu.update_currency()
 	$UpgradeMenu.visible = true
-	
+
+func _on_Back_pressed():
+	visible = false
+	get_parent().unload_game(true)
