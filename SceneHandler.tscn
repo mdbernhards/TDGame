@@ -29,5 +29,5 @@ visible = false
 [node name="FileManager" type="Node" parent="."]
 script = ExtResource( 7 )
 
-[node name="UpgradeDataManager" type="Node" parent="." groups=["upgrade_data"]]
+[node name="UpgradeDataManager" type="Node" parent="." groups=["UpgradeDataManager"]]
 script = ExtResource( 8 )

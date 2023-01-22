@@ -6,7 +6,7 @@ var upgrade_values = {"values": ["rogue_currency"]}
 
 var upgrades = {
 	"General" : {
-		"Speed" : {
+		"rof" : {
 			"tiers" : 5,
 			"incrementations" : 5,
 			"start_price": 10,

@@ -5,6 +5,7 @@ var type
 var enemy
 var turret_info_bar
 var GameScene
+var UpgradeDataManager
 
 var enemy_array = []
 var built = false
@@ -16,6 +17,9 @@ signal turret_menu(type)
 
 func _ready():
 	set_turret_range()
+	for i in get_tree().get_nodes_in_group("UpgradeDataManager"):
+		UpgradeDataManager = i
+	
 
 func _physics_process(delta):
 	if !enemy_array.empty() and built:
@@ -54,7 +58,7 @@ func fire():
 		fire_aoe()
 	elif category == "MultiShot":
 		fire_multishot()
-	yield(get_tree().create_timer(GameData.tower_data[type]["rof"]), "timeout")
+	yield(get_tree().create_timer(UpgradeDataManager.get_data_by_type(type).rof), "timeout")
 	ready = true
 
 func fire_gun():
@@ -110,7 +114,6 @@ func _on_TurretsArea_input_event(viewport, event, shape_idx):
 		set_turret_stats()
 
 func set_turret_upgrades():
-
 	hide_all_ranges()
 	show_range()
 	hide_all_upgrades()
@@ -125,7 +128,7 @@ func set_turret_upgrades():
 	GameScene.build_location = position
 
 func set_turret_stats():
-	turret_info_bar.get_node("H/StatsLabel").text = "Range: " + String(GameData.tower_data[type].range) + "\n Damage: " + String(GameData.tower_data[type].damage) + "\n RoF: " + String(GameData.tower_data[type].rof)
+	turret_info_bar.get_node("H/StatsLabel").text = "Range: " + String(UpgradeDataManager.get_data_by_type(type).range) + "\n Damage: " + String(UpgradeDataManager.get_data_by_type(type).damage) + "\n RoF: " + String(UpgradeDataManager.get_data_by_type(type).rof)
 
 func setup_game_scene():
 	GameScene = get_parent().get_parent().get_parent()

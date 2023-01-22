@@ -1,11 +1,14 @@
 extends Node
 
+var FileManager
+
 func _ready():
 	load_main_menu()
 	load_map_menu()
+	FileManager = get_node("FileManager")
 
 func on_new_game_pressed():
-	get_node("FileManager").load_game()
+	FileManager.load_game()
 	Engine.set_time_scale(1)
 	if get_node("MainMenu") != null:
 		get_node("MainMenu").queue_free()
@@ -26,7 +29,7 @@ func on_settings_pressed():
 	$SettingsMenu.visible = true
 
 func on_quit_pressed():
-	get_node("FileManager").save_game()
+	FileManager.save_game()
 	get_tree().quit()
 
 func unload_game(result):
