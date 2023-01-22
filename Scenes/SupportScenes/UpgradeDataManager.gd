@@ -16,6 +16,7 @@ var gun_dmg
 # etc.
 
 func _ready():
+	update_GameData_values_for_startup()
 	FileManager = get_parent().get_node("FileManager")
 
 func save():
@@ -31,23 +32,6 @@ func add_currency(money):
 	if rogue_currency:
 		rogue_currency = int(rogue_currency) + int(money)
 	
-func get_data_by_type(type):
-	var node_data
-	
-	FileManager.load_game()
-	if GameData.tower_data[type]:
-		node_data = get_turret_data(GameData.tower_data[type])
-	elif GameData.enemy_data[type]:
-		node_data = get_enemy_data(GameData.tower_data[type])
-	return node_data
-
-func get_turret_data(turret):
-	turret.rof = turret.rof * rof
-	return turret
-
-func get_enemy_data(enemy):
-	return enemy
-
 func buy_upgrade(upgrade_name):
 	pass
 	
@@ -58,4 +42,16 @@ func set_upgrades():
 	pass
 	
 func set_upgraded_value():
+	pass
+
+func update_GameData_values_for_startup():
+	update_turret_values_for_startup()
+	update_enemy_values_for_startup()
+
+func update_turret_values_for_startup():
+	var turret_data = GameData.tower_data
+	for turret in turret_data:
+		turret_data[turret].rof = turret_data[turret].rof * rof
+	
+func update_enemy_values_for_startup():
 	pass
