@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/UI/Buttons/blue_button12.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Buttons/pressedButton.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/Kenney Future Narrow.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 19
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.235294 )
+use_filter = true
+extra_spacing_bottom = -4
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 17
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.235294 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Button" type="TextureButton" groups=["upgradeButton"]]
+visible = false
+margin_right = 175.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 175, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
+expand = true
+
+[node name="Name" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -74.5
+margin_top = -95.0
+margin_right = 75.5
+margin_bottom = -23.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 4 )
+text = "asdasdasdasdasdsadasdsadasdasdsad"
+align = 1
+autowrap = true
+clip_text = true
+
+[node name="Price" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -78.5
+margin_top = -29.0
+margin_right = 78.5
+margin_bottom = -9.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 5 )
+text = "asdasda"
+align = 1
+autowrap = true
