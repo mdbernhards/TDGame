@@ -2,13 +2,13 @@ extends Node
 
 var FileManager
 
-var rogue_currency = 0
+var rogue_currency
 
 # overall Upgrades
-var rof = 3
-var discount = 3
-var damage = 3
-var turret_range = 15
+var rof
+var discount
+var damage
+var turret_range
 
 #Gun Upgrades
 var gun_speed
@@ -17,8 +17,9 @@ var gun_dmg
 # etc.
 
 func _ready():
-	update_GameData_values_for_startup()
 	FileManager = get_parent().get_node("FileManager")
+	FileManager.load_game()
+	update_GameData_values()
 
 func save():
 	var save_dict = {
@@ -48,11 +49,11 @@ func set_upgrades():
 func set_upgraded_value():
 	pass
 
-func update_GameData_values_for_startup():
-	update_turret_values_for_startup()
-	update_enemy_values_for_startup()
+func update_GameData_values():
+	update_turret_values()
+	update_enemy_values()
 
-func update_turret_values_for_startup():
+func update_turret_values():
 	var upgrade_data = UpgradeData.upgrades["General"]
 	var turret_data = GameData.tower_data
 	for turret_name in turret_data:
@@ -69,15 +70,17 @@ func update_turret_values_for_startup():
 				if upgrade:
 					turret_data[turret_name][value_name] = set_new_value(upgrade_name, upgrade, turret_data[turret_name][value_name])
 	
-func update_enemy_values_for_startup():
+func update_enemy_values():
 	var enemy_data = GameData.enemy_data
 
 func set_new_value(upgrade_name, upgrade, turret_value):
-	if self[upgrade_name] > 0:
+	if self[upgrade_name] && self[upgrade_name] > 0:
 		if upgrade.type == "subtract":
 			return subtracting_upgrade(self[upgrade_name], upgrade.value, turret_value)
 		elif upgrade.type == "add":
 			return additive_ugprade(self[upgrade_name], upgrade.value, turret_value)
+	else:
+		return turret_value
 
 func additive_ugprade(tier, upgrade_value, turret_value):
 	return turret_value + (tier * upgrade_value * turret_value / 100.0)

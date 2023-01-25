@@ -24,9 +24,9 @@ var tower_data = {
 	"MissileT1": {
 		"damage": 75,
 		"rof": 2,
-		"range": 4500,
+		"range": 450,
 		"category": "Missile",
-		"price": 10,
+		"price": 60,
 		"missile_speed": 300,
 		"steer_force": 10.0},
 	"MissileT2_1": {
@@ -73,7 +73,7 @@ var tower_data = {
 		"range": 350,
 		"category": "MultiShot",
 		"shot_speed": 3,
-		"price": 0},
+		"price": 100},
 	"MultiShotT2_1": {
 		"damage": 65,
 		"rof": 0.35,

@@ -26,7 +26,7 @@ visible = false
 [node name="SettingsMenu" parent="." instance=ExtResource( 6 )]
 visible = false
 
-[node name="FileManager" type="Node" parent="."]
+[node name="FileManager" type="Node" parent="." groups=["FileManager"]]
 script = ExtResource( 7 )
 
 [node name="UpgradeDataManager" type="Node" parent="." groups=["UpgradeDataManager"]]

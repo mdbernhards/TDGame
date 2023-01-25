@@ -19,14 +19,13 @@ outline_color = Color( 0, 0, 0, 0.235294 )
 use_filter = true
 font_data = ExtResource( 3 )
 
-[node name="Button" type="TextureButton" groups=["upgradeButton"]]
+[node name="Button" type="TextureButton" groups=["rougeUpgradeButtons"]]
 visible = false
 margin_right = 175.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 175, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-toggle_mode = true
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 2 )
 expand = true
