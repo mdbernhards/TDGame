@@ -8,6 +8,8 @@ func _ready():
 		UpgradeDataManager = i
 	for i in get_tree().get_nodes_in_group("FileManager"):
 		FileManager = i
+	for i in get_tree().get_nodes_in_group("rogueUpgradeTabButton"):
+		i.connect("pressed", self, "tab_button_pressed", [i.get_name()])
 	set_upgrade_buttons()
 
 func _on_Back_pressed():
@@ -26,6 +28,7 @@ func set_upgrade_buttons():
 		new_button.get_node("Price").text = String(upgrade.start_price)
 		new_button.name = upgrade_name
 		new_button.connect("pressed", self, "upgrade_button_pressed", [upgrade_name])
+		new_button.add_to_group("General")
 		$M/VB/HB/GridContainer.add_child(new_button)
 
 func upgrade_button_pressed(type):
@@ -35,3 +38,17 @@ func upgrade_button_pressed(type):
 		UpgradeDataManager[type] = 1
 	FileManager.save_game()
 	UpgradeDataManager.update_GameData_values()
+
+func tab_button_pressed(name):
+	hide_all_upgrade_buttons()
+	for i in get_tree().get_nodes_in_group("rogueUpgradeTabButton"):
+		if i.get_name() != name:
+			i.pressed = false
+		else:
+			i.pressed = true
+	for i in get_tree().get_nodes_in_group(name):
+		i.visible = true
+
+func hide_all_upgrade_buttons():
+	for i in get_tree().get_nodes_in_group("rougeUpgradeButtons"):
+		i.visible = false
