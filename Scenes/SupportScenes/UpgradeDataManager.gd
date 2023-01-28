@@ -5,20 +5,25 @@ var FileManager
 var rogue_currency
 
 # overall Upgrades
+var General = { "rof": 0, "discount": 0, "damage": 0, "turret_range": 0}
+var Gun = { "rof": 0, "discount": 0, "damage": 0, "turret_range": 0}
+var Missile = { "rof": 0, "discount": 0, "damage": 0, "turret_range": 0}
+var Laser = { "rof": 0, "discount": 0, "damage": 0, "turret_range": 0}
+var Flamethrower = { "rof": 0, "discount": 0, "damage": 0, "turret_range": 0}
+var DeadZone = { "rof": 0, "discount": 0, "damage": 0, "turret_range": 0}
+var MultiShot = { "rof": 0, "discount": 0, "damage": 0, "turret_range": 0}
+
 var rof
 var discount
 var damage
 var turret_range
 
-#Gun Upgrades
-var gun_speed
-var gun_price
-var gun_dmg
-# etc.
+var original_game_data
 
 func _ready():
 	FileManager = get_parent().get_node("FileManager")
 	FileManager.load_game()
+	save_original_values()
 	update_GameData_values()
 
 func save():
@@ -39,15 +44,6 @@ func add_currency(money):
 	
 func buy_upgrade(upgrade_name):
 	pass
-	
-func get_upgrade():
-	pass
-
-func set_upgrades():
-	pass
-	
-func set_upgraded_value():
-	pass
 
 func update_GameData_values():
 	update_turret_values()
@@ -66,9 +62,8 @@ func update_turret_values():
 					upgrade = upgrade_data["turret_range"]
 				elif value_name == "price" && upgrade_name == "discount":
 					upgrade = upgrade_data["discount"]
-				
 				if upgrade:
-					turret_data[turret_name][value_name] = set_new_value(upgrade_name, upgrade, turret_data[turret_name][value_name])
+					turret_data[turret_name][value_name] = set_new_value(upgrade_name, upgrade, original_game_data.tower_data[turret_name][value_name])
 	
 func update_enemy_values():
 	var enemy_data = GameData.enemy_data
@@ -87,3 +82,6 @@ func additive_ugprade(tier, upgrade_value, turret_value):
 	
 func subtracting_upgrade(tier, upgrade_value, turret_value):
 	return turret_value - (tier * upgrade_value * turret_value / 100.0)
+	
+func save_original_values():
+	original_game_data = GameData.duplicate()
