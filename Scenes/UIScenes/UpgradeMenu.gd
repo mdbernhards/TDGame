@@ -33,10 +33,10 @@ func set_upgrade_buttons():
 			$M/VB/HB/GridContainer.add_child(new_button)
 
 func upgrade_button_pressed(upgrade_name, upgrade_type_name):
-	if UpgradeDataManager[upgrade_name]:
-		UpgradeDataManager[upgrade_name] = UpgradeDataManager[upgrade_name] + 1
+	if UpgradeDataManager[upgrade_type_name][upgrade_name]:
+		UpgradeDataManager[upgrade_type_name][upgrade_name] = UpgradeDataManager[upgrade_type_name][upgrade_name] + 1
 	else: 
-		UpgradeDataManager[upgrade_name] = 1
+		UpgradeDataManager[upgrade_type_name][upgrade_name] = 1
 	FileManager.save_game()
 	UpgradeDataManager.update_GameData_values()
 

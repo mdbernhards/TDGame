@@ -101,7 +101,7 @@ anchor_bottom = 1.0
 texture = ExtResource( 15 )
 expand = true
 
-[node name="Gun" type="TextureButton" parent="M/VB/Tabs" groups=["rogueUpgradeTabButton"]]
+[node name="Projectile" type="TextureButton" parent="M/VB/Tabs" groups=["rogueUpgradeTabButton"]]
 margin_left = 312.0
 margin_right = 387.0
 margin_bottom = 75.0
@@ -113,7 +113,7 @@ texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="M/VB/Tabs/Gun"]
+[node name="Icon" type="TextureRect" parent="M/VB/Tabs/Projectile"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 11 )
@@ -191,7 +191,7 @@ size_flags_vertical = 4
 texture = ExtResource( 10 )
 expand = true
 
-[node name="DeadZone" type="TextureButton" parent="M/VB/Tabs" groups=["rogueUpgradeTabButton"]]
+[node name="AoE" type="TextureButton" parent="M/VB/Tabs" groups=["rogueUpgradeTabButton"]]
 margin_left = 692.0
 margin_right = 767.0
 margin_bottom = 75.0
@@ -203,7 +203,7 @@ texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="M/VB/Tabs/DeadZone"]
+[node name="Icon" type="TextureRect" parent="M/VB/Tabs/AoE"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 9.0

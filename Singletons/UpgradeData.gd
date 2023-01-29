@@ -35,7 +35,7 @@ var upgrades = {
 			"type": "add",
 		},
 	},
-	"Gun" : {
+	"Projectile" : {
 		"rof" : {
 			"tiers" : 5,
 			"value" : 5,
@@ -155,7 +155,7 @@ var upgrades = {
 			"type": "add",
 		},
 	},
-	"DeadZone" : {
+	"AoE" : {
 		"rof" : {
 			"tiers" : 5,
 			"value" : 5,
