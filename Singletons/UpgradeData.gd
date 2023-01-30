@@ -35,7 +35,7 @@ var upgrades = {
 			"type": "add",
 		},
 	},
-	"Projectile" : {
+	"Projectile" : { # Gun
 		"rof" : {
 			"tiers" : 5,
 			"value" : 5,
@@ -155,7 +155,7 @@ var upgrades = {
 			"type": "add",
 		},
 	},
-	"AoE" : {
+	"AoE" : { #DeadZone
 		"rof" : {
 			"tiers" : 5,
 			"value" : 5,
@@ -213,6 +213,16 @@ var upgrades = {
 			"start_price": 35,
 			"price_increase" : 30,
 			"type": "add",
+		},
+	},
+	"Special" : {
+		"Unlocks" : {
+			"GunT1" : {"price": 0, "default": true}, "GunT2_1" : {"price": 0, "default": true}, "GunT2_2" : {"price": 0, "default": true},
+			"MissileT1" : {"price": 0, "default": true}, "MissileT2_1" : {"price": 0, "default": true}, "MissileT2_2" : {"price": 0, "default": true},
+			"LaserT1" : {"price": 0, "default": true},
+			"FlamethrowerT1" : {"price": 0, "default": true},
+			"DeadZoneT1" : {"price": 0, "default": true},
+			"MultiShotT1" : {"price": 0, "default": true}, "MultiShotT2_1" : {"price": 0, "default": true}, "MultiShotT3_1" : {"price": 0, "default": true}, "MultiShotT3_2" : {"price": 0, "default": true}, "MultiShotT3_3" : {"price": 0, "default": true},
 		},
 	},
 }
