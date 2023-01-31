@@ -10,9 +10,10 @@ var original_game_data = GameData.duplicate()
 var all_turret_data = GameData.tower_data
 
 func _ready():
-	cleanup_upgrade_data()
 	FileManager = get_parent().get_node("FileManager")
 	FileManager.load_game()
+	if !Upgrades:
+		create_new_save()
 	update_GameData_values()
 
 func save():
@@ -79,10 +80,13 @@ func additive_ugprade(tier, upgrade_value, turret_value):
 func subtracting_upgrade(tier, upgrade_value, turret_value):
 	return turret_value - (tier * upgrade_value * turret_value / 100.0)
 
-func cleanup_upgrade_data():
+func create_new_save():
 	var all_data = UpgradeData.duplicate()
-	var Upgrades = all_data.upgrades
+	Upgrades = all_data.upgrades
 	for upgrade_type in Upgrades:
 		if upgrade_type != "Special":
 			for upgrade_name in Upgrades[upgrade_type]:
 				Upgrades[upgrade_type][upgrade_name] = 0
+		else:
+			for upgrade_name in Upgrades[upgrade_type]["Unlocks"]:
+				Upgrades[upgrade_type]["Unlocks"][upgrade_name] = false

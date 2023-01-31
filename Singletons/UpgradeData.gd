@@ -217,12 +217,12 @@ var upgrades = {
 	},
 	"Special" : {
 		"Unlocks" : {
-			"GunT1" : {"price": 0, "default": true}, "GunT2_1" : {"price": 0, "default": true}, "GunT2_2" : {"price": 0, "default": true},
-			"MissileT1" : {"price": 0, "default": true}, "MissileT2_1" : {"price": 0, "default": true}, "MissileT2_2" : {"price": 0, "default": true},
-			"LaserT1" : {"price": 0, "default": true},
-			"FlamethrowerT1" : {"price": 0, "default": true},
-			"DeadZoneT1" : {"price": 0, "default": true},
-			"MultiShotT1" : {"price": 0, "default": true}, "MultiShotT2_1" : {"price": 0, "default": true}, "MultiShotT3_1" : {"price": 0, "default": true}, "MultiShotT3_2" : {"price": 0, "default": true}, "MultiShotT3_3" : {"price": 0, "default": true},
+			"GunT1" : {"price": 0, "enabled": true}, "GunT2_1" : {"price": 0, "enabled": true}, "GunT2_2" : {"price": 0, "enabled": true},
+			"MissileT1" : {"price": 0, "enabled": true}, "MissileT2_1" : {"price": 0, "enabled": true}, "MissileT2_2" : {"price": 0, "enabled": true},
+			"LaserT1" : {"price": 0, "enabled": true},
+			"FlamethrowerT1" : {"price": 0, "enabled": true},
+			"DeadZoneT1" : {"price": 0, "enabled": true},
+			"MultiShotT1" : {"price": 0, "enabled": true}, "MultiShotT2_1" : {"price": 0, "enabled": true}, "MultiShotT3_1" : {"price": 0, "enabled": true}, "MultiShotT3_2" : {"price": 0, "enabled": true}, "MultiShotT3_3" : {"price": 0, "enabled": true},
 		},
 	},
 }

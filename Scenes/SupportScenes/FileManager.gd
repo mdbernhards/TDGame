@@ -19,7 +19,6 @@ func save_game():
 func load_game():
 	var save_game = File.new()
 	if not save_game.file_exists("user://savegame.save"):
-		create_new_save()
 		return
 
 	save_game.open("user://savegame.save", File.READ)
@@ -30,6 +29,3 @@ func load_game():
 				continue
 			upgradeDataManager.set(j, node_data[j])
 	save_game.close()
-
-func create_new_save():
-	pass

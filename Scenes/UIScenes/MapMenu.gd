@@ -71,6 +71,8 @@ func show_available_stages():
 func _on_Upgrades_pressed():
 	$UpgradeMenu.update_currency()
 	$UpgradeMenu.visible = true
+	$UpgradeMenu.set_upgrade_buttons()
+	$UpgradeMenu.tab_button_pressed("General")
 
 func _on_Back_pressed():
 	visible = false
