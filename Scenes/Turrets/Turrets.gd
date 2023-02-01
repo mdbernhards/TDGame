@@ -115,7 +115,8 @@ func set_turret_upgrades():
 	hide_all_upgrades()
 
 	for i in get_tree().get_nodes_in_group(String(type) + "_upgrade"):
-		i.visible = true
+		if GameData.tower_data[i.get_name()].unlocked == true:
+			i.visible = true
 
 	if GameScene.build_location == position:
 		turret_info_bar.visible = !turret_info_bar.visible

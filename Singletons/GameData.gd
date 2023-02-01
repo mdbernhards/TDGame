@@ -6,13 +6,15 @@ var tower_data = {
 		"rof": 0.9,
 		"range": 250,
 		"category": "Projectile",
-		"price": 40},
+		"price": 40,
+		"unlocked": true},
 	"GunT2_1": {
 		"damage": 45,
 		"rof": 0.45,
 		"range": 400,
 		"category": "Projectile",
-		"price": 100},
+		"price": 100,
+		"unlocked": false},
 	"GunT2_2": {
 		"damage": 20,
 		"rof": 1,
@@ -20,7 +22,8 @@ var tower_data = {
 		"category": "Projectile",
 		"price": 120,
 		"freeze_power": 0.7,
-		"freeze_time": 5},
+		"freeze_time": 5,
+		"unlocked": false},
 	"MissileT1": {
 		"damage": 75,
 		"rof": 2,
@@ -28,7 +31,8 @@ var tower_data = {
 		"category": "Missile",
 		"price": 60,
 		"missile_speed": 300,
-		"steer_force": 10.0},
+		"steer_force": 10.0,
+		"unlocked": false},
 	"MissileT2_1": {
 		"damage": 95,
 		"rof": 1,
@@ -36,7 +40,8 @@ var tower_data = {
 		"category": "Missile",
 		"price": 150,
 		"missile_speed": 400,
-		"steer_force": 3.0},
+		"steer_force": 3.0,
+		"unlocked": false},
 	"MissileT2_2": {
 		"damage": 200,
 		"rof": 2.5,
@@ -44,13 +49,15 @@ var tower_data = {
 		"category": "Missile",
 		"price": 200,
 		"missile_speed": 450,
-		"steer_force": 8.0},
+		"steer_force": 8.0,
+		"unlocked": false},
 	"LaserT1": {
 		"damage": 0.7,
 		"rof": 0,
 		"range": 700,
 		"category": "Laser",
-		"price": 400},
+		"price": 400,
+		"unlocked": false},
 	"FlamethrowerT1": {
 		"damage": 20,
 		"rof": 0.23,
@@ -60,20 +67,23 @@ var tower_data = {
 		"flame_speed": 400,
 		"burning_damage": 5,
 		"burning_time": 10,
-		"burn_cooldown": 1},
+		"burn_cooldown": 1,
+		"unlocked": false},
 	"DeadZoneT1": {
 		"damage": 20,
 		"rof": 1.3,
 		"range": 400,
 		"category": "AoE",
-		"price": 450},
+		"price": 450,
+		"unlocked": false},
 	"MultiShotT1": {
 		"damage": 50,
 		"rof": 0.3,
 		"range": 350,
 		"category": "MultiShot",
 		"shot_speed": 3,
-		"price": 100},
+		"price": 100,
+		"unlocked": false},
 	"MultiShotT2_1": {
 		"damage": 65,
 		"rof": 0.35,
@@ -81,7 +91,8 @@ var tower_data = {
 		"category": "MultiShot",
 		"shot_speed": 3,
 		"steer_force": 0,
-		"price": 0},
+		"price": 0,
+		"unlocked": false},
 	"MultiShotT3_1": {
 		"damage": 75,
 		"rof": 0.5,
@@ -89,7 +100,8 @@ var tower_data = {
 		"category": "MultiShot",
 		"shot_speed": 2.5,
 		"steer_force": 10.0,
-		"price": 0},
+		"price": 0,
+		"unlocked": false},
 	"MultiShotT3_2": {
 		"damage": 75,
 		"rof": 0.5,
@@ -97,7 +109,8 @@ var tower_data = {
 		"category": "MultiShot",
 		"shot_speed": 2.5,
 		"steer_force": 10.0,
-		"price": 0},
+		"price": 0,
+		"unlocked": false},
 	"MultiShotT3_3": {
 		"damage": 75,
 		"rof": 0.5,
@@ -105,7 +118,8 @@ var tower_data = {
 		"category": "MultiShot",
 		"shot_speed": 2.5,
 		"steer_force": 10.0,
-		"price": 0},
+		"price": 0,
+		"unlocked": false},
 }
 
 var enemy_data = {

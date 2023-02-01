@@ -1,10 +1,9 @@
 extends Node
 
 var FileManager
+var Upgrades
 
 var rogue_currency = 0
-
-var Upgrades
 
 var original_game_data = GameData.duplicate()
 var all_turret_data = GameData.tower_data
@@ -29,9 +28,6 @@ func add_currency(money):
 	if rogue_currency:
 		rogue_currency = int(rogue_currency) + int(money)
 
-func buy_upgrade(upgrade_name):
-	pass
-
 func update_GameData_values():
 	update_turret_values()
 	update_enemy_values()
@@ -39,8 +35,13 @@ func update_GameData_values():
 func update_turret_values():
 	for turret_name in all_turret_data:
 		for value_name in all_turret_data[turret_name]:
-			update_specific_turret_value(UpgradeData.upgrades["General"], value_name, turret_name, true)
-			update_specific_turret_value(UpgradeData.upgrades[all_turret_data[turret_name]["category"]], value_name, turret_name, false)
+			if value_name != "unlocked":
+				update_specific_turret_value(UpgradeData.upgrades["General"], value_name, turret_name, true)
+				update_specific_turret_value(UpgradeData.upgrades[all_turret_data[turret_name]["category"]], value_name, turret_name, false)
+		set_turret_unlocks(turret_name)
+
+func set_turret_unlocks(turret_name):
+	all_turret_data[turret_name]["unlocked"] = Upgrades["Special"]["Unlocks"][turret_name]
 
 func update_specific_turret_value(upgrade_data, value_name, turret_name, is_general_upgrade):
 	for upgrade_name in upgrade_data:
@@ -89,4 +90,7 @@ func create_new_save():
 				Upgrades[upgrade_type][upgrade_name] = 0
 		else:
 			for upgrade_name in Upgrades[upgrade_type]["Unlocks"]:
-				Upgrades[upgrade_type]["Unlocks"][upgrade_name] = false
+				if upgrade_name == "GunT1":
+					Upgrades[upgrade_type]["Unlocks"][upgrade_name] = true
+				else:
+					Upgrades[upgrade_type]["Unlocks"][upgrade_name] = false

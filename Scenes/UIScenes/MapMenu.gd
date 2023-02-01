@@ -22,7 +22,6 @@ func select_stage(_stage):
 	stage = _stage
 	hide_all_maps()
 	set_stage_pressed_button()
-	
 	var map_list = GameData.Maps[stage]
 	if map_list:
 		for i in map_list:

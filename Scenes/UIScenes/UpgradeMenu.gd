@@ -34,17 +34,15 @@ func set_special_upgrade_buttons():
 		var price = special_upgrades[upgrade_name].price
 		if UpgradeDataManager.Upgrades["Special"]["Unlocks"][upgrade_name] == false:
 			add_new_button("Special", upgrade_name, price)
-		
+
 func add_new_button(upgrade_type_name, upgrade_name, price):
 	var new_button = load("res://Scenes/SupportScenes/UpgradeButtonExample.tscn").instance()
-	
 	new_button.get_node("Name").text = upgrade_name
 	new_button.get_node("Price").text = String(price)
 	new_button.name = upgrade_name
 	new_button.connect("pressed", self, "upgrade_button_pressed", [upgrade_name, upgrade_type_name])
 	new_button.add_to_group(upgrade_type_name)
 	$M/VB/HB/GridContainer.add_child(new_button)
-	
 
 func upgrade_button_pressed(upgrade_name, upgrade_type_name):
 	if upgrade_type_name != "Special":
@@ -59,7 +57,6 @@ func upgrade_button_pressed(upgrade_name, upgrade_type_name):
 				i.visible = false
 	FileManager.save_game()
 	UpgradeDataManager.update_GameData_values()
-		
 
 func tab_button_pressed(name):
 	hide_all_upgrade_buttons()

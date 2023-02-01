@@ -9,6 +9,7 @@ func _ready():
 	load_pause_menu()
 	set_turret_prices()
 	start_count_down()
+	set_turret_buy_button_visibility()
 	
 func start_count_down():
 	if get_parent().current_wave == 0:
@@ -155,3 +156,8 @@ func set_turret_prices():
 		get_node("HUD/BuildBar/" + turret + "/Label").text = String(GameData.tower_data[turret]["price"])
 	for turret in GameData.turretUpgrades["Turrets"]:
 		get_node("HUD/TurretInfoBar/H/" + turret + "/Label").text = String(GameData.tower_data[turret]["price"])
+
+func set_turret_buy_button_visibility():
+	for i in get_tree().get_nodes_in_group("build_buttons"):
+		if GameData.tower_data[i.get_name()].unlocked == false:
+			i.visible = false
