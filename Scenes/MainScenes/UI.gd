@@ -10,7 +10,7 @@ func _ready():
 	set_turret_prices()
 	start_count_down()
 	set_turret_buy_button_visibility()
-	
+
 func start_count_down():
 	if get_parent().current_wave == 0:
 		timer.start(150)
@@ -60,7 +60,7 @@ func update_tower_preview(new_position, color):
 func _on_PausePlay_pressed():
 	var pause_menu = get_node("PauseMenu")
 	var hud = get_node("HUD")
-
+	
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
 	if get_tree().is_paused():
@@ -116,7 +116,7 @@ func on_continue_pressed():
 	get_tree().paused = false
 	get_node("PauseMenu").visible = false
 	get_node("HUD").visible = true
-	
+
 func on_restart_pressed():
 	get_tree().paused = false
 	get_node("PauseMenu").visible = false
