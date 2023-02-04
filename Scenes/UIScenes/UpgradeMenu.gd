@@ -23,40 +23,55 @@ func set_upgrade_buttons():
 	for upgrade_type_name in UpgradeData.upgrades:
 		if upgrade_type_name != "Special":
 			for upgrade_name in UpgradeData.upgrades[upgrade_type_name]:
-				var price = UpgradeData.upgrades[upgrade_type_name][upgrade_name].start_price
-				add_new_button(upgrade_type_name, upgrade_name, price)
+				add_new_button(upgrade_type_name, upgrade_name)
 		else:
 			set_special_upgrade_buttons()
 
 func set_special_upgrade_buttons():
 	var special_upgrades =  UpgradeData.upgrades["Special"]["Unlocks"]
 	for upgrade_name in special_upgrades:
-		var price = special_upgrades[upgrade_name].price
 		if UpgradeDataManager.Upgrades["Special"]["Unlocks"][upgrade_name] == false:
-			add_new_button("Special", upgrade_name, price)
+			add_new_button("Special", upgrade_name)
 
-func add_new_button(upgrade_type_name, upgrade_name, price):
+func add_new_button(upgrade_type_name, upgrade_name):
 	var new_button = load("res://Scenes/SupportScenes/UpgradeButtonExample.tscn").instance()
 	new_button.get_node("Name").text = upgrade_name
-	new_button.get_node("Price").text = String(price)
+	new_button.get_node("Price").text = String(get_price(upgrade_name, upgrade_type_name))
 	new_button.name = upgrade_name
 	new_button.connect("pressed", self, "upgrade_button_pressed", [upgrade_name, upgrade_type_name])
 	new_button.add_to_group(upgrade_type_name)
 	$M/VB/HB/GridContainer.add_child(new_button)
 
+func update_button_upgrade_price(upgrade_name, upgrade_type_name):
+			for i in get_tree().get_nodes_in_group(upgrade_type_name):
+				var  dsads = i.name
+				if i.name == upgrade_name:
+					i.get_node("Price").text = String(get_price(upgrade_name, upgrade_type_name))
+
 func upgrade_button_pressed(upgrade_name, upgrade_type_name):
-	if upgrade_type_name != "Special":
-		if UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name]:
-			UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name] += 1
-		else: 
-			UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name] = 1
+	if UpgradeDataManager.rogue_currency >= get_price(upgrade_name, upgrade_type_name):
+		UpgradeDataManager.rogue_currency = UpgradeDataManager.rogue_currency - get_price(upgrade_name, upgrade_type_name)
+		if upgrade_type_name != "Special":
+			if UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name]:
+				UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name] += 1
+			else: 
+				UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name] = 1
+		else:
+			UpgradeDataManager.Upgrades[upgrade_type_name]["Unlocks"][upgrade_name] = true
+			for i in get_tree().get_nodes_in_group(upgrade_type_name):
+				if i.name == upgrade_name:
+					i.visible = false
+		update_currency()
+		update_button_upgrade_price(upgrade_name, upgrade_type_name)
+		FileManager.save_game()
+		UpgradeDataManager.update_GameData_values()
+		
+func get_price(upgrade_name, upgrade_type_name):
+	if upgrade_type_name == "Special":
+		return UpgradeData.upgrades["Special"]["Unlocks"][upgrade_name].price
 	else:
-		UpgradeDataManager.Upgrades[upgrade_type_name]["Unlocks"][upgrade_name] = true
-		for i in get_tree().get_nodes_in_group(upgrade_type_name):
-			if i.name == upgrade_name:
-				i.visible = false
-	FileManager.save_game()
-	UpgradeDataManager.update_GameData_values()
+		var upgrade_data = UpgradeData.upgrades[upgrade_type_name][upgrade_name]
+		return (upgrade_data.start_price + (UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name] * upgrade_data.price_increase))
 
 func tab_button_pressed(name):
 	hide_all_upgrade_buttons()
