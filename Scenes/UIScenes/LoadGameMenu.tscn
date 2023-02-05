@@ -106,7 +106,7 @@ valign = 1
 
 [node name="VB3" type="VBoxContainer" parent="M"]
 margin_left = 140.0
-margin_top = 120.0
+margin_top = 85.0
 margin_right = 940.0
 margin_bottom = 635.0
 rect_min_size = Vector2( 800, 550 )

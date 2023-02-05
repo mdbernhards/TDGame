@@ -60,3 +60,8 @@ custom_fonts/font = SubResource( 5 )
 text = "asdasda"
 align = 1
 autowrap = true
+
+[node name="upgrade_name" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0

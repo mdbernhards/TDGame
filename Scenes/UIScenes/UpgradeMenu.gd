@@ -24,6 +24,7 @@ func set_upgrade_buttons():
 		if upgrade_type_name != "Special":
 			for upgrade_name in UpgradeData.upgrades[upgrade_type_name]:
 				add_new_button(upgrade_type_name, upgrade_name)
+				set_button_visibility(upgrade_name, upgrade_type_name, check_button_visibility(upgrade_name, upgrade_type_name))
 		else:
 			set_special_upgrade_buttons()
 
@@ -37,16 +38,16 @@ func add_new_button(upgrade_type_name, upgrade_name):
 	var new_button = load("res://Scenes/SupportScenes/UpgradeButtonExample.tscn").instance()
 	new_button.get_node("Name").text = upgrade_name
 	new_button.get_node("Price").text = String(get_price(upgrade_name, upgrade_type_name))
-	new_button.name = upgrade_name
+	new_button.get_node("upgrade_name").text = String(upgrade_name)
+	new_button.name = upgrade_type_name + upgrade_name
 	new_button.connect("pressed", self, "upgrade_button_pressed", [upgrade_name, upgrade_type_name])
 	new_button.add_to_group(upgrade_type_name)
 	$M/VB/HB/GridContainer.add_child(new_button)
 
 func update_button_upgrade_price(upgrade_name, upgrade_type_name):
-			for i in get_tree().get_nodes_in_group(upgrade_type_name):
-				var  dsads = i.name
-				if i.name == upgrade_name:
-					i.get_node("Price").text = String(get_price(upgrade_name, upgrade_type_name))
+	for i in get_tree().get_nodes_in_group(upgrade_type_name):
+		if i.get_node("upgrade_name").text == upgrade_name:
+			i.get_node("Price").text = String(get_price(upgrade_name, upgrade_type_name))
 
 func upgrade_button_pressed(upgrade_name, upgrade_type_name):
 	if UpgradeDataManager.rogue_currency >= get_price(upgrade_name, upgrade_type_name):
@@ -56,11 +57,10 @@ func upgrade_button_pressed(upgrade_name, upgrade_type_name):
 				UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name] += 1
 			else: 
 				UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name] = 1
+			set_button_visibility(upgrade_name, upgrade_type_name, check_button_visibility(upgrade_name, upgrade_type_name))
 		else:
 			UpgradeDataManager.Upgrades[upgrade_type_name]["Unlocks"][upgrade_name] = true
-			for i in get_tree().get_nodes_in_group(upgrade_type_name):
-				if i.name == upgrade_name:
-					i.visible = false
+			set_button_visibility(upgrade_name, upgrade_type_name, false)
 		update_currency()
 		update_button_upgrade_price(upgrade_name, upgrade_type_name)
 		FileManager.save_game()
@@ -73,15 +73,27 @@ func get_price(upgrade_name, upgrade_type_name):
 		var upgrade_data = UpgradeData.upgrades[upgrade_type_name][upgrade_name]
 		return (upgrade_data.start_price + (UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name] * upgrade_data.price_increase))
 
-func tab_button_pressed(name):
+func check_button_visibility(upgrade_name, upgrade_type_name): # Not for special type
+	var upgrade_data = UpgradeData.upgrades[upgrade_type_name][upgrade_name]
+	if upgrade_data.tiers <= UpgradeDataManager.Upgrades[upgrade_type_name][upgrade_name]:
+		return false
+	else:
+		return true
+		
+func set_button_visibility(upgrade_name, upgrade_type_name, visible):
+	for button in get_tree().get_nodes_in_group(upgrade_type_name):
+		if button.name == upgrade_name:
+			button.visible = visible
+
+func tab_button_pressed(type_name):
 	hide_all_upgrade_buttons()
-	for i in get_tree().get_nodes_in_group("rogueUpgradeTabButton"):
-		if i.get_name() != name:
-			i.pressed = false
+	for type_button in get_tree().get_nodes_in_group("rogueUpgradeTabButton"):
+		if type_button.get_name() != type_name:
+			type_button.pressed = false
 		else:
-			i.pressed = true
-	for i in get_tree().get_nodes_in_group(name):
-		i.visible = true
+			type_button.pressed = true
+	for upgrade_button in get_tree().get_nodes_in_group(type_name):
+		upgrade_button.visible = check_button_visibility(upgrade_button.get_node("upgrade_name").text, type_name)
 
 func hide_all_upgrade_buttons():
 	for i in get_tree().get_nodes_in_group("rougeUpgradeButtons"):
