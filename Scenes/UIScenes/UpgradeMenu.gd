@@ -39,7 +39,7 @@ func add_new_button(upgrade_type_name, upgrade_name):
 	new_button.get_node("Name").text = upgrade_name
 	new_button.get_node("Price").text = String(get_price(upgrade_name, upgrade_type_name))
 	new_button.get_node("upgrade_name").text = String(upgrade_name)
-	new_button.name = upgrade_type_name + upgrade_name
+	new_button.name = upgrade_name
 	new_button.connect("pressed", self, "upgrade_button_pressed", [upgrade_name, upgrade_type_name])
 	new_button.add_to_group(upgrade_type_name)
 	$M/VB/HB/GridContainer.add_child(new_button)
@@ -82,7 +82,7 @@ func check_button_visibility(upgrade_name, upgrade_type_name): # Not for special
 		
 func set_button_visibility(upgrade_name, upgrade_type_name, visible):
 	for button in get_tree().get_nodes_in_group(upgrade_type_name):
-		if button.name == upgrade_name:
+		if button.get_node("upgrade_name").text == upgrade_name:
 			button.visible = visible
 
 func tab_button_pressed(type_name):

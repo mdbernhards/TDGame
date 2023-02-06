@@ -2,6 +2,7 @@ extends Node
 
 var FileManager
 var Upgrades
+var MapUnlocks
 
 var rogue_currency = 0
 
@@ -13,6 +14,8 @@ func _ready():
 	FileManager.load_game()
 	if !Upgrades:
 		create_new_save()
+	if !MapUnlocks:
+		create_new_map_unlocks()
 	update_GameData_values()
 
 func save():
@@ -21,6 +24,7 @@ func save():
 		"parent" : get_parent().get_path(),
 		"rogue_currency" : rogue_currency,
 		"Upgrades" : Upgrades,
+		"MapUnlocks" : MapUnlocks,
 	}
 	return save_dict
 
@@ -94,3 +98,12 @@ func create_new_save():
 					Upgrades[upgrade_type]["Unlocks"][upgrade_name] = true
 				else:
 					Upgrades[upgrade_type]["Unlocks"][upgrade_name] = false
+
+func create_new_map_unlocks():
+	MapUnlocks = {}
+	for stage in original_game_data.Maps:
+		for map in original_game_data.Maps[stage]:
+			if stage == "Stages":
+				MapUnlocks[String(MapUnlocks.size() + 1)] = {}	
+			else:
+				MapUnlocks[String(stage)][map] = false
