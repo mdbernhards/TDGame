@@ -48,3 +48,5 @@ func load_main_menu():
 func load_map_menu():
 	get_node("MapMenu/M/VB3/Play").connect("pressed", self, "on_play_pressed")
 	$MapMenu.visible = false
+	$MapMenu.select_stage("1")
+	$MapMenu.show_available_stages()

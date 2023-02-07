@@ -106,4 +106,7 @@ func create_new_map_unlocks():
 			if stage == "Stages":
 				MapUnlocks[String(MapUnlocks.size() + 1)] = {}	
 			else:
-				MapUnlocks[String(stage)][map] = false
+				if stage == "1" or map == "1":
+					MapUnlocks[String(stage)][map] = true
+				else:
+					MapUnlocks[String(stage)][map] = false
