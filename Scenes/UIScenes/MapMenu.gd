@@ -65,7 +65,6 @@ func set_map_pressed_button():
 			if i.get_node("Label").text == map:
 				i.pressed = true
 
-# paņem save data, no
 func show_available_stages():
 	for stage_button in stage_button_list:
 		if UpgradeDataManager.MapUnlocks[stage_button.get_node("Label").text]:

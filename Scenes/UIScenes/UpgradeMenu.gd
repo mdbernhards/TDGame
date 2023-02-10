@@ -92,8 +92,9 @@ func tab_button_pressed(type_name):
 			type_button.pressed = false
 		else:
 			type_button.pressed = true
-	for upgrade_button in get_tree().get_nodes_in_group(type_name):
-		upgrade_button.visible = check_button_visibility(upgrade_button.get_node("upgrade_name").text, type_name)
+	if type_name != "Special":
+		for upgrade_button in get_tree().get_nodes_in_group(type_name):
+			upgrade_button.visible = check_button_visibility(upgrade_button.get_node("upgrade_name").text, type_name)
 
 func hide_all_upgrade_buttons():
 	for i in get_tree().get_nodes_in_group("rougeUpgradeButtons"):
